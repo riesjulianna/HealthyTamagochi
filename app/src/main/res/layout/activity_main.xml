@@ -4,15 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
+    android:layout_centerHorizontal="false"
+    android:layout_centerVertical="false"
+    android:background="#9DF4FF"
+    android:gravity="center"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/text_szia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="hello"
-        android:textSize="34sp" />
+    <Button
+        android:id="@+id/signIn"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:backgroundTint="#05C4DD"
+        android:onClick="signInClick"
+        android:text="Bejelentkezés"
+        android:textStyle="bold"
+        tools:text="Bejelentkezés" />
 
+    <Button
+        android:id="@+id/signUp"
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:backgroundTint="#05C4DD"
+        android:text="Regisztráció"
+        android:textStyle="bold" />
 </LinearLayout>
