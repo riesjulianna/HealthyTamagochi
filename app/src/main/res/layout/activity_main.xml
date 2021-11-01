@@ -29,6 +29,7 @@
         android:layout_height="50dp"
         android:layout_gravity="center"
         android:backgroundTint="#05C4DD"
+        android:onClick="signUpClick"
         android:text="Regisztráció"
         android:textStyle="bold" />
 </LinearLayout>

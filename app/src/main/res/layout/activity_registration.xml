@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Registration">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Regisztráció" />
+
+            <EditText
+                android:id="@+id/username"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:ems="10"
+                android:hint="Felhasználónév"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/password"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Jelszó"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nem" />
+
+            <RadioGroup
+                android:id="@+id/sex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <RadioButton
+                    android:id="@+id/boy"
+                    style="@style/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Fiú" />
+
+                <RadioButton
+                    android:id="@+id/girl"
+                    style="@style/radioButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Lány" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/birthdate"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Születési idő"
+                android:onClick="dateSelecterOpen" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/weight"
+                    style="@style/signup_editText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Súly"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="kg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/height"
+                    style="@style/signup_editText"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:hint="Magasság"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    style="@style/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="cm" />
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/city"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Város"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/emailParent"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:ems="10"
+                android:hint="Szülő e-mail címe"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/parentEducation"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Szülő legmagasabb végzettsége"
+                android:inputType="textPersonName" />
+
+            <CheckBox
+                android:id="@+id/acceptRules"
+                style="@style/checkBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Elfogadom az Adatvédelmi Tájékoztatót" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="26dp" />
+
+            <Button
+                android:id="@+id/SignUpButton"
+                style="@style/buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="registrationClick"
+                android:text="Regisztráció" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
