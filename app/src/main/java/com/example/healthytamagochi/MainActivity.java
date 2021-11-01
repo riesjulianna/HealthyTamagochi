@@ -8,6 +8,7 @@ import android.view.View;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,12 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent i = new Intent();
         i.setClass(this,SignIn.class);
+        startActivity(i);
+    }
+    public void signUpClick(View v)
+    {
+        Intent i = new Intent();
+        i.setClass(this,Registration.class);
         startActivity(i);
     }
 

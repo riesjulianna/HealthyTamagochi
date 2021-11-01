@@ -2,46 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#9DF4FF"
-    android:gravity="center"
     tools:context=".SignIn">
 
     <EditText
         android:id="@+id/username"
+        style="@style/signin_editText"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#FFFEFE"
-        android:ems="10"
+        android:layout_height="wrap_content"
         android:hint="Felhasználónév"
         android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/password"
+        style="@style/signin_editText"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="#FFFEFE"
-        android:ems="10"
+        android:layout_height="wrap_content"
         android:hint="Jelszó"
         android:inputType="textPassword" />
 
     <Button
         android:id="@+id/signIn"
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="#05C4DD"
+        style="@style/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Bejelentkezés"
-        android:textStyle="bold"
         tools:text="Bejelentkezés" />
 
 </LinearLayout>
