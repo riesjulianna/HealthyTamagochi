@@ -29,6 +29,7 @@
         style="@style/buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="signInClick"
         android:text="Bejelentkezés"
         tools:text="Bejelentkezés" />
 

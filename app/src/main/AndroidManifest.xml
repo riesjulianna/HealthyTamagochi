@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthyTamagochi">
         <activity
+            android:name=".Questions1"
+            android:exported="true" />
+        <activity
+            android:name=".SetCharacter"
+            android:exported="true" />
+        <activity
             android:name=".Registration"
             android:exported="true" />
         <activity
