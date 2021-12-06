@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "582132607415",
+    "project_id": "healthytamagochi-d1f03",
+    "storage_bucket": "healthytamagochi-d1f03.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:582132607415:android:d46a12f3a6a2c32369a032",
+        "android_client_info": {
+          "package_name": "com.example.healthytamagochi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "582132607415-c5vm4gspjuthf99g7qfupb3b4i8hdpiq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXjQP8hUjawoZG2BHEQKdHftRd7Wkm8j4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "582132607415-c5vm4gspjuthf99g7qfupb3b4i8hdpiq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
