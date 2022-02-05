@@ -35,21 +35,21 @@ public class Questions1 extends AppCompatActivity {
             selectedPic = b.getString("selectedPic");
         }
 
-        if (selectedPic.equals("cat_one"))
+        if (selectedPic.equals("girl1"))
         {
-            avatar.setImageResource(R.drawable.cat_one);
+            avatar.setImageResource(R.drawable.girl1);
         }
-        else if (selectedPic.equals("cat_two"))
+        else if (selectedPic.equals("girl2"))
         {
-            avatar.setImageResource(R.drawable.cat_two);
+            avatar.setImageResource(R.drawable.girl2);
         }
-        else if (selectedPic.equals("dog_one"))
+        else if (selectedPic.equals("boy1"))
         {
-            avatar.setImageResource(R.drawable.dog_one);
+            avatar.setImageResource(R.drawable.boy1);
         }
-        else if (selectedPic.equals("dog_two"))
+        else if (selectedPic.equals("boy2"))
         {
-            avatar.setImageResource(R.drawable.dog_two);
+            avatar.setImageResource(R.drawable.boy2);
         }
 
 

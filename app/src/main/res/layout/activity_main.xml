@@ -5,29 +5,40 @@
     style="@style/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/home_background"
     android:gravity="center"
     android:orientation="vertical"
+    android:adjustViewBounds="true"
+    android:scaleType="fitCenter"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/signIn"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
-        android:backgroundTint="#05C4DD"
+        android:backgroundTint="#5bff4f"
+        android:fontFamily="More Fonts..."
         android:onClick="signInClick"
         android:text="Bejelentkezés"
+        android:textSize="18sp"
         android:textStyle="bold"
         tools:text="Bejelentkezés" />
 
     <Button
         android:id="@+id/signUp"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
-        android:backgroundTint="#05C4DD"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:backgroundTint="#5bff4f"
+        android:fontFamily="More Fonts..."
         android:onClick="signUpClick"
         android:text="Regisztráció"
+        android:textSize="18sp"
         android:textStyle="bold" />
 </LinearLayout>

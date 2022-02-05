@@ -13,8 +13,14 @@
         style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="100dp"
         android:text="Karakter kiválasztása" />
+
+    <View
+        android:id="@+id/divider4"
+        style="@style/divider"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginBottom="50dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,14 +32,14 @@
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/cat_one" />
+            app:srcCompat="@drawable/girl1" />
 
         <ImageView
             android:id="@+id/pic2"
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/cat_two" />
+            app:srcCompat="@drawable/girl2" />
     </LinearLayout>
 
     <LinearLayout
