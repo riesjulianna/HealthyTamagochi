@@ -36,15 +36,15 @@ public class SetCharacter extends AppCompatActivity {
 
         if(sex.equals("girl"))
         {
-           pic1.setImageResource(R.drawable.cat_one);
-           pic2.setImageResource(R.drawable.cat_two);
+            pic1.setImageResource(R.drawable.girl1);
+            pic2.setImageResource(R.drawable.girl2);
 
 
         }
         else if(sex.equals("boy"))
         {
-            pic1.setImageResource(R.drawable.dog_one);
-            pic2.setImageResource(R.drawable.dog_two);
+            pic1.setImageResource(R.drawable.boy1);
+            pic2.setImageResource(R.drawable.boy2);
         }
     }
 
@@ -56,19 +56,19 @@ public class SetCharacter extends AppCompatActivity {
             {
                 if(rb1.isChecked())
                 {
-                    selectedPic="cat_one";
+                    selectedPic="girl1";
                 }
                 else
-                    selectedPic="cat_two";
+                    selectedPic="girl2";
             }
             else if(sex.equals("boy"))
             {
                 if(rb1.isChecked())
                 {
-                    selectedPic="dog_one";
+                    selectedPic="boy1";
                 }
                 else
-                    selectedPic="dog_two";
+                    selectedPic="boy2";
             }
             Intent i = new Intent();
             i.setClass(this,Questions1.class);

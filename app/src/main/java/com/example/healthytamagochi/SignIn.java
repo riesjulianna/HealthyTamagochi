@@ -28,7 +28,7 @@ public class SignIn extends AppCompatActivity {
     {
 
         firstSignIn=true;   // valahogy az adatbázisból kellene kinyerni hogy első bejelentkezés-e
-        sex="boy";   // szintén  az adatbázisból kellene a nemet betölteni
+        sex="girl";   // szintén  az adatbázisból kellene a nemet betölteni
 
         if(username.getText().toString().equals("") || username.getText().toString().equals(""))
         {
