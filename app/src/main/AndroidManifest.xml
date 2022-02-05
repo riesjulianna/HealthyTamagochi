@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthyTamagochi">
         <activity
+            android:name=".Evaluate"
+            android:exported="true" />
+        <activity
             android:name=".Questions1"
             android:exported="true" />
         <activity

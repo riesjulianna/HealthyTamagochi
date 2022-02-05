@@ -24,6 +24,12 @@
                 android:layout_height="wrap_content"
                 android:text="Regisztráció" />
 
+            <View
+                android:id="@+id/divider"
+                style="@style/divider"
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
             <EditText
                 android:id="@+id/username"
                 style="@style/signup_editText"
@@ -42,12 +48,20 @@
                 android:hint="Jelszó"
                 android:inputType="textPassword" />
 
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#bdbdbd" />
+
             <TextView
                 android:id="@+id/textView6"
                 style="@style/textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Nem" />
+                android:text="Nem"
+                android:textColor="#006366"
+                android:textStyle="bold" />
 
             <RadioGroup
                 android:id="@+id/sex"
@@ -133,6 +147,12 @@
                 android:ems="10"
                 android:hint="Város"
                 android:inputType="textPostalAddress" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#bdbdbd" />
 
             <EditText
                 android:id="@+id/emailParent"

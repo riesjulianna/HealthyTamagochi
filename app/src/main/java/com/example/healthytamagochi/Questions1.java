@@ -2,11 +2,15 @@ package com.example.healthytamagochi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.Timer;
@@ -20,6 +24,7 @@ public class Questions1 extends AppCompatActivity {
     int hour=0;
     int min=0;
     int sec=0;
+    RadioGroup q1,q2,q3,q4;
 
 
     @Override
@@ -29,27 +34,31 @@ public class Questions1 extends AppCompatActivity {
 
         avatar = findViewById(R.id.avatar);
         time=findViewById(R.id.time);
+        q1=findViewById(R.id.question1);
+        q2=findViewById(R.id.question2);
+        q3=findViewById(R.id.question3);
+        q4=findViewById(R.id.question4);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
         }
 
-        if (selectedPic.equals("cat_one"))
+        if (selectedPic.equals("boy1"))
         {
-            avatar.setImageResource(R.drawable.cat_one);
+            avatar.setImageResource(R.drawable.boy1);
         }
-        else if (selectedPic.equals("cat_two"))
+        else if (selectedPic.equals("girl1"))
         {
-            avatar.setImageResource(R.drawable.cat_two);
+            avatar.setImageResource(R.drawable.girl1);
         }
-        else if (selectedPic.equals("dog_one"))
+        else if (selectedPic.equals("boy2"))
         {
-            avatar.setImageResource(R.drawable.dog_one);
+            avatar.setImageResource(R.drawable.boy2);
         }
-        else if (selectedPic.equals("dog_two"))
+        else if (selectedPic.equals("girl2"))
         {
-            avatar.setImageResource(R.drawable.dog_two);
+            avatar.setImageResource(R.drawable.girl2);
         }
 
 
@@ -87,6 +96,27 @@ public class Questions1 extends AppCompatActivity {
         }, 1000, 1000);
 
 
+
+
+    }
+
+    public void DoneClick(View v)
+    {
+        if(q1.getCheckedRadioButtonId()==-1 || q2.getCheckedRadioButtonId()==-1 || q3.getCheckedRadioButtonId()==-1 || q4.getCheckedRadioButtonId()==-1)
+        {
+            Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
+        }
+        else
+        {
+            Intent i = new Intent();
+            i.setClass(this,Evaluate.class);
+            i.putExtra("selectedPic",selectedPic);
+            i.putExtra("hour",hour);
+            i.putExtra("min",min);
+            i.putExtra("sec",sec);
+            i.putExtra("pont",10);
+            startActivity(i);
+        }
 
 
     }

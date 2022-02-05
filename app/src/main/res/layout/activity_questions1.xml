@@ -31,14 +31,10 @@
 
         <TextView
             android:id="@+id/time"
-            style="@style/textView"
+            style="@style/clock"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="1"
-            android:textSize="18sp" />
+            android:layout_weight="1" />
 
     </LinearLayout>
 
@@ -197,6 +193,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
+                android:onClick="DoneClick"
                 android:text="Kész" />
         </LinearLayout>
     </ScrollView>
