@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="residences">
+        <item>Község</item>
+        <item>Falu</item>
+        <item>Város</item>
+        <item>Megyeszékhely</item>
+        <item>Főváros</item>
+    </string-array>
+</resources>

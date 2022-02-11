@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="kids">
+        <item>Petike</item>
+        <item>Marika</item>
+        <item>Lalika</item>
+        <item>Timike</item>
+        <item>Zolika</item>
+    </string-array>
+</resources>

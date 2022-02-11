@@ -43,6 +43,8 @@ public class Questions1 extends AppCompatActivity {
         if (b != null) {
             selectedPic = b.getString("selectedPic");
         }
+       // String pic="R.drawable"+selectedPic;
+        //avatar.setImageResource(Integer.parseInt(pic));
 
         if (selectedPic.equals("boy1"))
         {

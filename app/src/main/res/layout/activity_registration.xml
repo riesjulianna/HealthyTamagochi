@@ -48,111 +48,6 @@
                 android:hint="Jelszó"
                 android:inputType="textPassword" />
 
-            <View
-                android:id="@+id/divider2"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bdbdbd" />
-
-            <TextView
-                android:id="@+id/textView6"
-                style="@style/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Nem"
-                android:textColor="#006366"
-                android:textStyle="bold" />
-
-            <RadioGroup
-                android:id="@+id/sex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1">
-
-                <RadioButton
-                    android:id="@+id/boy"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Fiú" />
-
-                <RadioButton
-                    android:id="@+id/girl"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Lány" />
-
-            </RadioGroup>
-
-            <TextView
-                android:id="@+id/birthdate"
-                style="@style/signup_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Születési idő"
-                android:onClick="dateSelecterOpen" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/weight"
-                    style="@style/signup_editText"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Súly"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    style="@style/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="kg" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <EditText
-                    android:id="@+id/height"
-                    style="@style/signup_editText"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:hint="Magasság"
-                    android:inputType="number" />
-
-                <TextView
-                    android:id="@+id/textView10"
-                    style="@style/textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="cm" />
-            </LinearLayout>
-
-            <EditText
-                android:id="@+id/city"
-                style="@style/signup_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Város"
-                android:inputType="textPostalAddress" />
-
-            <View
-                android:id="@+id/divider3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="#bdbdbd" />
 
             <EditText
                 android:id="@+id/emailParent"
@@ -170,6 +65,30 @@
                 android:layout_height="wrap_content"
                 android:hint="Szülő legmagasabb végzettsége"
                 android:inputType="textPersonName" />
+
+            <TextView
+                android:id="@+id/textView15"
+                style="@style/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Lakhely"
+                android:textColor="#006366"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/residences"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:background="#bdbdbd" />
 
             <CheckBox
                 android:id="@+id/acceptRules"

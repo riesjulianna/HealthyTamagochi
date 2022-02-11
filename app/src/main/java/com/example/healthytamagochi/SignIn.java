@@ -27,18 +27,14 @@ public class SignIn extends AppCompatActivity {
     public void signInClick(View v)
     {
 
-        firstSignIn=true;   // valahogy az adatbázisból kellene kinyerni hogy első bejelentkezés-e
-        sex="girl";   // szintén  az adatbázisból kellene a nemet betölteni
-
         if(username.getText().toString().equals("") || username.getText().toString().equals(""))
         {
             Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
         }
-        else if(firstSignIn==true)
+        else
         {
             Intent i = new Intent();
-            i.setClass(this,SetCharacter.class);
-            i.putExtra("sex",sex);
+            i.setClass(this,Homepage.class);
             startActivity(i);
         }
 

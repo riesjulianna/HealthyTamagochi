@@ -66,4 +66,5 @@
         <item name="android:textSize">18sp</item>
         <item name="android:buttonTint">#006366</item>
     </style>
+
 </resources>
