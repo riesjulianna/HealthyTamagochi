@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Questions1">
-
+    tools:context=".OkosTanyer">
 
     <LinearLayout
         style="@style/divider"
@@ -39,30 +38,45 @@
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/color"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="100dp">
-
-        <TextView
-            android:id="@+id/rating"
-            style="@style/title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Ügyes vagy"
-            android:textColor="#050000" />
-    </FrameLayout>
-
-    <Button
-        android:id="@+id/ok_btn"
-        style="@style/buttons"
+        android:id="@+id/upLinear"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
-        android:onClick="DoneClick"
-        android:text="OK" />
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
+        <ImageView
+            android:id="@+id/tanyer"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/tanyer" />
+
+        <ImageView
+            android:id="@+id/apples"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom"
+            app:srcCompat="@drawable/alma" />
+
+        <ImageView
+            android:id="@+id/csoki"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="bottom|right"
+            app:srcCompat="@drawable/csoki" />
+
+        <ImageView
+            android:id="@+id/sali"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            android:layout_gravity="right|top"
+            app:srcCompat="@drawable/salata" />
+
+        <ImageView
+            android:id="@+id/teszta"
+            android:layout_width="150dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/teszta" />
+
+    </FrameLayout>
 
 </LinearLayout>

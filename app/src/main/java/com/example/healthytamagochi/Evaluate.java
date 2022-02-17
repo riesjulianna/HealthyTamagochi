@@ -2,11 +2,14 @@ package com.example.healthytamagochi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -98,6 +101,22 @@ public class Evaluate extends AppCompatActivity {
                 });
             }
         }, 1000, 1000);
+
+    }
+
+    public void DoneClick(View v)
+    {
+
+       Intent i = new Intent();
+            i.setClass(this,OkosTanyer.class);
+            i.putExtra("selectedPic",selectedPic);
+            i.putExtra("hour",hour);
+            i.putExtra("min",min);
+            i.putExtra("sec",sec);
+            i.putExtra("pont",10);
+            startActivity(i);
+
+
 
     }
 }
