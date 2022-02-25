@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class SignIn extends AppCompatActivity {
 
     EditText username,password;
@@ -33,6 +36,7 @@ public class SignIn extends AppCompatActivity {
         }
         else
         {
+
             Intent i = new Intent();
             i.setClass(this,Homepage.class);
             startActivity(i);
