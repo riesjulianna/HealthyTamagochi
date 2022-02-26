@@ -117,6 +117,7 @@ public class Questions1 extends AppCompatActivity {
             i.putExtra("min",min);
             i.putExtra("sec",sec);
             i.putExtra("pont",10);
+            i.putExtra("prev","Questions");
             startActivity(i);
         }
 

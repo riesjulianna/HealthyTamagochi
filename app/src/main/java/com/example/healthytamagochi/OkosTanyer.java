@@ -2,17 +2,14 @@ package com.example.healthytamagochi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,7 +26,9 @@ public class OkosTanyer extends AppCompatActivity {
     int sec=0;
     int pont=0;
     ImageView apples,csoki,sali,teszta,tanyer;
+    boolean jo1=false,jo2=false,jo3=false;
     float xDown=0,yDown=0;
+    Button done;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +42,7 @@ public class OkosTanyer extends AppCompatActivity {
         teszta=findViewById(R.id.teszta);
         sali=findViewById(R.id.sali);
         tanyer=findViewById(R.id.tanyer);
+        done=findViewById(R.id.Done_btn);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -114,6 +114,11 @@ public class OkosTanyer extends AppCompatActivity {
                         apples.setBackgroundColor(Color.parseColor("#0e9905"));
                         apples.setX(apples.getX());
                         apples.setY(apples.getY());
+                        jo1=true;
+                        if(jo1 && jo2 && jo3)
+                        {
+                            done.setVisibility(View.VISIBLE);
+                        }
                     }
                     else
                     {
@@ -164,6 +169,11 @@ public class OkosTanyer extends AppCompatActivity {
                         sali.setBackgroundColor(Color.parseColor("#0e9905"));
                         sali.setX(sali.getX());
                         sali.setY(sali.getY());
+                        jo2=true;
+                        if(jo1 && jo2 && jo3)
+                        {
+                            done.setVisibility(View.VISIBLE);
+                        }
                     }
                     else
                     {
@@ -193,7 +203,7 @@ public class OkosTanyer extends AppCompatActivity {
                         {
                             if(!(sali.getX()>146 && sali.getX()<540 && sali.getY()>360 && sali.getY()<850)) {
                                 sali.setX(700);
-                                sali.setY(0);
+                                sali.setY(1200);
                             }
                         }
 
@@ -231,9 +241,8 @@ public class OkosTanyer extends AppCompatActivity {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP)
                 {
-
-                        csoki.setX(700);
-                        csoki.setY(1200);
+                    csoki.setX(700);
+                    csoki.setY(0);
 
                 }
                 if(csoki.getX()>146 && csoki.getX()<540 && csoki.getY()>360 && csoki.getY()<850)
@@ -259,6 +268,11 @@ public class OkosTanyer extends AppCompatActivity {
                         teszta.setBackgroundColor(Color.parseColor("#0e9905"));
                         teszta.setX(teszta.getX());
                         teszta.setY(teszta.getY());
+                        jo3=true;
+                        if(jo1 && jo2 && jo3)
+                        {
+                            done.setVisibility(View.VISIBLE);
+                        }
                     }
                     else
                     {
@@ -300,7 +314,21 @@ public class OkosTanyer extends AppCompatActivity {
 
 
 
-
     }
+
+    public void DoneClick(View v)
+    {
+            Intent i = new Intent();
+            i.setClass(this,Evaluate.class);
+            i.putExtra("selectedPic",selectedPic);
+            i.putExtra("hour",hour);
+            i.putExtra("min",min);
+            i.putExtra("sec",sec);
+            i.putExtra("pont",5);
+            i.putExtra("prev","OkosTanyer");
+            startActivity(i);
+    }
+
+
 
 }

@@ -24,6 +24,8 @@ public class Evaluate extends AppCompatActivity {
     int sec=0;
     int pont=0;
     FrameLayout color ;
+    TextView rating;
+    String prevActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,7 @@ public class Evaluate extends AppCompatActivity {
         avatar = findViewById(R.id.avatar);
         time=findViewById(R.id.time);
         color=findViewById(R.id.color);
+        rating=findViewById(R.id.rating_tv);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -41,6 +44,7 @@ public class Evaluate extends AppCompatActivity {
             min=b.getInt("min");
             sec=b.getInt("sec");
             pont=b.getInt("pont");
+            prevActivity=b.getString("prev");
         }
 
         if (selectedPic.equals("boy1"))
@@ -63,10 +67,12 @@ public class Evaluate extends AppCompatActivity {
         if(pont<10)
         {
           color.setBackgroundColor(Color.parseColor("#ff3838"));
+          rating.setText("Nembaj lesz majd jobb is");
         }
         else
         {
             color.setBackgroundColor(Color.parseColor("#02de0a"));
+            rating.setText("Ügyes vagy");
         }
 
         Timer T=new Timer();
@@ -106,15 +112,26 @@ public class Evaluate extends AppCompatActivity {
 
     public void DoneClick(View v)
     {
+        Intent i = new Intent();
+        i.putExtra("selectedPic",selectedPic);
+        i.putExtra("hour",hour);
+        i.putExtra("min",min);
+        i.putExtra("sec",sec);
 
-       Intent i = new Intent();
+        if(prevActivity.equals("Questions"))
+        {
             i.setClass(this,OkosTanyer.class);
-            i.putExtra("selectedPic",selectedPic);
-            i.putExtra("hour",hour);
-            i.putExtra("min",min);
-            i.putExtra("sec",sec);
-            i.putExtra("pont",10);
-            startActivity(i);
+        }
+        else if(prevActivity.equals("OkosTanyer"))
+        {
+            i.setClass(this,TeethBrushing.class);
+        }
+        else if(prevActivity.equals("TeethBrushing"))
+        {
+            i.setClass(this,Homepage.class);
+        }
+        startActivity(i);
+
 
 
 

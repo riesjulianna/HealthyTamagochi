@@ -10,15 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthyTamagochi">
         <activity
-            android:name=".OkosTanyer"
+            android:name=".TeethBrushing"
             android:exported="true" >
+    </activity>
+        <activity
+            android:name=".OkosTanyer"
+            android:exported="true">
         </activity>
         <activity
             android:name=".AddChild"
             android:exported="true" />
         <activity
             android:name=".Homepage"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".Evaluate"
             android:exported="true" />
