@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -22,8 +25,9 @@ import java.util.Calendar;
 
 public class Registration extends AppCompatActivity {
 
-     EditText emailParent,username,city,password,parentEducation;
+     EditText emailParent,username,password,password2,parentEducation;
      CheckBox acceptRules;
+     TextView validPassword;
 
 
     @Override
@@ -36,13 +40,43 @@ public class Registration extends AppCompatActivity {
         username=findViewById(R.id.username);
         acceptRules=findViewById(R.id.acceptRules);
         password=findViewById(R.id.password);
+        password2=findViewById(R.id.password2);
         parentEducation=findViewById(R.id.parentEducation);
+        validPassword=findViewById(R.id.validPassword);
 
         Spinner spinner_residence = (Spinner) findViewById(R.id.residences);
         ArrayAdapter<CharSequence> adapter_residence = ArrayAdapter.createFromResource(this,
                 R.array.residences, R.layout.spinner_item);
         adapter_residence.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner_residence.setAdapter(adapter_residence);
+
+        password2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                String pass = password.getText().toString();
+                String pass2 = password2.getText().toString();
+
+                if(!(pass2.equals(pass)))
+                {
+                    validPassword.setText("A két jelszó nem egyezik meg!");
+                    validPassword.setTextColor(Color.RED);
+                }
+                if(pass2.equals(pass))
+                {
+                    validPassword.setText("A két jelszó megegyezik!");
+                    validPassword.setTextColor(Color.parseColor("#00691c"));
+                }
+            }
+        });
 
 
     }
@@ -55,8 +89,10 @@ public class Registration extends AppCompatActivity {
     {
         if(isValidEmail(emailParent.getText()))
         {
-               if(username.getText().toString().equals("")
-                         ||  password.getText().toString().equals("") || parentEducation.getText().toString().equals("") )
+               if(username.getText().toString().equals("") ||
+                       password.getText().toString().equals("")  ||
+                       parentEducation.getText().toString().equals("") ||
+                       password2.getText().toString().equals("") )
                {
                    Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
                }
