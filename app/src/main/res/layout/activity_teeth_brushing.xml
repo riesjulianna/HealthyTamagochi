@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".OkosTanyer">
+    tools:context=".TeethBrushing">
 
     <LinearLayout
         style="@style/divider"
@@ -37,45 +37,54 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/upLinear"
+    <TextView
+        android:id="@+id/leiras_tv"
+        style="@style/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="A fogkefével tisztítsd meg a fogakat!"
+        android:textSize="22sp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/tanyer"
+            android:id="@+id/mouth"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/tanyer" />
+            app:srcCompat="@drawable/szaj" />
 
         <ImageView
-            android:id="@+id/apples"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_gravity="bottom"
-            app:srcCompat="@drawable/alma" />
+            android:id="@+id/kosz1"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/kosz" />
 
         <ImageView
-            android:id="@+id/sali"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_gravity="bottom|right"
-            app:srcCompat="@drawable/salata" />
+            android:id="@+id/kosz2"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/kosz" />
 
         <ImageView
-            android:id="@+id/csoki"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_gravity="right|top"
-            app:srcCompat="@drawable/csoki" />
+            android:id="@+id/kosz3"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:srcCompat="@drawable/kosz" />
 
         <ImageView
-            android:id="@+id/teszta"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/teszta" />
+            android:id="@+id/fogkefe"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_horizontal"
+            app:srcCompat="@drawable/fogkefe" />
 
         <Button
             android:id="@+id/Done_btn"
@@ -86,7 +95,7 @@
             android:onClick="DoneClick"
             android:text="Kész"
             android:visibility="gone" />
-
     </FrameLayout>
+
 
 </LinearLayout>
