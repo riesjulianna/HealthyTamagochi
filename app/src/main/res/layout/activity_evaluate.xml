@@ -46,12 +46,11 @@
         android:layout_marginTop="100dp">
 
         <TextView
-            android:id="@+id/rating"
+            android:id="@+id/rating_tv"
             style="@style/title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="Ügyes vagy"
             android:textColor="#050000" />
     </FrameLayout>
 

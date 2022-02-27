@@ -50,6 +50,21 @@
 
 
             <EditText
+                android:id="@+id/password2"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Jelszó ismét"
+                android:inputType="textPassword" />
+
+            <TextView
+                android:id="@+id/validPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp" />
+
+            <EditText
                 android:id="@+id/emailParent"
                 style="@style/signup_editText"
                 android:layout_width="match_parent"
