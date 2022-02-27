@@ -16,20 +16,25 @@
         android:id="@+id/username"
         style="@style/signin_editText"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="Felhasználónév"
-        android:inputType="textPersonName" />
+        android:layout_height="48dp"
+        android:autofillHints=""
+        android:hint="@string/felhasznalonev"
+        android:inputType="textPersonName"
+        android:textColorHint="#78909C" />
 
     <EditText
         android:id="@+id/password"
         style="@style/signin_editText"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:hint="Jelszó"
-        android:inputType="textPassword" />
+        android:layout_height="48dp"
+        android:hint="@string/jelszo"
+        android:importantForAutofill="no"
+        android:inputType="textPassword"
+        android:textColorHint="#78909C" />
 
     <Button
         android:id="@+id/signIn"
+        style="@style/Widget.AppCompat.Button"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="center"
@@ -37,8 +42,12 @@
         android:layout_marginRight="15dp"
         android:layout_marginBottom="10dp"
         android:backgroundTint="#5bff4f"
+        android:defaultFocusHighlightEnabled="true"
+        android:focusable="auto"
+        android:focusableInTouchMode="true"
+        android:focusedByDefault="true"
         android:onClick="signInClick"
-        android:text="Bejelentkezés"
+        android:text="@string/bejelentkezes"
         android:textSize="18sp"
         android:textStyle="bold"
         tools:text="Bejelentkezés" />
