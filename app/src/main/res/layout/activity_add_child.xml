@@ -13,7 +13,7 @@
         style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Gyermek hozzáadása" />
+        android:text="@string/gyermek_hozzaadasa" />
     <View
         android:id="@+id/divider"
         style="@style/divider"
@@ -25,7 +25,7 @@
         style="@style/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Nem"
+        android:text="@string/nem"
         android:textColor="#006366"
         android:textStyle="bold" />
 
@@ -34,35 +34,41 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp" />
+        android:layout_marginRight="5dp"
+        android:minHeight="48dp"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
         android:id="@+id/birthdate"
         style="@style/signup_editText"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:hint="Születési idő"
-        android:onClick="dateSelecterOpen" />
+        android:hint="@string/szuletesi_ido"
+        android:minHeight="48dp"
+        android:onClick="dateSelecterOpen"
+        android:textColorHint="#78909C" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="64dp"
         android:orientation="horizontal">
 
         <EditText
             android:id="@+id/weight"
             style="@style/signup_editText"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="Testtömeg"
-            android:inputType="number" />
+            android:layout_height="48dp"
+            android:hint="@string/testtomeg"
+            android:inputType="number"
+            android:textColorHint="#78909C"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView9"
             style="@style/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="kg" />
+            android:text="@string/kg" />
 
     </LinearLayout>
 
@@ -75,17 +81,19 @@
             android:id="@+id/height"
             style="@style/signup_editText"
             android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:hint="Magasság"
-            android:inputType="number" />
+            android:layout_height="48dp"
+            android:hint="@string/magassag"
+            android:inputType="number"
+            android:textColorHint="#78909C"
+            android:autofillHints="" />
 
         <TextView
             android:id="@+id/textView10"
             style="@style/textView"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="cm" />
+            android:text="@string/cm" />
 
     </LinearLayout>
     <LinearLayout
@@ -98,6 +106,7 @@
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_weight="1"
+            android:contentDescription="@string/karakter"
             app:srcCompat="@drawable/girl1" />
 
         <ImageView
@@ -105,7 +114,9 @@
             android:layout_width="wrap_content"
             android:layout_height="200dp"
             android:layout_weight="1"
-            app:srcCompat="@drawable/girl2" />
+            android:contentDescription="@string/karakter"
+            app:srcCompat="@drawable/girl2"
+            tools:ignore="ImageContrastCheck" />
     </LinearLayout>
 
     <LinearLayout
@@ -113,32 +124,27 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <RadioGroup
+        <RadioButton
+            android:id="@+id/rb"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="63dp"
+            android:layout_marginStart="90dp"
+            android:layout_weight="1"
+            tools:ignore="DuplicateSpeakableTextCheck" />
 
-            <RadioButton
-                android:id="@+id/rb1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="90dp"
-                android:layout_weight="1" />
-
-            <RadioButton
-                android:id="@+id/rb2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="90dp"
-                android:layout_weight="1" />
-
-        </RadioGroup>
+        <RadioButton
+            android:id="@+id/rb3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="90dp"
+            android:layout_weight="1"
+            tools:ignore="DuplicateSpeakableTextCheck" />
     </LinearLayout>
 
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="95dp"
         android:gravity="bottom"
         android:orientation="vertical">
 
@@ -148,7 +154,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="Add"
-            android:text="Hozzáad" />
+            android:text="@string/hozzaad" />
     </LinearLayout>
 
 </LinearLayout>

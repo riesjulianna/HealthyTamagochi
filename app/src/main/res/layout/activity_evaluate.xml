@@ -22,7 +22,9 @@
             style="@style/avatar"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
-            app:srcCompat="@drawable/girl1" />
+            android:contentDescription="@string/karakter"
+            app:srcCompat="@drawable/girl1"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <Space
             android:layout_width="187dp"
@@ -61,7 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
         android:onClick="DoneClick"
-        android:text="OK" />
+        android:text="@string/ok" />
 
 
 </LinearLayout>

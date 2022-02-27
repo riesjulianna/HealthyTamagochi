@@ -22,18 +22,19 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class Registration extends AppCompatActivity {
 
-
-    EditText emailParent, username, password, password2, parentEducation;
+    EditText username, password, password2, email, parentEducation;
     CheckBox acceptRules;
     TextView validPassword;
     Spinner residence;
+
+    DatabaseReference usersRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        emailParent = findViewById(R.id.emailParent);
+        email = findViewById(R.id.emailParent);
         username = findViewById(R.id.username);
         acceptRules = findViewById(R.id.acceptRules);
         password = findViewById(R.id.password);
@@ -41,6 +42,8 @@ public class Registration extends AppCompatActivity {
         parentEducation = findViewById(R.id.parentEducation);
         residence = findViewById(R.id.residences);
         validPassword = findViewById(R.id.validPassword);
+
+        usersRef = FirebaseDatabase.getInstance().getReference().child("users");
 
         ArrayAdapter<CharSequence> adapter_residence = ArrayAdapter.createFromResource(this, R.array.residences, R.layout.spinner_item);
         adapter_residence.setDropDownViewResource(R.layout.spinner_dropdown_item);
@@ -50,9 +53,11 @@ public class Registration extends AppCompatActivity {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
+
             @Override
             public void afterTextChanged(Editable editable) {
                 String pass = password.getText().toString();
@@ -69,14 +74,14 @@ public class Registration extends AppCompatActivity {
             }
         });
 
-
     }
+
     public static boolean isValidEmail(CharSequence target) {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
+
     public void registrationClick(View v) {
-        String selected = residence.getSelectedItem().toString();
-        if (isValidEmail(emailParent.getText())) {
+        if (isValidEmail(email.getText())) {
             if (username.getText().toString().equals("") ||
                     password.getText().toString().equals("") ||
                     parentEducation.getText().toString().equals("") ||
@@ -84,13 +89,7 @@ public class Registration extends AppCompatActivity {
                 Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
             } else {
                 if (acceptRules.isChecked()) {
-                    DatabaseReference myDB = FirebaseDatabase.getInstance().getReference();
-                    myDB.child("users").child("username").setValue(username.getText().toString());
-                    myDB.child("users").child("password").setValue(password.getText().toString());
-                    myDB.child("users").child("edu").setValue(parentEducation.getText().toString());
-                    myDB.child("users").child("email").setValue(emailParent.getText().toString());
-                    myDB.child("users").child("place").setValue(selected);
-
+                    insertUser();
                     Intent i = new Intent();
                     i.setClass(this, MainActivity.class);
                     startActivity(i);
@@ -101,5 +100,17 @@ public class Registration extends AppCompatActivity {
         } else {
             Toast.makeText(this, "Hibás e-mail cím formátum!", Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void insertUser() {
+        String uname = username.getText().toString();
+        String pw = password.getText().toString();
+        String mail = email.getText().toString();
+        String edu = parentEducation.getText().toString();
+        String res = residence.getSelectedItem().toString();
+        String ld = uname+pw;
+
+        User user = new User(uname, pw, mail, edu, res, ld);
+        usersRef.push().setValue(user);
     }
 }

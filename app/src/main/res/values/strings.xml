@@ -1,4 +1,18 @@
 <resources>
     <string name="app_name">HealthyTamagochi</string>
+    <string name="bejelentkezes">Bejelentkezés</string>
+    <string name="felhasznalonev">Felhasználónév</string>
+    <string name="jelszo">Jelszó</string>
+    <string name="gyermek_hozzaadasa">Gyermek hozzáadása</string>
+    <string name="szuletesi_ido">Születési idő</string>
+    <string name="nem">Nem</string>
+    <string name="testtomeg">Testtömeg</string>
+    <string name="kg">kg</string>
+    <string name="magassag">Magasság</string>
+    <string name="cm">cm</string>
+    <string name="hozzaad">Hozzáad</string>
+    <string name="karakter">karakter</string>
+    <string name="ok">OK</string>
+
 
 </resources>
