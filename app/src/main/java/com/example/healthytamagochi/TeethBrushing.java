@@ -31,6 +31,8 @@ public class TeethBrushing extends AppCompatActivity {
     ImageView kosz1,kosz2,kosz3,kefe;
     TextView koord;
     int db1=0,db2=0,db3=0;
+    int prevActivityID;
+    boolean firstGame;
 
 
     @Override
@@ -60,10 +62,18 @@ public class TeethBrushing extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
+            firstGame=b.getBoolean("firstGame");
+            prevActivityID=b.getInt("prevActivityID");
+        }
+        if(firstGame==false)
+        {
             hour=b.getInt("hour");
             min=b.getInt("min");
             sec=b.getInt("sec");
-            pont=b.getInt("pont");
+        }
+        else if(firstGame)
+        {
+            firstGame=false;
         }
 
         if (selectedPic.equals("boy1"))
@@ -109,6 +119,10 @@ public class TeethBrushing extends AppCompatActivity {
                         }
                         String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
                         time.setText(curTime); //change clock to your textview
+                        if (min>=15 || hour>0)
+                        {
+                            time.setTextColor(Color.parseColor("#FF1111"));
+                        }
                         sec++;
 
                     }
@@ -120,7 +134,7 @@ public class TeethBrushing extends AppCompatActivity {
         kefe.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                if(db1>50 && db2>50 && db3>50)
+                if(db1>20 && db2>20 && db3>20)
                 {
                     done.setVisibility(View.VISIBLE);
                 }
@@ -137,15 +151,15 @@ public class TeethBrushing extends AppCompatActivity {
                     db3++;
                 }
 
-                if(db1>50)
+                if(db1>20)
                 {
                     kosz1.setImageResource(R.drawable.csillog);
                 }
-                if(db2>50)
+                if(db2>20)
                 {
                     kosz2.setImageResource(R.drawable.csillog);
                 }
-                if(db3>50)
+                if(db3>20)
                 {
                     kosz3.setImageResource(R.drawable.csillog);
                 }
@@ -194,7 +208,8 @@ public class TeethBrushing extends AppCompatActivity {
         i.putExtra("min",min);
         i.putExtra("sec",sec);
         i.putExtra("pont",20);
-        i.putExtra("prev","TeethBrushing");
+        i.putExtra("prevActivityID",prevActivityID);
+        i.putExtra("firstGame",firstGame);
         startActivity(i);
     }
 }

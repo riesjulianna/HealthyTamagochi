@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -25,7 +26,10 @@ public class Evaluate extends AppCompatActivity {
     int pont=0;
     FrameLayout color ;
     TextView rating;
-    String prevActivity;
+    Random rnd;
+    int nextActivityID;
+    int prevActivityID;
+    boolean firstGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +48,8 @@ public class Evaluate extends AppCompatActivity {
             min=b.getInt("min");
             sec=b.getInt("sec");
             pont=b.getInt("pont");
-            prevActivity=b.getString("prev");
+            prevActivityID=b.getInt("prevActivityID");
+            firstGame=b.getBoolean("firstGame");
         }
 
         if (selectedPic.equals("boy1"))
@@ -101,6 +106,10 @@ public class Evaluate extends AppCompatActivity {
                         }
                         String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
                         time.setText(curTime); //change clock to your textview
+                        if (min>=15 || hour>0)
+                        {
+                            time.setTextColor(Color.parseColor("#FF1111"));
+                        }
                         sec++;
 
                     }
@@ -108,28 +117,41 @@ public class Evaluate extends AppCompatActivity {
             }
         }, 1000, 1000);
 
+        rnd = new Random();
+        nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
+
+        while (nextActivityID==prevActivityID)
+        {
+            nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
+        }
+        prevActivityID=nextActivityID;
+
     }
 
     public void DoneClick(View v)
     {
+
         Intent i = new Intent();
         i.putExtra("selectedPic",selectedPic);
         i.putExtra("hour",hour);
         i.putExtra("min",min);
         i.putExtra("sec",sec);
+        i.putExtra("prevActivityID",nextActivityID);
+        i.putExtra("firstGame",firstGame);
 
-        if(prevActivity.equals("Questions"))
+        if(nextActivityID==1)
+        {
+            i.setClass(this,Questions1.class);
+        }
+        else if(nextActivityID==2)
         {
             i.setClass(this,OkosTanyer.class);
         }
-        else if(prevActivity.equals("OkosTanyer"))
+        else if(nextActivityID==3)
         {
             i.setClass(this,TeethBrushing.class);
         }
-        else if(prevActivity.equals("TeethBrushing"))
-        {
-            i.setClass(this,Homepage.class);
-        }
+
         startActivity(i);
 
 
