@@ -10,6 +10,7 @@
 
 
     <LinearLayout
+        android:id="@+id/fejlec"
         style="@style/divider"
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -38,164 +39,175 @@
 
     </LinearLayout>
 
-    <ScrollView
+    <Space
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="20dp" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:gravity="center"
+        android:text="KÉRDÉS"
+        android:textColor="#050E45"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" >
+            android:id="@+id/layout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <TextView
-                android:id="@+id/textView2"
-                style="@style/title"
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:id="@+id/titas_layout_1"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Kérdések part 1." />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_round_bground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <TextView
-                android:id="@+id/textView3"
-                style="@style/textView"
-                android:layout_width="match_parent"
+                <ImageView
+                    android:id="@+id/titakep"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/cat_one" />
+
+                <TextView
+                    android:id="@+id/titas_textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Tita 1"
+                    android:textColor="#0E0E0E"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/titas_layout_2"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="kérdés 1" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_round_bground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp">
 
-            <RadioGroup
-                android:id="@+id/question1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                <ImageView
+                    android:id="@+id/titakep2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/cat_two" />
 
-                <RadioButton
-                    android:id="@+id/a1"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/titas_textView"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="a" />
+                    android:layout_weight="1"
+                    android:text="Tita 2"
+                    android:textColor="#0E0E0E"
+                    android:textSize="20sp" />
+            </LinearLayout>
 
-                <RadioButton
-                    android:id="@+id/b1"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="b" />
-
-                <RadioButton
-                    android:id="@+id/c1"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="c" />
-            </RadioGroup>
-            <TextView
-                android:id="@+id/textView4"
-                style="@style/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="kérdés 2" />
-
-            <RadioGroup
-                android:id="@+id/question2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/a2"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="a" />
-
-                <RadioButton
-                    android:id="@+id/b2"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="b" />
-
-                <RadioButton
-                    android:id="@+id/c2"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="c" />
-            </RadioGroup>
-            <TextView
-                android:id="@+id/textView5"
-                style="@style/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="kérdés 3" />
-
-            <RadioGroup
-                android:id="@+id/question3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/a3"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="a" />
-
-                <RadioButton
-                    android:id="@+id/b3"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="b" />
-
-                <RadioButton
-                    android:id="@+id/c3"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="c" />
-            </RadioGroup>
-            <TextView
-                android:id="@+id/textView6"
-                style="@style/textView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="kérdés 4" />
-
-            <RadioGroup
-                android:id="@+id/question4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <RadioButton
-                    android:id="@+id/a4"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="a" />
-
-                <RadioButton
-                    android:id="@+id/b4"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="b" />
-
-                <RadioButton
-                    android:id="@+id/c4"
-                    style="@style/radioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="c" />
-            </RadioGroup>
-
-            <Button
-                android:id="@+id/done"
-                style="@style/buttons"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
-                android:onClick="DoneClick"
-                android:text="Kész" />
         </LinearLayout>
-    </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout1">
+
+            <LinearLayout
+                android:id="@+id/kutyis_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_round_bground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/kutyikep"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/dog_one" />
+
+                <TextView
+                    android:id="@+id/kutyi_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Kutyi 1"
+                    android:textColor="#0E0E0E"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/kutyis_layout_2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/white_round_bground"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/kutyikep2"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/dog_two" />
+
+                <TextView
+                    android:id="@+id/kutyis_textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Kutyi 2"
+                    android:textColor="#0E0E0E"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/button"
+        style="@style/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:onClick="DoneClick"
+        android:text="OK" />
 
 </LinearLayout>

@@ -12,10 +12,15 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TableRow;
 
+import java.util.Random;
+
 
 public class Homepage extends AppCompatActivity {
 
     ImageView img;
+    Random rnd;
+    int nextActivityID;
+    boolean firstGame=true;
 
 
     @Override
@@ -24,6 +29,7 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
 
         img=findViewById(R.id.avatar_img);
+
 
         Spinner spinner_selectedKid = (Spinner) findViewById(R.id.selectedKid);
         ArrayAdapter<CharSequence> adapter_selectedKid = ArrayAdapter.createFromResource(this,
@@ -42,9 +48,25 @@ public class Homepage extends AppCompatActivity {
     }
 
     public void play_onClick(View v){
+        rnd = new Random();
+        nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
+
         Intent i = new Intent();
         i.putExtra("selectedPic","boy1");
-        i.setClass(this,Questions1.class);
+        i.putExtra("prevActivityID",nextActivityID);
+        i.putExtra("firstGame",firstGame);
+        if(nextActivityID==1)
+        {
+            i.setClass(this,Questions1.class);
+        }
+        else if(nextActivityID==2)
+        {
+            i.setClass(this,OkosTanyer.class);
+        }
+        else if(nextActivityID==3)
+        {
+            i.setClass(this,TeethBrushing.class);
+        }
         startActivity(i);
 
     }
