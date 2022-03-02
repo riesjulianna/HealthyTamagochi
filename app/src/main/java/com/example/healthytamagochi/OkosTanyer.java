@@ -29,6 +29,8 @@ public class OkosTanyer extends AppCompatActivity {
     boolean jo1=false,jo2=false,jo3=false;
     float xDown=0,yDown=0;
     Button done;
+    int prevActivityID;
+    boolean firstGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +49,18 @@ public class OkosTanyer extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
+            prevActivityID=b.getInt("prevActivityID");
+            firstGame=b.getBoolean("firstGame");
+        }
+        if(firstGame==false)
+        {
             hour=b.getInt("hour");
             min=b.getInt("min");
             sec=b.getInt("sec");
-            pont=b.getInt("pont");
+        }
+        else if(firstGame)
+        {
+            firstGame=false;
         }
 
         if (selectedPic.equals("boy1"))
@@ -97,6 +107,10 @@ public class OkosTanyer extends AppCompatActivity {
                         }
                         String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
                         time.setText(curTime); //change clock to your textview
+                        if (min>=15 || hour>0)
+                        {
+                            time.setTextColor(Color.parseColor("#FF1111"));
+                        }
                         sec++;
 
                     }
@@ -325,7 +339,8 @@ public class OkosTanyer extends AppCompatActivity {
             i.putExtra("min",min);
             i.putExtra("sec",sec);
             i.putExtra("pont",5);
-            i.putExtra("prev","OkosTanyer");
+            i.putExtra("prevActivityID",prevActivityID);
+            i.putExtra("firstGame",firstGame);
             startActivity(i);
     }
 

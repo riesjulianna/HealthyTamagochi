@@ -3,16 +3,22 @@ package com.example.healthytamagochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Layout;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.collection.LLRBNode;
+
 import java.util.Calendar;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -24,8 +30,9 @@ public class Questions1 extends AppCompatActivity {
     int hour=0;
     int min=0;
     int sec=0;
-    RadioGroup q1,q2,q3,q4;
-
+    int prevActivityID;
+    boolean firstGame;
+    LinearLayout option1,option2,option3,option4 ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,16 +41,28 @@ public class Questions1 extends AppCompatActivity {
 
         avatar = findViewById(R.id.avatar);
         time=findViewById(R.id.time);
-        q1=findViewById(R.id.question1);
-        q2=findViewById(R.id.question2);
-        q3=findViewById(R.id.question3);
-        q4=findViewById(R.id.question4);
+        option1=findViewById(R.id.titas_layout_1);
+        option2=findViewById(R.id.titas_layout_2);
+        option3=findViewById(R.id.kutyis_layout);
+        option4=findViewById(R.id.kutyis_layout_2);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
+            prevActivityID=b.getInt("prevActivityID");
+            firstGame=b.getBoolean("firstGame");
         }
-       // String pic="R.drawable"+selectedPic;
+        if(firstGame==false)
+        {
+            hour=b.getInt("hour");
+            min=b.getInt("min");
+            sec=b.getInt("sec");
+        }
+        else if(firstGame)
+        {
+            firstGame=false;
+        }
+        // String pic="R.drawable"+selectedPic;
         //avatar.setImageResource(Integer.parseInt(pic));
 
         if (selectedPic.equals("boy1"))
@@ -90,6 +109,10 @@ public class Questions1 extends AppCompatActivity {
                         }
                         String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
                         time.setText(curTime); //change clock to your textview
+                        if (min>=15 || hour>0)
+                        {
+                            time.setTextColor(Color.parseColor("#FF1111"));
+                        }
                         sec++;
 
                     }
@@ -97,19 +120,47 @@ public class Questions1 extends AppCompatActivity {
             }
         }, 1000, 1000);
 
-
-
+        option1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                option1.setBackgroundResource(R.drawable.green_round_bground);
+                option2.setBackgroundResource(R.drawable.red_round_bground);
+                option3.setBackgroundResource(R.drawable.red_round_bground);
+                option4.setBackgroundResource(R.drawable.red_round_bground);
+            }
+        });
+        option2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                option2.setBackgroundResource(R.drawable.green_round_bground);
+                option1.setBackgroundResource(R.drawable.red_round_bground);
+                option3.setBackgroundResource(R.drawable.red_round_bground);
+                option4.setBackgroundResource(R.drawable.red_round_bground);
+            }
+        });
+        option3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                option3.setBackgroundResource(R.drawable.green_round_bground);
+                option2.setBackgroundResource(R.drawable.red_round_bground);
+                option1.setBackgroundResource(R.drawable.red_round_bground);
+                option4.setBackgroundResource(R.drawable.red_round_bground);
+            }
+        });
+        option4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                option4.setBackgroundResource(R.drawable.green_round_bground);
+                option2.setBackgroundResource(R.drawable.red_round_bground);
+                option3.setBackgroundResource(R.drawable.red_round_bground);
+                option1.setBackgroundResource(R.drawable.red_round_bground);
+            }
+        });
 
     }
 
     public void DoneClick(View v)
     {
-        if(q1.getCheckedRadioButtonId()==-1 || q2.getCheckedRadioButtonId()==-1 || q3.getCheckedRadioButtonId()==-1 || q4.getCheckedRadioButtonId()==-1)
-        {
-            Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
-        }
-        else
-        {
             Intent i = new Intent();
             i.setClass(this,Evaluate.class);
             i.putExtra("selectedPic",selectedPic);
@@ -117,9 +168,10 @@ public class Questions1 extends AppCompatActivity {
             i.putExtra("min",min);
             i.putExtra("sec",sec);
             i.putExtra("pont",10);
-            i.putExtra("prev","Questions");
+            i.putExtra("prevActivityID",prevActivityID);
+            i.putExtra("firstGame",firstGame);
             startActivity(i);
-        }
+
 
 
     }
