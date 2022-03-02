@@ -22,22 +22,17 @@
                 style="@style/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Regisztráció" />
-
-            <View
-                android:id="@+id/divider"
-                style="@style/divider"
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
+                android:text="@string/regisztracio" />
 
             <EditText
-                android:id="@+id/username"
+                android:id="@+id/emailParent"
                 style="@style/signup_editText"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:ems="10"
-                android:hint="Felhasználónév"
-                android:inputType="textPersonName" />
+                android:hint="@string/szuloemail"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#78909C" />
 
             <EditText
                 android:id="@+id/password"
@@ -45,8 +40,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Jelszó"
-                android:inputType="textPassword" />
+                android:hint="@string/jelszo1"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColorHint="#78909C"
+                android:autofillHints="" />
 
 
             <EditText
@@ -55,8 +53,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:hint="Jelszó ismét"
-                android:inputType="textPassword" />
+                android:hint="@string/jelszo2"
+                android:inputType="textPassword"
+                android:minHeight="48dp"
+                android:textColorHint="#78909C"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/validPassword"
@@ -65,37 +66,34 @@
                 android:textSize="20sp" />
 
             <EditText
-                android:id="@+id/emailParent"
-                style="@style/signup_editText"
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:ems="10"
-                android:hint="Szülő e-mail címe"
-                android:inputType="textEmailAddress" />
-
-            <EditText
                 android:id="@+id/parentEducation"
                 style="@style/signup_editText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Szülő legmagasabb végzettsége"
-                android:inputType="textPersonName" />
+                android:hint="@string/szulolegmagasabbvegzettsege"
+                android:inputType="textPersonName"
+                android:minHeight="48dp"
+                android:textColorHint="#78909C"
+                android:autofillHints="" />
 
             <TextView
                 android:id="@+id/textView15"
                 style="@style/textView"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Lakhely"
+                android:layout_height="32dp"
+                android:text="@string/lakhely"
                 android:textColor="#006366"
                 android:textStyle="bold" />
 
             <Spinner
                 android:id="@+id/residences"
-                android:layout_width="250dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp" />
+                android:layout_marginRight="5dp"
+                android:dropDownWidth="wrap_content"
+                android:minHeight="48dp"
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <View
                 android:id="@+id/divider3"
@@ -109,20 +107,22 @@
                 android:id="@+id/acceptRules"
                 style="@style/checkBox"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Elfogadom az Adatvédelmi Tájékoztatót" />
+                android:layout_height="81dp"
+                android:minHeight="48dp"
+                android:text="@string/adatvedelmitajekoztato" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="26dp" />
+                android:layout_height="41dp" />
 
             <Button
                 android:id="@+id/SignUpButton"
                 style="@style/buttons"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="95dp"
                 android:onClick="registrationClick"
-                android:text="Regisztráció" />
+                android:text="@string/regisztracio"
+                tools:ignore="DuplicateSpeakableTextCheck" />
 
         </LinearLayout>
     </ScrollView>

@@ -5,10 +5,10 @@
     style="@style/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_background"
+    android:adjustViewBounds="true"
+    android:background="#2196F3"
     android:gravity="center"
     android:orientation="vertical"
-    android:adjustViewBounds="true"
     android:scaleType="fitCenter"
     tools:context=".MainActivity">
 
@@ -23,9 +23,10 @@
         android:backgroundTint="#5bff4f"
         android:fontFamily="More Fonts..."
         android:onClick="signInClick"
-        android:text="Bejelentkezés"
+        android:text="@string/bejelentkezes"
         android:textSize="18sp"
         android:textStyle="bold"
+        tools:ignore="DuplicateSpeakableTextCheck"
         tools:text="Bejelentkezés" />
 
     <Button
@@ -38,7 +39,7 @@
         android:backgroundTint="#5bff4f"
         android:fontFamily="More Fonts..."
         android:onClick="signUpClick"
-        android:text="Regisztráció"
+        android:text="@string/regisztracio"
         android:textSize="18sp"
         android:textStyle="bold" />
 </LinearLayout>
