@@ -9,6 +9,13 @@
     tools:context=".Homepage">
 
     <Button
+        android:id="@+id/signOut_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="signOutClick"
+        android:text="Kijelentkezés" />
+
+    <Button
         android:id="@+id/addKid_btn"
         style="@style/buttons"
         android:layout_width="match_parent"
@@ -27,7 +34,8 @@
             android:id="@+id/selectedKid"
             android:layout_width="300dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="15dp" />
+            android:layout_marginBottom="15dp"
+            tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageView
             android:id="@+id/avatar_img"

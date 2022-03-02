@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">HealthyTamagochi</string>
-    <string name="bejelentkezes">Bejelentkezés</string>
-    <string name="felhasznalonev">Felhasználónév</string>
+    <string name="bejelentkezes1">Bejelentkezés</string>
+    <string name="felhasznalonev1">Felhasználónév</string>
     <string name="jelszo">Jelszó</string>
     <string name="gyermek_hozzaadasa">Gyermek hozzáadása</string>
     <string name="szuletesi_ido">Születési idő</string>
@@ -13,6 +13,18 @@
     <string name="hozzaad">Hozzáad</string>
     <string name="karakter">karakter</string>
     <string name="ok">OK</string>
+    <string name="regisztracio1">Regisztráció</string>
+    <string name="szuloemail">Szülő e-mail címe</string>
+    <string name="felhasznalonev">Felhasználónév</string>
+    <string name="szulolegmagasabbvegzettsege">Szülő legmagasabb végzettsége</string>
+    <string name="lakhely">Lakhely</string>
+    <string name="jelszo1">Jelszó (min. 6 karakter)</string>
+    <string name="jelszo2">Jelszó megerősítés</string>
+    <string name="adatvedelmitajekoztato">Elfogadom az Adatvédelmi Tájékoztatót</string>
+    <string name="regisztracio2">Regisztráció</string>
+    <string name="email">E-mail</string>
+    <string name="regisztracio">Regisztráció</string>
+    <string name="bejelentkezes">Bejelentkezés</string>
 
 
 </resources>

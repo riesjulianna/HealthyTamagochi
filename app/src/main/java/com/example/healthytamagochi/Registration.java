@@ -1,5 +1,6 @@
 package com.example.healthytamagochi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -16,18 +17,23 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Registration extends AppCompatActivity {
 
-    EditText username, password, password2, email, parentEducation;
+    EditText password, password2, email, parentEducation;
     CheckBox acceptRules;
     TextView validPassword;
     Spinner residence;
-
-    DatabaseReference usersRef;
+    FirebaseAuth mAuth;
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +41,6 @@ public class Registration extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         email = findViewById(R.id.emailParent);
-        username = findViewById(R.id.username);
         acceptRules = findViewById(R.id.acceptRules);
         password = findViewById(R.id.password);
         password2 = findViewById(R.id.password2);
@@ -43,7 +48,7 @@ public class Registration extends AppCompatActivity {
         residence = findViewById(R.id.residences);
         validPassword = findViewById(R.id.validPassword);
 
-        usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+        mAuth = FirebaseAuth.getInstance();
 
         ArrayAdapter<CharSequence> adapter_residence = ArrayAdapter.createFromResource(this, R.array.residences, R.layout.spinner_item);
         adapter_residence.setDropDownViewResource(R.layout.spinner_dropdown_item);
@@ -62,37 +67,57 @@ public class Registration extends AppCompatActivity {
             public void afterTextChanged(Editable editable) {
                 String pass = password.getText().toString();
                 String pass2 = password2.getText().toString();
-
+                if (pass.length() < 6) {
+                    validPassword.setText(("Túl rövid jelszó."));
+                    validPassword.setTextColor(Color.RED);
+                }
                 if (!(pass2.equals(pass))) {
                     validPassword.setText("A két jelszó nem egyezik meg!");
                     validPassword.setTextColor(Color.RED);
                 }
-                if (pass2.equals(pass)) {
-                    validPassword.setText("A két jelszó megegyezik!");
-                    validPassword.setTextColor(Color.parseColor("#00691c"));
+                if (pass2.equals(pass) && pass.length() >= 6) {
+                    validPassword.setVisibility(View.INVISIBLE);
                 }
             }
         });
-
-    }
-
-    public static boolean isValidEmail(CharSequence target) {
-        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
     public void registrationClick(View v) {
         if (isValidEmail(email.getText())) {
-            if (username.getText().toString().equals("") ||
-                    password.getText().toString().equals("") ||
+            if (password.getText().toString().equals("") ||
+                    password.length() < 6 ||
                     parentEducation.getText().toString().equals("") ||
                     password2.getText().toString().equals("")) {
-                Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
+                Toast.makeText(this, "Üres mező(k) vagy túl rövid jelszó (min. 6 karakter.)", Toast.LENGTH_LONG).show();
             } else {
                 if (acceptRules.isChecked()) {
-                    insertUser();
-                    Intent i = new Intent();
-                    i.setClass(this, MainActivity.class);
-                    startActivity(i);
+                    String mail = email.getText().toString().trim();
+                    String pw = password.getText().toString().trim();
+                    String edu = parentEducation.getText().toString().trim();
+                    String res = residence.getSelectedItem().toString().trim();
+                    mAuth.createUserWithEmailAndPassword(mail, pw)
+                            .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    if (task.isSuccessful()) {
+                                        addUserToDB();
+                                        go();
+                                        Toast.makeText(getApplicationContext(), "Sikeres regisztráció.", Toast.LENGTH_LONG).show();
+                                        FirebaseUser user = mAuth.getCurrentUser();
+                                        user.sendEmailVerification()
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Toast.makeText(getApplicationContext(), "Visszaigazoló e-mail elküldve.", Toast.LENGTH_LONG).show();
+                                                        }
+                                                    }
+                                                });
+                                    } else {
+                                        Toast.makeText(Registration.this, "Invalid email vagy már regisztrált.", Toast.LENGTH_LONG).show();
+                                    }
+                                }
+                            });
                 } else {
                     Toast.makeText(this, "Nem fogadtad el az Adatvédelmi Tájékoztatót!", Toast.LENGTH_LONG).show();
                 }
@@ -102,15 +127,68 @@ public class Registration extends AppCompatActivity {
         }
     }
 
-    private void insertUser() {
-        String uname = username.getText().toString();
-        String pw = password.getText().toString();
-        String mail = email.getText().toString();
-        String edu = parentEducation.getText().toString();
-        String res = residence.getSelectedItem().toString();
-        String ld = uname+pw;
+    public static boolean isValidEmail(CharSequence target) {
+        return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
+    }
 
-        User user = new User(uname, pw, mail, edu, res, ld);
-        usersRef.push().setValue(user);
+    public void go() {
+        Intent i = new Intent();
+        i.setClass(this, MainActivity.class);
+        startActivity(i);
+    }
+
+    public void addUserToDB() {
+        String mail = email.getText().toString().trim();
+        String edu = parentEducation.getText().toString().trim();
+        String res = residence.getSelectedItem().toString().trim();
+        Map<String, Object> user = new HashMap<>();
+        user.put("email", mail);
+        user.put("education", edu);
+        user.put("residence", res);
+        db.collection("users").add(user);
     }
 }
+//User user = new User(uname, pw, mail, edu, res, ld);
+//        Map<String, Object> user = new HashMap<>();
+//        user.put("username", username.getText().toString());
+//        user.put("password", password.getText().toString());
+//        user.put("email", email.getText().toString());
+//        db.collection("users")
+//                .add(user)
+//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+//                    @Override
+//                    public void onSuccess(DocumentReference documentReference) {
+//                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.w("TAG", "Error adding document", e);
+//                    }
+//                });
+
+
+//        String uname = username.getText().toString();
+//        String pw = password.getText().toString();
+//        String mail = email.getText().toString();
+//        String edu = parentEducation.getText().toString();
+//        String res = residence.getSelectedItem().toString();
+//        String ld = uname+pw;
+//        usersRef.push().setValue(user);
+
+
+//if task is successfullba
+//                            User user = new User(mail,pw);
+//                            FirebaseDatabase.getInstance().getReference("users")
+//                                    .child((FirebaseAuth.getInstance().getCurrentUser().getUid()))
+//                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<Void> task) {
+//                                    if(task.isSuccessful()){
+
+//                                    }else{
+//                                        Toast.makeText(Registration.this,"fail",Toast.LENGTH_LONG).show();
+//                                    }
+//                                }
+//                            });
