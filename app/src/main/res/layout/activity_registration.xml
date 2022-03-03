@@ -65,16 +65,24 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp" />
 
-            <EditText
-                android:id="@+id/parentEducation"
-                style="@style/signup_editText"
+            <TextView
+                android:id="@+id/textView20"
+                style="@style/textView"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:text="Szülő legmagasabb végzettsége"
+                android:textColor="#006366"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/edu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/szulolegmagasabbvegzettsege"
-                android:inputType="textPersonName"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:dropDownWidth="wrap_content"
                 android:minHeight="48dp"
-                android:textColorHint="#78909C"
-                android:autofillHints="" />
+                tools:ignore="SpeakableTextPresentCheck" />
 
             <TextView
                 android:id="@+id/textView15"

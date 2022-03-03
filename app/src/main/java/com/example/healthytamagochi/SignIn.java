@@ -4,9 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -27,6 +29,7 @@ public class SignIn extends AppCompatActivity {
     private FirebaseAuth mAuth;
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     //boolean emailVerified = user.isEmailVerified();
+    TextView forgotPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,7 @@ public class SignIn extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.emailParent);
         password = findViewById(R.id.password);
+        forgotPassword=findViewById(R.id.forgotPassword);
     }
 
     @Override
@@ -68,11 +72,22 @@ public class SignIn extends AppCompatActivity {
                             } else {
                                 Toast.makeText(SignIn.this, "Hibás e-mail vagy jelszó.",
                                         Toast.LENGTH_LONG).show();
+                                forgotPassword.setVisibility(View.VISIBLE);
+                                forgotPassword.setPaintFlags(forgotPassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                                 //updateUI(null);
                             }
                         }
                     });
         }
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //jöhet ide a kód
+                Toast.makeText(SignIn.this, "Megnyomtad a szöveget!",
+                        Toast.LENGTH_LONG).show();
+            }
+        });
     }
     public void go() {
         Intent i = new Intent();

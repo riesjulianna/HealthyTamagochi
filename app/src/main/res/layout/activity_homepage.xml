@@ -10,6 +10,7 @@
 
     <Button
         android:id="@+id/signOut_btn"
+        style="@style/buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="signOutClick"
@@ -20,7 +21,6 @@
         style="@style/buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
         android:onClick="addKid_onClick"
         android:text="Gyermek hozzáadása" />
 

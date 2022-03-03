@@ -28,10 +28,10 @@ import java.util.Map;
 
 public class Registration extends AppCompatActivity {
 
-    EditText password, password2, email, parentEducation;
+    EditText password, password2, email;
     CheckBox acceptRules;
     TextView validPassword;
-    Spinner residence;
+    Spinner residence, parentEducation;
     FirebaseAuth mAuth;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -44,7 +44,7 @@ public class Registration extends AppCompatActivity {
         acceptRules = findViewById(R.id.acceptRules);
         password = findViewById(R.id.password);
         password2 = findViewById(R.id.password2);
-        parentEducation = findViewById(R.id.parentEducation);
+        parentEducation = findViewById(R.id.edu);
         residence = findViewById(R.id.residences);
         validPassword = findViewById(R.id.validPassword);
 
@@ -53,6 +53,10 @@ public class Registration extends AppCompatActivity {
         ArrayAdapter<CharSequence> adapter_residence = ArrayAdapter.createFromResource(this, R.array.residences, R.layout.spinner_item);
         adapter_residence.setDropDownViewResource(R.layout.spinner_dropdown_item);
         residence.setAdapter(adapter_residence);
+
+        ArrayAdapter<CharSequence> adapter_education  = ArrayAdapter.createFromResource(this, R.array.educations, R.layout.spinner_item);
+        adapter_education.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        parentEducation.setAdapter(adapter_education);
 
         password2.addTextChangedListener(new TextWatcher() {
             @Override
@@ -86,14 +90,13 @@ public class Registration extends AppCompatActivity {
         if (isValidEmail(email.getText())) {
             if (password.getText().toString().equals("") ||
                     password.length() < 6 ||
-                    parentEducation.getText().toString().equals("") ||
                     password2.getText().toString().equals("")) {
                 Toast.makeText(this, "Üres mező(k) vagy túl rövid jelszó (min. 6 karakter.)", Toast.LENGTH_LONG).show();
             } else {
                 if (acceptRules.isChecked()) {
                     String mail = email.getText().toString().trim();
                     String pw = password.getText().toString().trim();
-                    String edu = parentEducation.getText().toString().trim();
+                    String edu = parentEducation.getSelectedItem().toString().trim();
                     String res = residence.getSelectedItem().toString().trim();
                     mAuth.createUserWithEmailAndPassword(mail, pw)
                             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -139,7 +142,7 @@ public class Registration extends AppCompatActivity {
 
     public void addUserToDB() {
         String mail = email.getText().toString().trim();
-        String edu = parentEducation.getText().toString().trim();
+        String edu = parentEducation.getSelectedItem().toString().trim();
         String res = residence.getSelectedItem().toString().trim();
         Map<String, Object> user = new HashMap<>();
         user.put("email", mail);
