@@ -20,7 +20,7 @@ import java.util.TimerTask;
 public class TeethBrushing extends AppCompatActivity {
 
     ImageButton avatar;
-    String selectedPic="girl1";
+    String selectedPic,selectedKid;
     TextView time;
     int hour=0;
     int min=0;
@@ -62,6 +62,7 @@ public class TeethBrushing extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
+            selectedKid = b.getString("selectedKid");
             firstGame=b.getBoolean("firstGame");
             prevActivityID=b.getInt("prevActivityID");
         }
@@ -204,12 +205,19 @@ public class TeethBrushing extends AppCompatActivity {
         Intent i = new Intent();
         i.setClass(this,Evaluate.class);
         i.putExtra("selectedPic",selectedPic);
+        i.putExtra("selectedKid",selectedKid);
         i.putExtra("hour",hour);
         i.putExtra("min",min);
         i.putExtra("sec",sec);
         i.putExtra("pont",20);
         i.putExtra("prevActivityID",prevActivityID);
         i.putExtra("firstGame",firstGame);
+        startActivity(i);
+    }
+
+    public void onBackPressed(){
+        Intent i = new Intent();
+        i.setClass(this,Homepage.class);
         startActivity(i);
     }
 }

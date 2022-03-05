@@ -37,45 +37,73 @@
 
     </LinearLayout>
 
-    <FrameLayout
-        android:id="@+id/upLinear"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="500dp"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/tanyer"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/tanyer" />
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/apples"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_gravity="bottom"
-            app:srcCompat="@drawable/alma" />
+            <TextView
+                android:id="@+id/type_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="25sp" />
+        </LinearLayout>
 
-        <ImageView
-            android:id="@+id/sali"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_gravity="bottom|right"
-            app:srcCompat="@drawable/salata" />
+        <FrameLayout
+            android:id="@+id/upLinear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/csoki"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            android:layout_gravity="right|top"
-            app:srcCompat="@drawable/csoki" />
+            <ImageView
+                android:id="@+id/tanyer"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/tanyer" />
 
-        <ImageView
-            android:id="@+id/teszta"
-            android:layout_width="150dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/teszta" />
+            <ImageView
+                android:id="@+id/apples"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom"
+                app:srcCompat="@drawable/alma" />
+
+            <ImageView
+                android:id="@+id/sali"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_gravity="bottom|right"
+                app:srcCompat="@drawable/salata" />
+
+            <ImageView
+                android:id="@+id/csoki"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                android:layout_gravity="right|top"
+                app:srcCompat="@drawable/csoki" />
+
+            <ImageView
+                android:id="@+id/teszta"
+                android:layout_width="150dp"
+                android:layout_height="100dp"
+                app:srcCompat="@drawable/teszta" />
+
+        </FrameLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="bottom"
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/Done_btn"
@@ -86,7 +114,6 @@
             android:onClick="DoneClick"
             android:text="Kész"
             android:visibility="gone" />
-
-    </FrameLayout>
+    </LinearLayout>
 
 </LinearLayout>

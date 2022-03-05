@@ -30,12 +30,37 @@
         android:gravity="center"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/selectedKid"
-            android:layout_width="300dp"
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:layout_marginBottom="15dp"
-            tools:ignore="SpeakableTextPresentCheck" />
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/spinner_background"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/selectedKid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+                android:id="@+id/drop_img"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center"
+                android:src="@drawable/drop" />
+
+        </RelativeLayout>
 
         <ImageView
             android:id="@+id/avatar_img"

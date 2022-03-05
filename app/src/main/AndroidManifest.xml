@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.healthytamagochi">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,12 +13,10 @@
         android:theme="@style/Theme.HealthyTamagochi">
         <activity
             android:name=".TeethBrushing"
-            android:exported="true" >
-    </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".OkosTanyer"
-            android:exported="true">
-        </activity>
+            android:exported="true"></activity>
         <activity
             android:name=".AddChild"
             android:exported="true" />
@@ -30,9 +28,6 @@
             android:exported="true" />
         <activity
             android:name=".Questions1"
-            android:exported="true" />
-        <activity
-            android:name=".SetCharacter"
             android:exported="true" />
         <activity
             android:name=".Registration"
