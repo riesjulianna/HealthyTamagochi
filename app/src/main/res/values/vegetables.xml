@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="vegetables">
+        <item>girl1</item>
+        <item>salata</item>
+        <item>dog_one</item>
+        <item>dog_two</item>
+    </string-array>
+</resources>

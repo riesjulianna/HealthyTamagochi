@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,154 +8,197 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".AddChild">
-
-    <TextView
-        android:id="@+id/textView7"
-        style="@style/title"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/gyermek_hozzaadasa" />
-    <View
-        android:id="@+id/divider"
-        style="@style/divider"
-        android:layout_width="match_parent"
-        android:layout_height="5dp" />
-
-    <TextView
-        android:id="@+id/textView6"
-        style="@style/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/nem"
-        android:textColor="#006366"
-        android:textStyle="bold" />
-
-    <Spinner
-        android:id="@+id/sex"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:minHeight="48dp"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <TextView
-        android:id="@+id/birthdate"
-        style="@style/signup_editText"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/szuletesi_ido"
-        android:minHeight="48dp"
-        android:onClick="dateSelecterOpen"
-        android:textColorHint="#78909C" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/weight"
-            style="@style/signup_editText"
-            android:layout_width="200dp"
-            android:layout_height="48dp"
-            android:hint="@string/testtomeg"
-            android:inputType="number"
-            android:textColorHint="#78909C"
-            android:autofillHints="" />
-
-        <TextView
-            android:id="@+id/textView9"
-            style="@style/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/kg" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <EditText
-            android:id="@+id/height"
-            style="@style/signup_editText"
-            android:layout_width="200dp"
-            android:layout_height="48dp"
-            android:hint="@string/magassag"
-            android:inputType="number"
-            android:textColorHint="#78909C"
-            android:autofillHints="" />
-
-        <TextView
-            android:id="@+id/textView10"
-            style="@style/textView"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/cm" />
-
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:id="@+id/pic1"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/karakter"
-            app:srcCompat="@drawable/girl1" />
-
-        <ImageView
-            android:id="@+id/pic2"
-            android:layout_width="wrap_content"
-            android:layout_height="200dp"
-            android:layout_weight="1"
-            android:contentDescription="@string/karakter"
-            app:srcCompat="@drawable/girl2"
-            tools:ignore="ImageContrastCheck" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <RadioButton
-            android:id="@+id/rb"
-            android:layout_width="match_parent"
-            android:layout_height="63dp"
-            android:layout_marginStart="90dp"
-            android:layout_weight="1"
-            tools:ignore="DuplicateSpeakableTextCheck" />
-
-        <RadioButton
-            android:id="@+id/rb3"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginStart="90dp"
-            android:layout_weight="1"
-            tools:ignore="DuplicateSpeakableTextCheck" />
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="95dp"
-        android:gravity="bottom"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/add"
-            style="@style/buttons"
+        android:layout_height="match_parent">
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="Add"
-            android:text="@string/hozzaad" />
-    </LinearLayout>
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/gyermek_hozzaadasa" />
+            <View
+                android:id="@+id/divider"
+                style="@style/divider"
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
+
+            <EditText
+                android:id="@+id/name"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:autofillHints=""
+                android:hint="Név"
+                android:inputType="none"
+                android:textColorHint="#78909C" />
+
+            <TextView
+                android:id="@+id/textView6"
+                style="@style/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/nem"
+                android:textColor="#006366"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/spinner_background"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/sex"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:spinnerMode="dropdown" />
+
+                <ImageView
+                    android:id="@+id/drop_img"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/drop" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/birthdate"
+                style="@style/signup_editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/szuletesi_ido"
+                android:minHeight="48dp"
+                android:onClick="dateSelecterOpen"
+                android:textColorHint="#78909C" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/weight"
+                    style="@style/signup_editText"
+                    android:layout_width="300dp"
+                    android:layout_height="48dp"
+                    android:autofillHints=""
+                    android:hint="@string/testtomeg"
+                    android:inputType="number"
+                    android:textColorHint="#78909C" />
+
+                <TextView
+                    android:id="@+id/textView9"
+                    style="@style/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kg" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/height"
+                    style="@style/signup_editText"
+                    android:layout_width="300dp"
+                    android:layout_height="48dp"
+                    android:autofillHints=""
+                    android:hint="@string/magassag"
+                    android:inputType="number"
+                    android:textColorHint="#78909C" />
+
+                <TextView
+                    android:id="@+id/textView10"
+                    style="@style/textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/cm" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/pic1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/karakter"
+                    app:srcCompat="@drawable/girl1" />
+
+                <ImageView
+                    android:id="@+id/pic2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200dp"
+                    android:layout_weight="1"
+                    android:contentDescription="@string/karakter"
+                    app:srcCompat="@drawable/girl2"
+                    tools:ignore="ImageContrastCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:layout_width="match_parent"
+                    android:layout_height="63dp"
+                    android:layout_marginStart="90dp"
+                    android:layout_weight="1"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="90dp"
+                    android:layout_weight="1"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="95dp"
+                android:gravity="bottom"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/add"
+                    style="@style/buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:onClick="Add"
+                    android:text="@string/hozzaad" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

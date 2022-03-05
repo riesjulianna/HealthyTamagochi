@@ -20,7 +20,7 @@ import java.util.Calendar;
 
 public class AddChild extends AppCompatActivity {
 
-    EditText weight,height;
+    EditText weight,height,name;
     TextView birthdate;
     ImageView pic1,pic2;
     String selectedPic;
@@ -32,6 +32,7 @@ public class AddChild extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
 
+        name=findViewById(R.id.name);
         birthdate=findViewById(R.id.birthdate);
         weight=findViewById(R.id.weight);
         height=findViewById(R.id.height);
@@ -42,8 +43,8 @@ public class AddChild extends AppCompatActivity {
 
         Spinner spinner_sex = (Spinner) findViewById(R.id.sex);
         ArrayAdapter<CharSequence> adapter_sex = ArrayAdapter.createFromResource(this,
-                R.array.sex, R.layout.spinner_item);
-        adapter_sex.setDropDownViewResource(R.layout.spinner_dropdown_item);
+                R.array.sex, R.layout.spinner_text);
+        adapter_sex.setDropDownViewResource(R.layout.simple_spinner_text);
         spinner_sex.setAdapter(adapter_sex);
 
 
@@ -104,8 +105,7 @@ public class AddChild extends AppCompatActivity {
         }
 
 
-
-        if(weight.getText().toString().equals("") || height.getText().toString().equals("") || birthdate.getText().toString().equals("") || !(rb1.isChecked() || rb2.isChecked()) )
+        if(name.getText().toString().equals("") || weight.getText().toString().equals("") || height.getText().toString().equals("") || birthdate.getText().toString().equals("") || !(rb1.isChecked() || rb2.isChecked()) )
         {
 
             Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();

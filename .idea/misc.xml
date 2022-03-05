@@ -3,9 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/activity_add_child.xml" value="0.3625" />
+        <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/activity_add_child.xml" value="0.178125" />
         <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/activity_evaluate.xml" value="0.3625" />
-        <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/activity_homepage.xml" value="0.18958333333333333" />
+        <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/activity_homepage.xml" value="0.3625" />
         <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/activity_okos_tanyer.xml" value="0.3625" />
         <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/activity_questions1.xml" value="0.3625" />
@@ -16,17 +16,25 @@
         <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.1" />
         <entry key="..\:/HealthyTamagochi/app/src/main/res/layout/spinner_item.xml" value="0.1" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/drawable/border.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/drawable/green_round_bground.xml" value="0.157" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/drawable/red_round_bground.xml" value="0.157" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/drawable/spinner_background.xml" value="0.25833333333333336" />
-        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_add_child.xml" value="0.228125" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/drawable/white_round_bground.xml" value="0.157" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_add_child.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_avatar_pop_up.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_evaluate.xml" value="0.21875" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_homepage.xml" value="0.2421875" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_main.xml" value="0.2421875" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_okos_tanyer.xml" value="0.2210144927536232" />
-        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_questions1.xml" value="0.23278985507246377" />
-        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_registration.xml" value="0.23278985507246377" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_questions1.xml" value="0.264" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_registration.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_set_character.xml" value="0.23278985507246377" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_sign_in.xml" value="0.23278985507246377" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/activity_teeth_brushing.xml" value="0.20969202898550723" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/avatar_popup_layout.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/draggable_layout.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/layout_text.xml" value="0.22509057971014493" />
+        <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/simple_spinner_text.xml" value="0.22509057971014493" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/spinner_dropdown_item.xml" value="0.2421875" />
         <entry key="..\:/Users/Viktoria/AndroidStudioProjects/HealthyTamagochi/app/src/main/res/layout/spinner_item.xml" value="0.2421875" />
       </map>

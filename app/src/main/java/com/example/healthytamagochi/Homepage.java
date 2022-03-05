@@ -41,6 +41,7 @@ public class Homepage extends AppCompatActivity {
     Random rnd;
     int nextActivityID;
     boolean firstGame = true;
+    Spinner selectedKid;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<CharSequence> kidNamesList = new ArrayList<CharSequence>();
@@ -109,15 +110,21 @@ public class Homepage extends AppCompatActivity {
         nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
 
         Intent i = new Intent();
-        i.putExtra("selectedPic", "boy1");
-        i.putExtra("prevActivityID", nextActivityID);
-        i.putExtra("firstGame", firstGame);
-        if (nextActivityID == 1) {
-            i.setClass(this, Questions1.class);
-        } else if (nextActivityID == 2) {
-            i.setClass(this, OkosTanyer.class);
-        } else if (nextActivityID == 3) {
-            i.setClass(this, TeethBrushing.class);
+        i.putExtra("selectedPic","boy1");
+        i.putExtra("selectedKid",selectedKid.getSelectedItem().toString().trim());
+        i.putExtra("prevActivityID",nextActivityID);
+        i.putExtra("firstGame",firstGame);
+        if(nextActivityID==1)
+        {
+            i.setClass(this,Questions1.class);
+        }
+        else if(nextActivityID==2)
+        {
+            i.setClass(this,OkosTanyer.class);
+        }
+        else if(nextActivityID==3)
+        {
+            i.setClass(this,TeethBrushing.class);
         }
         startActivity(i);
 

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Questions1">
+    tools:context=".Evaluate">
 
 
     <LinearLayout
@@ -23,8 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="75dp"
             android:contentDescription="@string/karakter"
-            app:srcCompat="@drawable/girl1"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:srcCompat="@drawable/girl1" />
 
         <Space
             android:layout_width="187dp"
@@ -62,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:onClick="DoneClick"
+        android:onClick="evaluate_DoneClick"
         android:text="@string/ok" />
 
 
