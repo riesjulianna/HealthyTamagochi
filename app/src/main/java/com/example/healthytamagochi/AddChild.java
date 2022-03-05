@@ -20,7 +20,7 @@ import java.util.Calendar;
 
 public class AddChild extends AppCompatActivity {
 
-    EditText weight,height;
+    EditText weight,height,name;
     TextView birthdate;
     ImageView pic1,pic2;
     String selectedPic;
@@ -32,6 +32,7 @@ public class AddChild extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
 
+        name=findViewById(R.id.name);
         birthdate=findViewById(R.id.birthdate);
         weight=findViewById(R.id.weight);
         height=findViewById(R.id.height);

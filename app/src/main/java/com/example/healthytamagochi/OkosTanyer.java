@@ -28,9 +28,7 @@ public class OkosTanyer extends AppCompatActivity {
     int hour=0;
     int min=0;
     int sec=0;
-    int probalkozas=0;
     ImageView apples,csoki,sali,teszta,tanyer;
-    boolean jo1=false,jo2=false,jo3=false;
     float xDown=0,yDown=0;
     Button done;
     int prevActivityID;
@@ -195,7 +193,6 @@ public class OkosTanyer extends AppCompatActivity {
         apples.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View view, MotionEvent event) {
-                    type_tv.setText(score+"");
 
                         // rá teszi az ujját a képre
                         if(event.getAction() == MotionEvent.ACTION_DOWN)
@@ -235,7 +232,7 @@ public class OkosTanyer extends AppCompatActivity {
                                 }
                                 else
                                 {
-                                    if( score>=0)
+                                    if( score>0)
                                     {
                                         score--;
                                     }
@@ -258,7 +255,6 @@ public class OkosTanyer extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
                 // rá teszi az ujját a képre
-                type_tv.setText(score+"");
 
                         sali.setBackgroundColor(Color.parseColor("#f7f7f7"));
                         if(event.getAction() == MotionEvent.ACTION_DOWN)
@@ -298,7 +294,7 @@ public class OkosTanyer extends AppCompatActivity {
                                 }
                                 else
                                 {
-                                    if( score>=0)
+                                    if( score>0)
                                     {
                                         score--;
                                     }
@@ -320,7 +316,6 @@ public class OkosTanyer extends AppCompatActivity {
         csoki.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                type_tv.setText(score+"");
 
                 // rá teszi az ujját a képre
                 if(event.getAction() == MotionEvent.ACTION_DOWN)
@@ -359,7 +354,7 @@ public class OkosTanyer extends AppCompatActivity {
                         else
                         {
 
-                            if( score>=0)
+                            if( score>0)
                             {
                                 score--;
                             }
@@ -384,7 +379,6 @@ public class OkosTanyer extends AppCompatActivity {
         teszta.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                type_tv.setText(score+"");
 
                         // rá teszi az ujját a képre
                         if(event.getAction() == MotionEvent.ACTION_DOWN)
@@ -423,7 +417,7 @@ public class OkosTanyer extends AppCompatActivity {
                                 else
                                 {
 
-                                    if( score>=0)
+                                    if( score>0)
                                     {
                                         score--;
                                     }
