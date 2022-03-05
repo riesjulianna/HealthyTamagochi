@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="signOutClick"
-        android:text="Kijelentkezés" />
+        android:text="@string/kijelentkezes" />
 
     <Button
         android:id="@+id/addKid_btn"
@@ -32,9 +32,13 @@
 
         <Spinner
             android:id="@+id/selectedKid"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
+            android:fadingEdge="horizontal"
+            android:hapticFeedbackEnabled="true"
+            android:minHeight="48dp"
+            android:spinnerMode="dialog"
             tools:ignore="SpeakableTextPresentCheck" />
 
         <ImageView
