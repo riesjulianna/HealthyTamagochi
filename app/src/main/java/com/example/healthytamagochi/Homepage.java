@@ -1,35 +1,16 @@
 package com.example.healthytamagochi;
 
-import static android.content.ContentValues.TAG;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
-
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.Query;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -56,7 +37,7 @@ public class Homepage extends AppCompatActivity {
         kidNamesList.add(""); //ha hozzáadok egy bármit akkor oké, enélkül nem
 
         // EZ SZARUL MŰKÖDIK...
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, android.R.layout.simple_spinner_item, kidNamesList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -101,9 +82,7 @@ public class Homepage extends AppCompatActivity {
         Intent i = new Intent();
         i.setClass(this, AddChild.class);
         startActivity(i);
-
     }
-
 
     public void play_onClick(View v) {
         rnd = new Random();
@@ -127,7 +106,6 @@ public class Homepage extends AppCompatActivity {
             i.setClass(this,TeethBrushing.class);
         }
         startActivity(i);
-
     }
 
     public void signOutClick(View v) {
