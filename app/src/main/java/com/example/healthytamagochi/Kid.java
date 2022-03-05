@@ -2,17 +2,21 @@ package com.example.healthytamagochi;
 
 import com.google.type.Date;
 
-public class Kids {
+public class Kid {
 
-    String name, sex, kg, cm, parentID;
+    String parentID;
+    String name;
+    String sex;
+    String kg;
+    String cm;
+    Date birth;
 
-    public Kids(String name, String sex, String kg, String cm, String parentID, Date birth) {
-        this.name = name;
-        this.sex = sex;
-        this.kg = kg;
-        this.cm = cm;
+    public String getParentID() {
+        return parentID;
+    }
+
+    public void setParentID(String parentID) {
         this.parentID = parentID;
-        this.birth = birth;
     }
 
     public String getName() {
@@ -47,14 +51,6 @@ public class Kids {
         this.cm = cm;
     }
 
-    public String getParentID() {
-        return parentID;
-    }
-
-    public void setParentID(String parentID) {
-        this.parentID = parentID;
-    }
-
     public Date getBirth() {
         return birth;
     }
@@ -63,7 +59,16 @@ public class Kids {
         this.birth = birth;
     }
 
-    Date birth;
+
+
+    public Kid(String parentID, String name, String sex, String kg, String cm, Date birth) {
+        this.parentID = parentID;
+        this.name = name;
+        this.sex = sex;
+        this.kg = kg;
+        this.cm = cm;
+        this.birth = birth;
+    }
 }
 
 

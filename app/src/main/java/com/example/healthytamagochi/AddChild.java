@@ -1,5 +1,6 @@
 package com.example.healthytamagochi;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
@@ -16,7 +17,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class AddChild extends AppCompatActivity {
 
@@ -25,6 +34,10 @@ public class AddChild extends AppCompatActivity {
     ImageView pic1,pic2;
     String selectedPic;
     RadioButton rb1,rb2;
+    String sex;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
 
     @Override
@@ -55,11 +68,13 @@ public class AddChild extends AppCompatActivity {
                 if(spinner_sex.getSelectedItem().toString().equals("Lány")) {
                     pic1.setImageResource(R.drawable.girl1);
                     pic2.setImageResource(R.drawable.girl2);
+                    sex = spinner_sex.getSelectedItem().toString().trim();
                 }
                 else
                 {
                      pic1.setImageResource(R.drawable.boy1);
                     pic2.setImageResource(R.drawable.boy2);
+                    sex = spinner_sex.getSelectedItem().toString().trim();
                 }
             }
 
@@ -81,13 +96,9 @@ public class AddChild extends AppCompatActivity {
 
         DatePickerDialog dpd = new DatePickerDialog(
                 this,
-                new DatePickerDialog.OnDateSetListener() {
-                    @Override
-                    public void onDateSet(DatePicker datePicker,
-                                          int i, int i1, int i2) {
-                        String date = i+"."+(i1+1)+"."+i2;
-                        birthdate.setText(date);
-                    }
+                (datePicker, i, i1, i2) -> {
+                    String date = i+"."+(i1+1)+"."+i2;
+                    birthdate.setText(date);
                 },
                 year, month, day
         );
@@ -112,10 +123,34 @@ public class AddChild extends AppCompatActivity {
         }
         else
         {
-
+            //addKidToDatabase();
             Intent i = new Intent();
             i.setClass(this,Homepage.class);
             startActivity(i);
         }
+    }
+
+    public void addKidToDatabase(){
+        //Kid kid = new Kid();
+
+        Map<String, Object> kid = new HashMap<>();
+        kid.put("parentID", parentID);
+        kid.put("name", name.getText().toString());
+        kid.put("sex", sex);
+        kid.put("kg", weight.getText().toString());
+        kid.put("cm", height.getText().toString());
+        kid.put("birth", birthdate);
+
+        db.collection("kids")
+                .add(kid)
+                .addOnSuccessListener(documentReference -> {
+                    //siker
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        //error
+                    }
+                });
     }
 }
