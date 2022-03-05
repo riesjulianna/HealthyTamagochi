@@ -1,11 +1,9 @@
 package com.example.healthytamagochi;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -27,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         if (user != null) {
             skip();
         }
+    }
+
+    public void onBackPressed(){
+        this.finishAffinity();
     }
 
     public void signInClick(View v) {

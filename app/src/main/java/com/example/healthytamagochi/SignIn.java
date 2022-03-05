@@ -1,34 +1,22 @@
 package com.example.healthytamagochi;
 
-import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 public class SignIn extends AppCompatActivity {
 
     EditText email, password;
     private FirebaseAuth mAuth;
-    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-    //boolean emailVerified = user.isEmailVerified();
     TextView forgotPassword;
 
     @Override
@@ -38,57 +26,64 @@ public class SignIn extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         email = findViewById(R.id.emailParent);
         password = findViewById(R.id.password);
-        forgotPassword=findViewById(R.id.forgotPassword);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser != null) {
-            //reload();
-        }
+        forgotPassword = findViewById(R.id.forgotPassword);
     }
 
     public void signInClick(View v) {
+        try {
+            InputMethodManager imp = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+            imp.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        } catch (Exception e) {
+            return;
+        }
         if (email.getText().toString().equals("") || password.getText().toString().equals("")) {
             Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
         }
-//        if(!emailVerified){
-//            Toast.makeText(this, "Igazolja vissza e-mail címét.", Toast.LENGTH_LONG).show();
-//        }
         else {
             String mail = email.getText().toString().trim();
             String pw = password.getText().toString().trim();
             mAuth.signInWithEmailAndPassword(mail, pw)
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
-                            if (task.isSuccessful()) {
-                                go();
-                                FirebaseUser user = mAuth.getCurrentUser();
-                                //updateUI(user);
-                            } else {
-                                Toast.makeText(SignIn.this, "Hibás e-mail vagy jelszó.",
-                                        Toast.LENGTH_LONG).show();
-                                forgotPassword.setVisibility(View.VISIBLE);
-                                forgotPassword.setPaintFlags(forgotPassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-                                //updateUI(null);
-                            }
+                    .addOnCompleteListener(this, task -> {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            if(user.isEmailVerified())
+                            go();
+                            else Toast.makeText(SignIn.this,"Igazolja vissza e-mail címét.",Toast.LENGTH_LONG).show();
+                        } else {
+                            Toast.makeText(SignIn.this, "Hibás e-mail vagy jelszó.",
+                                    Toast.LENGTH_LONG).show();
+                            forgotPassword.setVisibility(View.VISIBLE);
+                            forgotPassword.setPaintFlags(forgotPassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                         }
                     });
         }
 
-        forgotPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //jöhet ide a kód
-                Toast.makeText(SignIn.this, "Megnyomtad a szöveget!",
-                        Toast.LENGTH_LONG).show();
-            }
+        forgotPassword.setOnClickListener(view -> {
+            final AlertDialog.Builder alert = new AlertDialog.Builder(SignIn.this);
+            final EditText input = new EditText(SignIn.this);
+            input.setSingleLine();
+            alert.setTitle("Regisztrált e-mail cím:");
+            alert.setView(input);
+            alert.setPositiveButton("Ok", (dialog, whichButton) -> {
+                String email = input.getText().toString().trim();
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                auth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(SignIn.this,
+                                        "A jelszó visszaállításhoz szükséges e-mailt elküldtük."
+                                        , Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(SignIn.this,
+                                        "Ezzel az e-mail címmel nem találtunk regisztrációt."
+                                        , Toast.LENGTH_LONG).show();
+                            }
+                        });
+            }).setNegativeButton("Mégse", (dialog, whichButton) -> dialog.cancel());
+            alert.show();
         });
     }
+
     public void go() {
         Intent i = new Intent();
         i.setClass(this, Homepage.class);

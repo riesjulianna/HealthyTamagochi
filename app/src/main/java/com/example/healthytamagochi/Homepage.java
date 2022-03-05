@@ -37,6 +37,11 @@ public class Homepage extends AppCompatActivity {
         
     }
 
+    public void onBackPressed(){
+        //kilép az alkalmazásból, bejelentkezve marad
+        this.finishAffinity();
+    }
+
     public void addKid_onClick(View v) {
         Intent i = new Intent();
         i.setClass(this, AddChild.class);
