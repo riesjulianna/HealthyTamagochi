@@ -32,7 +32,8 @@
                 android:ems="10"
                 android:hint="@string/szuloemail"
                 android:inputType="textEmailAddress"
-                android:textColorHint="#78909C" />
+                android:textColorHint="#78909C"
+                android:autofillHints="" />
 
             <EditText
                 android:id="@+id/password"
@@ -70,7 +71,7 @@
                 style="@style/textView"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:text="Szülő legmagasabb végzettsége"
+                android:text="@string/vegzettseg"
                 android:textColor="#006366"
                 android:textStyle="bold" />
 
