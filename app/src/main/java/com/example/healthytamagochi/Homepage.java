@@ -34,18 +34,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
 public class Homepage extends AppCompatActivity {
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    List<String> kidNamesList = new ArrayList<>();
+    String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     ImageView img;
     Random rnd;
     int nextActivityID;
     boolean firstGame = true;
     Spinner selectedKid;
-
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
-    List<CharSequence> kidNamesList = new ArrayList<CharSequence>();
-    String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,19 +53,10 @@ public class Homepage extends AppCompatActivity {
         setContentView(R.layout.activity_homepage);
         img = findViewById(R.id.avatar_img);
         Spinner spinner = (Spinner) findViewById(R.id.selectedKid);
-
-        //GET KIDS*******
-        db.collection("kids")
-                .whereEqualTo("parentID", parentID)
-                .addSnapshotListener((documentSnapshots, error) -> {
-                    for (DocumentSnapshot snapshot : documentSnapshots) {
-                        kidNamesList.add(snapshot.getString("name"));
-                    }
-                });
-        //END************
+        kidNamesList.add(""); //ha hozzáadok egy bármit akkor oké, enélkül nem
 
         // EZ SZARUL MŰKÖDIK...
-        ArrayAdapter<CharSequence> adapter = new ArrayAdapter<CharSequence>(
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_spinner_item, kidNamesList);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -78,6 +68,16 @@ public class Homepage extends AppCompatActivity {
 //                ArrayAdapter.createFromResource(this, R.array.kids, R.layout.spinner_item);
 //        adapter_selectedKid.setDropDownViewResource(R.layout.spinner_dropdown_item);
 //        spinner_selectedKid.setAdapter(adapter_selectedKid);
+
+        //GET KIDS FROM DB
+        db.collection("kids")
+                .whereEqualTo("parentID", parentID)
+                .addSnapshotListener((documentSnapshots, error) -> {
+                    for (DocumentSnapshot snapshot : documentSnapshots) {
+                        kidNamesList.add(snapshot.getString("name"));
+                    }
+                });
+        //END************
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
