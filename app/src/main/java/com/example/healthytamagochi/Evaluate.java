@@ -4,13 +4,22 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -18,7 +27,7 @@ import java.util.TimerTask;
 public class Evaluate extends AppCompatActivity {
 
     ImageButton avatar;
-    String selectedPic;
+    String selectedPic,selectedKid;
     TextView time;
     int hour=0;
     int min=0;
@@ -41,9 +50,11 @@ public class Evaluate extends AppCompatActivity {
         color=findViewById(R.id.color);
         rating=findViewById(R.id.rating_tv);
 
+
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
+            selectedKid = b.getString("selectedKid");
             hour=b.getInt("hour");
             min=b.getInt("min");
             sec=b.getInt("sec");
@@ -69,15 +80,14 @@ public class Evaluate extends AppCompatActivity {
             avatar.setImageResource(R.drawable.girl2);
         }
 
-        if(pont<10)
+        rating.setText(pont+"");
+        if(pont<2)
         {
           color.setBackgroundColor(Color.parseColor("#ff3838"));
-          rating.setText("Nembaj lesz majd jobb is");
         }
         else
         {
             color.setBackgroundColor(Color.parseColor("#02de0a"));
-            rating.setText("Ügyes vagy");
         }
 
         Timer T=new Timer();
@@ -128,7 +138,8 @@ public class Evaluate extends AppCompatActivity {
 
     }
 
-    public void DoneClick(View v)
+
+    public void evaluate_DoneClick(View v)
     {
 
         Intent i = new Intent();
@@ -138,6 +149,7 @@ public class Evaluate extends AppCompatActivity {
         i.putExtra("sec",sec);
         i.putExtra("prevActivityID",nextActivityID);
         i.putExtra("firstGame",firstGame);
+        i.putExtra("selectedKid",selectedKid);
 
         if(nextActivityID==1)
         {
@@ -154,8 +166,11 @@ public class Evaluate extends AppCompatActivity {
 
         startActivity(i);
 
+    }
 
-
-
+    public void onBackPressed(){
+        Intent i = new Intent();
+        i.setClass(this,Homepage.class);
+        startActivity(i);
     }
 }

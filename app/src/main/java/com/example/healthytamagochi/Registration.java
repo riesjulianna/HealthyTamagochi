@@ -50,12 +50,12 @@ public class Registration extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        ArrayAdapter<CharSequence> adapter_residence = ArrayAdapter.createFromResource(this, R.array.residences, R.layout.spinner_item);
-        adapter_residence.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter_residence = ArrayAdapter.createFromResource(this, R.array.residences, R.layout.spinner_text);
+        adapter_residence.setDropDownViewResource(R.layout.simple_spinner_text);
         residence.setAdapter(adapter_residence);
 
-        ArrayAdapter<CharSequence> adapter_education  = ArrayAdapter.createFromResource(this, R.array.educations, R.layout.spinner_item);
-        adapter_education.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        ArrayAdapter<CharSequence> adapter_education  = ArrayAdapter.createFromResource(this, R.array.educations, R.layout.spinner_text);
+        adapter_education.setDropDownViewResource(R.layout.simple_spinner_text);
         parentEducation.setAdapter(adapter_education);
 
         password2.addTextChangedListener(new TextWatcher() {

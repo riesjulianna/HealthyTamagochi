@@ -20,6 +20,7 @@ public class Homepage extends AppCompatActivity {
     Random rnd;
     int nextActivityID;
     boolean firstGame=true;
+    Spinner selectedKid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +29,12 @@ public class Homepage extends AppCompatActivity {
 
         img = findViewById(R.id.avatar_img);
 
-        Spinner spinner_selectedKid = findViewById(R.id.selectedKid);
-      ArrayAdapter<CharSequence> adapter_selectedKid = ArrayAdapter.createFromResource(this,
-                R.array.kids, R.layout.spinner_item);
-        adapter_selectedKid.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        spinner_selectedKid.setAdapter(adapter_selectedKid);
+        selectedKid = findViewById(R.id.selectedKid);
+
+
+        ArrayAdapter<CharSequence> adapter_selectedKid = ArrayAdapter.createFromResource(this, R.array.kids, R.layout.spinner_text);
+        adapter_selectedKid.setDropDownViewResource(R.layout.simple_spinner_text);
+        selectedKid.setAdapter(adapter_selectedKid);
 
         
     }
@@ -56,6 +58,7 @@ public class Homepage extends AppCompatActivity {
 
         Intent i = new Intent();
         i.putExtra("selectedPic","boy1");
+        i.putExtra("selectedKid",selectedKid.getSelectedItem().toString().trim());
         i.putExtra("prevActivityID",nextActivityID);
         i.putExtra("firstGame",firstGame);
         if(nextActivityID==1)

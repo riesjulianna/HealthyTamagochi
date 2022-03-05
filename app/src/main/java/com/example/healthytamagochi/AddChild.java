@@ -42,8 +42,8 @@ public class AddChild extends AppCompatActivity {
 
         Spinner spinner_sex = (Spinner) findViewById(R.id.sex);
         ArrayAdapter<CharSequence> adapter_sex = ArrayAdapter.createFromResource(this,
-                R.array.sex, R.layout.spinner_item);
-        adapter_sex.setDropDownViewResource(R.layout.spinner_dropdown_item);
+                R.array.sex, R.layout.spinner_text);
+        adapter_sex.setDropDownViewResource(R.layout.simple_spinner_text);
         spinner_sex.setAdapter(adapter_sex);
 
 

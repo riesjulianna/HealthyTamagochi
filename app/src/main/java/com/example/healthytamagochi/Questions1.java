@@ -25,7 +25,7 @@ import java.util.TimerTask;
 public class Questions1 extends AppCompatActivity {
 
     ImageButton avatar;
-    String selectedPic;
+    String selectedPic,selectedKid;
     TextView time;
     int hour=0;
     int min=0;
@@ -49,6 +49,7 @@ public class Questions1 extends AppCompatActivity {
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
+            selectedKid = b.getString("selectedKid");
             prevActivityID=b.getInt("prevActivityID");
             firstGame=b.getBoolean("firstGame");
         }
@@ -159,21 +160,25 @@ public class Questions1 extends AppCompatActivity {
 
     }
 
-    public void DoneClick(View v)
+    public void question_DoneClick(View v)
     {
             Intent i = new Intent();
             i.setClass(this,Evaluate.class);
             i.putExtra("selectedPic",selectedPic);
+        i.putExtra("selectedKid",selectedKid);
             i.putExtra("hour",hour);
             i.putExtra("min",min);
             i.putExtra("sec",sec);
-            i.putExtra("pont",10);
+            i.putExtra("pont",5);
             i.putExtra("prevActivityID",prevActivityID);
             i.putExtra("firstGame",firstGame);
             startActivity(i);
+    }
 
-
-
+    public void onBackPressed(){
+        Intent i = new Intent();
+        i.setClass(this,Homepage.class);
+        startActivity(i);
     }
 
 
