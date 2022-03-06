@@ -19,9 +19,11 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.type.Date;
 
 import java.util.Calendar;
 import java.util.HashMap;
@@ -123,7 +125,7 @@ public class AddChild extends AppCompatActivity {
         }
         else
         {
-            //addKidToDatabase();
+            addKidToDatabase();
             Intent i = new Intent();
             i.setClass(this,Homepage.class);
             startActivity(i);
@@ -131,7 +133,6 @@ public class AddChild extends AppCompatActivity {
     }
 
     public void addKidToDatabase(){
-        //Kid kid = new Kid();
 
         Map<String, Object> kid = new HashMap<>();
         kid.put("parentID", parentID);
@@ -139,7 +140,7 @@ public class AddChild extends AppCompatActivity {
         kid.put("sex", sex);
         kid.put("kg", weight.getText().toString());
         kid.put("cm", height.getText().toString());
-        kid.put("birth", birthdate);
+        kid.put("birth", birthdate.getText().toString());
 
         db.collection("kids")
                 .add(kid)
