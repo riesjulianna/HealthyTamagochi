@@ -3,6 +3,7 @@ package com.example.healthytamagochi;
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,25 +32,6 @@ public class Homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_homepage);
-        img = findViewById(R.id.avatar_img);
-        Spinner spinner = (Spinner) findViewById(R.id.selectedKid);
-        kidNamesList.add(""); //ha hozzáadok egy bármit akkor oké, enélkül nem
-
-        // EZ SZARUL MŰKÖDIK...
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, kidNamesList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-        adapter.notifyDataSetChanged();
-
-//        EZ A RÉGI XML-BŐL JÓL MŰKÖDÖTT
-//        Spinner spinner_selectedKid = findViewById(R.id.selectedKid);
-//        ArrayAdapter<CharSequence> adapter_selectedKid =
-//                ArrayAdapter.createFromResource(this, R.array.kids, R.layout.spinner_item);
-//        adapter_selectedKid.setDropDownViewResource(R.layout.spinner_dropdown_item);
-//        spinner_selectedKid.setAdapter(adapter_selectedKid);
-
         //GET KIDS FROM DB
         db.collection("kids")
                 .whereEqualTo("parentID", parentID)
@@ -60,17 +42,26 @@ public class Homepage extends AppCompatActivity {
                 });
         //END************
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                //selected gyerek
-            }
+        setContentView(R.layout.activity_homepage);
+        img = findViewById(R.id.avatar_img);
+        selectedKid = findViewById(R.id.selectedKid);
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+        kidNamesList.add("manuálisan hozzáadott string"); //ha hozzáadok egy bármit akkor oké, enélkül nem
 
-            }
-        });
+        // EZ SZARUL MŰKÖDIK A MANUÁLISAN HOZZÁADOTT STRING NÉLKÜL
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                this, android.R.layout.simple_spinner_item, kidNamesList);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item );
+        selectedKid.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+
+
+//        EZ A RÉGI XML-BŐL JÓL MŰKÖDÖTT
+//        Spinner spinner_selectedKid = findViewById(R.id.selectedKid);
+//        ArrayAdapter<CharSequence> adapter_selectedKid =
+//                ArrayAdapter.createFromResource(this, R.array.kids, R.layout.spinner_item);
+//        adapter_selectedKid.setDropDownViewResource(R.layout.spinner_dropdown_item);
+//        spinner_selectedKid.setAdapter(adapter_selectedKid);
     }
 
     public void onBackPressed() {
@@ -114,4 +105,6 @@ public class Homepage extends AppCompatActivity {
         i.setClass(this, MainActivity.class);
         startActivity(i);
     }
+
+
 }

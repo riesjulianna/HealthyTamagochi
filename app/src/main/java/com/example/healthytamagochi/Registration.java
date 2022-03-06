@@ -151,7 +151,7 @@ public class Registration extends AppCompatActivity {
         db.collection("users").add(user);
     }
 }
-//User user = new User(uname, pw, mail, edu, res, ld);
+
 //        Map<String, Object> user = new HashMap<>();
 //        user.put("username", username.getText().toString());
 //        user.put("password", password.getText().toString());
@@ -172,26 +172,5 @@ public class Registration extends AppCompatActivity {
 //                });
 
 
-//        String uname = username.getText().toString();
-//        String pw = password.getText().toString();
-//        String mail = email.getText().toString();
-//        String edu = parentEducation.getText().toString();
-//        String res = residence.getSelectedItem().toString();
-//        String ld = uname+pw;
-//        usersRef.push().setValue(user);
 
 
-//if task is successfullba
-//                            User user = new User(mail,pw);
-//                            FirebaseDatabase.getInstance().getReference("users")
-//                                    .child((FirebaseAuth.getInstance().getCurrentUser().getUid()))
-//                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<Void> task) {
-//                                    if(task.isSuccessful()){
-
-//                                    }else{
-//                                        Toast.makeText(Registration.this,"fail",Toast.LENGTH_LONG).show();
-//                                    }
-//                                }
-//                            });
