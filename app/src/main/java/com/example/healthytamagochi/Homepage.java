@@ -9,6 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.TextView;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -27,10 +29,13 @@ public class Homepage extends AppCompatActivity {
     int nextActivityID;
     boolean firstGame = true;
     Spinner selectedKid;
+    TextView proba;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_homepage);
+        proba=findViewById(R.id.proba_tv);
 
         //GET KIDS FROM DB
         db.collection("kids")
@@ -42,16 +47,16 @@ public class Homepage extends AppCompatActivity {
                 });
         //END************
 
-        setContentView(R.layout.activity_homepage);
         img = findViewById(R.id.avatar_img);
         selectedKid = findViewById(R.id.selectedKid);
 
-        kidNamesList.add("manuálisan hozzáadott string"); //ha hozzáadok egy bármit akkor oké, enélkül nem
+
+        kidNamesList.add("Válasszon egy gyermeket!"); //ha hozzáadok egy bármit akkor oké, enélkül nem
 
         // EZ SZARUL MŰKÖDIK A MANUÁLISAN HOZZÁADOTT STRING NÉLKÜL
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
-                this, android.R.layout.simple_spinner_item, kidNamesList);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item );
+                this, R.layout.spinner_text, kidNamesList);
+        adapter.setDropDownViewResource(R.layout.simple_spinner_text);
         selectedKid.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

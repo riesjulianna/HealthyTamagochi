@@ -80,7 +80,7 @@ public class Evaluate extends AppCompatActivity {
             avatar.setImageResource(R.drawable.girl2);
         }
 
-        rating.setText(pont+"");
+        rating.setText("Elért pont:  "+pont+"\nÜgyes vagy!");
         if(pont<2)
         {
           color.setBackgroundColor(Color.parseColor("#ff3838"));
