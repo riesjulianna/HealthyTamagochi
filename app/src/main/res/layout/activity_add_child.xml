@@ -138,66 +138,132 @@
                     android:text="@string/cm" />
 
             </LinearLayout>
-            <LinearLayout
+
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:gravity="center">
 
-                <ImageView
-                    android:id="@+id/pic1"
+                <LinearLayout
+                    android:id="@+id/layout1"
                     android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/karakter"
-                    app:srcCompat="@drawable/girl1" />
-
-                <ImageView
-                    android:id="@+id/pic2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:contentDescription="@string/karakter"
-                    app:srcCompat="@drawable/girl2"
-                    tools:ignore="ImageContrastCheck" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/rb1"
-                    android:layout_width="match_parent"
-                    android:layout_height="63dp"
-                    android:layout_marginStart="90dp"
-                    android:layout_weight="1"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
-
-                <RadioButton
-                    android:id="@+id/rb2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="90dp"
-                    android:layout_weight="1"
-                    tools:ignore="DuplicateSpeakableTextCheck" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:gravity="bottom"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/add"
-                    style="@style/buttons"
-                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:onClick="Add"
-                    android:text="@string/hozzaad" />
-            </LinearLayout>
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/option1_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/white_round_bground"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:id="@+id/pic1"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:contentDescription="@string/karakter"
+                            app:srcCompat="@drawable/girl1" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/option2_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/white_round_bground"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:id="@+id/pic2"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/karakter"
+                            app:srcCompat="@drawable/girl2"
+                            tools:ignore="ImageContrastCheck" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layout2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/layout1"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:id="@+id/option3_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/white_round_bground"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:id="@+id/pic3"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:contentDescription="@string/karakter"
+                            app:srcCompat="@drawable/cat_two" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/option4_layout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/white_round_bground"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="20dp">
+
+                        <ImageView
+                            android:id="@+id/pic4"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_weight="1"
+                            android:contentDescription="@string/karakter"
+                            app:srcCompat="@drawable/cat_one"
+                            tools:ignore="ImageContrastCheck" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/add"
+                style="@style/buttons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="Add"
+                android:text="@string/hozzaad" />
+
         </LinearLayout>
     </ScrollView>
 
