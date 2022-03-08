@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="girl_avatars">
+        <item>girl1</item>
+        <item>girl2</item>
+        <item>cat_one</item>
+        <item>cat_two</item>
+    </string-array>
+</resources>
