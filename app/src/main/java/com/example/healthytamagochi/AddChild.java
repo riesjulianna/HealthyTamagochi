@@ -220,16 +220,17 @@ public class AddChild extends AppCompatActivity {
         kid.put("kg", weight.getText().toString());
         kid.put("cm", height.getText().toString());
         kid.put("birth", birthdate.getText().toString());
+        kid.put("avatar", "valami");
 
         db.collection("kids")
                 .add(kid)
                 .addOnSuccessListener(documentReference -> {
-                    //siker
+                    Toast.makeText(getApplicationContext(), "Sikeres hozzáadás.", Toast.LENGTH_LONG).show();
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        //error
+                        Toast.makeText(getApplicationContext(), "Hiba!", Toast.LENGTH_LONG).show();
                     }
                 });
     }

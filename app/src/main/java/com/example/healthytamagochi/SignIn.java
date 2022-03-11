@@ -92,6 +92,11 @@ public class SignIn extends AppCompatActivity {
         i.setClass(this, Homepage.class);
         startActivity(i);
     }
+    public void onBackPressed() {
+        FirebaseAuth.getInstance().signOut();
+        this.finishAffinity();
+    }
+
 }
 
 

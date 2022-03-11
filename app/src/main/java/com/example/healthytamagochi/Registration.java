@@ -96,15 +96,13 @@ public class Registration extends AppCompatActivity {
                 if (acceptRules.isChecked()) {
                     String mail = email.getText().toString().trim();
                     String pw = password.getText().toString().trim();
-                    String edu = parentEducation.getSelectedItem().toString().trim();
-                    String res = residence.getSelectedItem().toString().trim();
                     mAuth.createUserWithEmailAndPassword(mail, pw)
                             .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
                                         addUserToDB();
-                                        go();
+                                        goToLogin();
                                         Toast.makeText(getApplicationContext(), "Sikeres regisztráció.", Toast.LENGTH_LONG).show();
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         user.sendEmailVerification()
@@ -134,9 +132,9 @@ public class Registration extends AppCompatActivity {
         return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
-    public void go() {
+    public void goToLogin() {
         Intent i = new Intent();
-        i.setClass(this, MainActivity.class);
+        i.setClass(this, SignIn.class);
         startActivity(i);
     }
 
@@ -144,11 +142,20 @@ public class Registration extends AppCompatActivity {
         String mail = email.getText().toString().trim();
         String edu = parentEducation.getSelectedItem().toString().trim();
         String res = residence.getSelectedItem().toString().trim();
+        String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         Map<String, Object> user = new HashMap<>();
         user.put("email", mail);
         user.put("education", edu);
         user.put("residence", res);
-        db.collection("users").add(user);
+        user.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
+        db.collection("users").document(parentID).set(user);
+        //db.collection("users").add(user);
+    }
+
+
+    public void onBackPressed() {
+        //kilép az alkalmazásból, bejelentkezve marad
+        this.finishAffinity();
     }
 }
 
