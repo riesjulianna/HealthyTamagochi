@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -220,7 +221,7 @@ public class AddChild extends AppCompatActivity {
         kid.put("kg", weight.getText().toString());
         kid.put("cm", height.getText().toString());
         kid.put("birth", birthdate.getText().toString());
-        kid.put("avatar", "valami");
+        kid.put("avatar", selectedPic);
 
         db.collection("kids")
                 .add(kid)
