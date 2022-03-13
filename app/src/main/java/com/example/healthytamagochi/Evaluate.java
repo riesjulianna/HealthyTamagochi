@@ -53,6 +53,7 @@ public class Evaluate extends AppCompatActivity {
         color=findViewById(R.id.color);
         rating=findViewById(R.id.rating_tv);
 
+        numberOfQuestions=getNumOfQuestions();
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -140,6 +141,18 @@ public class Evaluate extends AppCompatActivity {
         prevActivityID=nextActivityID;
 
     }
+    public int getNumOfQuestions(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection("questions").get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        numberOfQuestions = ((Integer) task.getResult().size());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Could not get number of questions.", Toast.LENGTH_LONG).show();
+                    }
+                });
+        return numberOfQuestions;
+    }
 
 
     public void evaluate_DoneClick(View v)
@@ -153,11 +166,10 @@ public class Evaluate extends AppCompatActivity {
         i.putExtra("prevActivityID",nextActivityID);
         i.putExtra("firstGame",firstGame);
         i.putExtra("selectedKid",selectedKid);
-
+        i.putExtra("NoOfQ",numberOfQuestions);
         if(nextActivityID==1)
         {
             i.setClass(this,Questions1.class);
-            i.putExtra("NoOfQ",numberOfQuestions);
         }
         else if(nextActivityID==2)
         {
@@ -171,19 +183,7 @@ public class Evaluate extends AppCompatActivity {
         startActivity(i);
 
     }
-    public int getNumOfQuestions(){
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("questions").get()
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        numberOfQuestions = ((Integer) task.getResult().size());
-                    } else {
-                        Toast.makeText(getApplicationContext(), "Could not get number of questions.", Toast.LENGTH_LONG).show();
-                    }
-                });
-        return numberOfQuestions;
-    }
 
     public void onBackPressed(){
         Intent i = new Intent();

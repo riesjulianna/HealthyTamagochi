@@ -50,7 +50,6 @@ public class Questions1 extends AppCompatActivity {
     boolean firstGame;
     LinearLayout option1, option2, option3, option4;
     String A1, A2, A3, A4;
-    int clickCount = 0;
     int points = 3;
     int rndQuestion;
     String resultDocID;

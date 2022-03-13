@@ -153,6 +153,7 @@
         app:layout_constraintStart_toStartOf="@+id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal11" />
 
+
     <Button
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -163,7 +164,6 @@
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@+id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal12" />
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical1"
@@ -209,18 +209,18 @@
         app:layout_constraintGuide_percent="0.08" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.10" />
-
-    <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.20" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.10" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal4"
