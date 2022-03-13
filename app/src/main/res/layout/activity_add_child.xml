@@ -146,7 +146,7 @@
                 android:gravity="center">
 
                 <LinearLayout
-                    android:id="@+id/layout1"
+                    android:id="@+id/layoutUpper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
@@ -200,10 +200,10 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/layout2"
+                    android:id="@+id/layoutDown"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/layout1"
+                    android:layout_below="@id/layoutUpper"
                     android:orientation="horizontal">
 
                     <LinearLayout

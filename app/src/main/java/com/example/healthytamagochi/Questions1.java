@@ -2,37 +2,44 @@ package com.example.healthytamagochi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Handler;
-import android.text.Layout;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.firebase.database.collection.LLRBNode;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Calendar;
-import java.util.Random;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Questions1 extends AppCompatActivity {
 
     ImageButton avatar;
-    String selectedPic,selectedKid;
-    TextView time;
-    int hour=0;
-    int min=0;
-    int sec=0;
+    String selectedPic, selectedKid;
+    TextView time, question, a1, a2, a3, a4, response, name;
+    int hour = 0;
+    int min = 0;
+    int sec = 0;
     int prevActivityID;
     boolean firstGame;
-    LinearLayout option1,option2,option3,option4 ;
+    LinearLayout option1, option2, option3, option4;
+    String A1, A2, A3, A4;
+    int clickCount = 0;
+    int points = 3;
+
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,78 +47,73 @@ public class Questions1 extends AppCompatActivity {
         setContentView(R.layout.activity_questions1);
 
         avatar = findViewById(R.id.avatar);
-        time=findViewById(R.id.time);
-        option1=findViewById(R.id.titas_layout_1);
-        option2=findViewById(R.id.titas_layout_2);
-        option3=findViewById(R.id.kutyis_layout);
-        option4=findViewById(R.id.kutyis_layout_2);
+        name = findViewById(R.id.textViewName);
+        time = findViewById(R.id.time);
+        option1 = findViewById(R.id.layout_1);
+        option2 = findViewById(R.id.layout_2);
+        option3 = findViewById(R.id.layout_3);
+        option4 = findViewById(R.id.layout_4);
+
+        question = findViewById(R.id.testViewQ);
+        a1 = findViewById(R.id.textView1);
+        a2 = findViewById(R.id.textView2);
+        a3 = findViewById(R.id.textView3);
+        a4 = findViewById(R.id.textView4);
+        response = findViewById(R.id.textViewR);
+        response.setVisibility(View.INVISIBLE);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
+            //avatar beallitas?
             selectedKid = b.getString("selectedKid");
-            prevActivityID=b.getInt("prevActivityID");
-            firstGame=b.getBoolean("firstGame");
+            name.setText(selectedKid);
+            prevActivityID = b.getInt("prevActivityID");
+            firstGame = b.getBoolean("firstGame");
         }
-        if(firstGame==false)
-        {
-            hour=b.getInt("hour");
-            min=b.getInt("min");
-            sec=b.getInt("sec");
-        }
-        else if(firstGame)
-        {
-            firstGame=false;
+        if (!firstGame) {
+            hour = b.getInt("hour");
+            min = b.getInt("min");
+            sec = b.getInt("sec");
+        } else if (firstGame) {
+            firstGame = false;
         }
         // String pic="R.drawable"+selectedPic;
         //avatar.setImageResource(Integer.parseInt(pic));
 
-        if (selectedPic.equals("boy1"))
-        {
+        if (selectedPic.equals("boy1")) {
             avatar.setImageResource(R.drawable.boy1);
-        }
-        else if (selectedPic.equals("girl1"))
-        {
+        } else if (selectedPic.equals("girl1")) {
             avatar.setImageResource(R.drawable.girl1);
-        }
-        else if (selectedPic.equals("boy2"))
-        {
+        } else if (selectedPic.equals("boy2")) {
             avatar.setImageResource(R.drawable.boy2);
-        }
-        else if (selectedPic.equals("girl2"))
-        {
+        } else if (selectedPic.equals("girl2")) {
             avatar.setImageResource(R.drawable.girl2);
         }
 
 
-        Timer T=new Timer();
+        Timer T = new Timer();
         T.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable()
-                {
+                runOnUiThread(new Runnable() {
                     @Override
-                    public void run()
-                    {
+                    public void run() {
 
-                        if(sec%60==0 && sec!=0)
-                        {
+                        if (sec % 60 == 0 && sec != 0) {
                             min++;
-                            sec=0;
+                            sec = 0;
                         }
-                        if(min%60==0 && min!=0)
-                        {
+                        if (min % 60 == 0 && min != 0) {
                             hour++;
-                            min=0;
+                            min = 0;
                         }
-                        if(hour%24==0)
-                        {
-                            hour=0;
+                        if (hour % 24 == 0) {
+                            hour = 0;
                         }
-                        String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
+                        @SuppressLint("DefaultLocale") String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
                         time.setText(curTime); //change clock to your textview
-                        if (min>=15 || hour>0)
-                        {
+                        if (min >= 15 || hour > 0) {
                             time.setTextColor(Color.parseColor("#FF1111"));
                         }
                         sec++;
@@ -121,67 +123,149 @@ public class Questions1 extends AppCompatActivity {
             }
         }, 1000, 1000);
 
-        option1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                option1.setBackgroundResource(R.drawable.green_round_bground);
-                option2.setBackgroundResource(R.drawable.red_round_bground);
-                option3.setBackgroundResource(R.drawable.red_round_bground);
-                option4.setBackgroundResource(R.drawable.red_round_bground);
+        option1.setOnClickListener(view -> {
+            if (points > 0) {
+                if (A1.contains("0")) {
+                    option1.setBackgroundResource((R.drawable.red_round_bground));
+                    points--;
+                }
+                if (A1.contains("3")) {
+                    option1.setBackgroundResource(R.drawable.green_round_bground);
+                    option2.setBackgroundResource(R.drawable.red_round_bground);
+                    option3.setBackgroundResource(R.drawable.red_round_bground);
+                    option4.setBackgroundResource(R.drawable.red_round_bground);
+                    //HELYES VÁLASZ POPUP?
+                    //pontokat beirni
+                }
+            } else {
+                // 0 pontot beirni
+                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
+                response.setVisibility(View.VISIBLE);
             }
         });
-        option2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                option2.setBackgroundResource(R.drawable.green_round_bground);
-                option1.setBackgroundResource(R.drawable.red_round_bground);
-                option3.setBackgroundResource(R.drawable.red_round_bground);
-                option4.setBackgroundResource(R.drawable.red_round_bground);
+        option2.setOnClickListener(view -> {
+            if (points > 0) {
+                if (A2.contains("0")) {
+                    option2.setBackgroundResource((R.drawable.red_round_bground));
+                    points--;
+                }
+                if (A2.contains("3")) {
+                    option2.setBackgroundResource(R.drawable.green_round_bground);
+                    option1.setBackgroundResource(R.drawable.red_round_bground);
+                    option3.setBackgroundResource(R.drawable.red_round_bground);
+                    option4.setBackgroundResource(R.drawable.red_round_bground);
+                    //HELYES VÁLASZ POPUP?
+                    //pontokat beirni
+                }
+            } else {
+                // 0 pontot beirni
+                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
+                response.setVisibility(View.VISIBLE);
             }
         });
-        option3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                option3.setBackgroundResource(R.drawable.green_round_bground);
-                option2.setBackgroundResource(R.drawable.red_round_bground);
-                option1.setBackgroundResource(R.drawable.red_round_bground);
-                option4.setBackgroundResource(R.drawable.red_round_bground);
+        option3.setOnClickListener(view -> {
+            if (points > 0) {
+                if (A3.contains("0")) {
+                    option3.setBackgroundResource((R.drawable.red_round_bground));
+                    points--;
+                }
+                if (A3.contains("3")) {
+                    option3.setBackgroundResource(R.drawable.green_round_bground);
+                    option1.setBackgroundResource(R.drawable.red_round_bground);
+                    option2.setBackgroundResource(R.drawable.red_round_bground);
+                    option4.setBackgroundResource(R.drawable.red_round_bground);
+                    //HELYES VÁLASZ POPUP?
+                    //pontokat beirni
+                }
+            } else {
+                // 0 pontot beirni
+                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
+                response.setVisibility(View.VISIBLE);
             }
         });
-        option4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                option4.setBackgroundResource(R.drawable.green_round_bground);
-                option2.setBackgroundResource(R.drawable.red_round_bground);
-                option3.setBackgroundResource(R.drawable.red_round_bground);
-                option1.setBackgroundResource(R.drawable.red_round_bground);
+        option4.setOnClickListener(view -> {
+            if (points > 0) {
+                if (A4.contains("0")) {
+                    option4.setBackgroundResource((R.drawable.red_round_bground));
+                    points--;
+                }
+                if (A4.contains("3")) {
+                    option4.setBackgroundResource(R.drawable.green_round_bground);
+                    option1.setBackgroundResource(R.drawable.red_round_bground);
+                    option2.setBackgroundResource(R.drawable.red_round_bground);
+                    option3.setBackgroundResource(R.drawable.red_round_bground);
+                    //HELYES VÁLASZ POPUP?
+                    //pontokat beirni
+                }
+            } else {
+                // 0 pontot beirni
+                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
+                response.setVisibility(View.VISIBLE);
             }
         });
+
+        //DATABASE
+        //shuffle good and bad answers
+        List<String> answerIDs = Arrays.asList("0", "00", "000", "3");
+        Collections.shuffle(answerIDs);
+
+        int numberOfQuestions = b.getInt("NoOfQ");
+
+        //fill list with question IDs and then shuffle
+        List<Integer> randomQuestionIDs = new ArrayList<>();
+        if (numberOfQuestions > 0) {
+            for (int i = 1; i <= numberOfQuestions; i++) {
+                randomQuestionIDs.add(i);
+            }
+        } else {
+            Toast.makeText(getApplicationContext(), "Error: number of questions is zero.", Toast.LENGTH_LONG).show();
+        }
+        Collections.shuffle(randomQuestionIDs);
+
+        Integer rndQuestion = randomQuestionIDs.get(1);
+
+        DocumentReference docRefQuestions = db.collection("questions")
+                .document(String.valueOf(rndQuestion));
+        docRefQuestions.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DocumentSnapshot document = task.getResult();
+                question.setText(document.getString("question"));
+                a1.setText(document.getString(answerIDs.get(0)));
+                A1 = (answerIDs.get(0));
+                a2.setText(document.getString(answerIDs.get(1)));
+                A2 = answerIDs.get(1);
+                a3.setText(document.getString(answerIDs.get(2)));
+                A3 = answerIDs.get(2);
+                a4.setText(document.getString(answerIDs.get(3)));
+                A4 = answerIDs.get(3);
+                response.setText(document.getString("response"));
+            } else {
+                Toast.makeText(getApplicationContext(), "Error while loading in question.", Toast.LENGTH_LONG).show();
+            }
+        });
+        //END
 
     }
 
-    public void question_DoneClick(View v)
-    {
-            Intent i = new Intent();
-            i.setClass(this,Evaluate.class);
-            i.putExtra("selectedPic",selectedPic);
-        i.putExtra("selectedKid",selectedKid);
-            i.putExtra("hour",hour);
-            i.putExtra("min",min);
-            i.putExtra("sec",sec);
-            i.putExtra("pont",5);
-            i.putExtra("prevActivityID",prevActivityID);
-            i.putExtra("firstGame",firstGame);
-            startActivity(i);
-    }
-
-    public void onBackPressed(){
+    public void question_DoneClick(View v) {
         Intent i = new Intent();
-        i.setClass(this,Homepage.class);
+        i.setClass(this, Evaluate.class);
+        i.putExtra("selectedPic", selectedPic);
+        i.putExtra("selectedKid", selectedKid);
+        i.putExtra("hour", hour);
+        i.putExtra("min", min);
+        i.putExtra("sec", sec);
+        i.putExtra("pont", 5);
+        i.putExtra("prevActivityID", prevActivityID);
+        i.putExtra("firstGame", firstGame);
         startActivity(i);
     }
 
-
+    public void onBackPressed() {
+        Intent i = new Intent();
+        i.setClass(this, Homepage.class);
+        startActivity(i);
+    }
 
 
 }

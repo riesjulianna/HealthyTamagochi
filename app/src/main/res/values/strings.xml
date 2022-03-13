@@ -27,6 +27,8 @@
     <string name="bejelentkezes">Bejelentkezés</string>
     <string name="vegzettseg">Szülő legmagasabb végzettsége</string>
     <string name="kijelentkezes">Kijelentkezés</string>
+    <string name="okay">OKAY</string>
+    <string name="avatar">avatar</string>
 
 
 </resources>

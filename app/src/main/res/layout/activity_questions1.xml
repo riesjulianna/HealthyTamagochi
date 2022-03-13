@@ -23,7 +23,17 @@
             style="@style/avatar"
             android:layout_width="wrap_content"
             android:layout_height="75dp"
+            android:contentDescription="@string/avatar"
             app:srcCompat="@drawable/cat_one" />
+
+        <TextView
+            android:id="@+id/textViewName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="#03A9F4"
+            android:textStyle="bold" />
 
         <Space
             android:layout_width="187dp"
@@ -44,31 +54,31 @@
         android:layout_height="20dp" />
 
     <TextView
-        android:id="@+id/question"
+        android:id="@+id/testViewQ"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
         android:gravity="center"
-        android:text="KÉRDÉS"
         android:textColor="#050E45"
         android:textSize="25sp"
         android:textStyle="bold" />
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="291dp"
         android:gravity="center"
         android:orientation="vertical">
 
         <LinearLayout
-            android:id="@+id/layout1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:id="@+id/layoutUpper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
 
             <LinearLayout
-                android:id="@+id/titas_layout_1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/layout_1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -79,27 +89,19 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <ImageView
-                    android:id="@+id/titakep"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/cat_one" />
-
                 <TextView
-                    android:id="@+id/titas_textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tita 1"
+                    android:id="@+id/textView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:textColor="#0E0E0E"
-                    android:textSize="20sp" />
+                    android:textSize="12sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/titas_layout_2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/layout_2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -110,35 +112,29 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <ImageView
-                    android:id="@+id/titakep2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/cat_two" />
-
                 <TextView
-                    android:id="@+id/titas_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tita 2"
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:textColor="#0E0E0E"
-                    android:textSize="20sp" />
+                    android:textSize="12sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/layout2"
-            android:layout_width="wrap_content"
+            android:id="@+id/layoutDown"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/layout1">
+            android:layout_below="@id/layoutUpper"
+            android:layout_marginTop="1dp"
+            android:baselineAligned="false">
 
             <LinearLayout
-                android:id="@+id/kutyis_layout"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/layout_3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -149,27 +145,19 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <ImageView
-                    android:id="@+id/kutyikep"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/dog_one" />
-
                 <TextView
-                    android:id="@+id/kutyi_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Kutyi 1"
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
                     android:textColor="#0E0E0E"
-                    android:textSize="20sp" />
+                    android:textSize="12sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/kutyis_layout_2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/layout_4"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
@@ -180,26 +168,26 @@
                 android:orientation="vertical"
                 android:padding="20dp">
 
-                <ImageView
-                    android:id="@+id/kutyikep2"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/dog_two" />
-
                 <TextView
-                    android:id="@+id/kutyis_textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Kutyi 2"
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:textColor="#0E0E0E"
-                    android:textSize="20sp" />
+                    android:textSize="12sp"
+                    tools:ignore="SpeakableTextPresentCheck" />
             </LinearLayout>
 
         </LinearLayout>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/textViewR"
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:gravity="center"
+        android:textColor="#000000"
+        android:textSize="20sp" />
 
     <Button
         android:id="@+id/button"
@@ -208,6 +196,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:onClick="question_DoneClick"
-        android:text="OK" />
+        android:text="@string/ok" />
 
 </LinearLayout>
