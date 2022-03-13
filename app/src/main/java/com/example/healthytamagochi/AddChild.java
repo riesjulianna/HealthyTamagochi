@@ -19,13 +19,17 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.type.Date;
 
 import java.util.ArrayList;
@@ -208,38 +212,50 @@ public class AddChild extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         List<String> kids = new ArrayList<>();
         String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
         db.collection("kids")
                 .whereEqualTo("parentID", parentID)
-                .addSnapshotListener((documentSnapshots, error) -> {
-                    for (DocumentSnapshot snapshot : documentSnapshots) {
-                        kids.add(snapshot.getString("name").toLowerCase().trim());
-                    }
-                    if (kids.contains(name.getText().toString().toLowerCase().trim())) {
-                        Toast.makeText(getApplicationContext(), "Ilyen nevű gyerek már van.", Toast.LENGTH_LONG).show();
-                    } else {
-                        Map<String, Object> kid = new HashMap<>();
-                        kid.put("parentID", parentID);
-                        kid.put("name", name.getText().toString());
-                        kid.put("sex", sex);
-                        kid.put("kg", weight.getText().toString());
-                        kid.put("cm", height.getText().toString());
-                        kid.put("birth", birthdate.getText().toString());
-                        kid.put("avatar", selectedPic);
-
-                        db.collection("kids")
-                                .add(kid)
-                                .addOnSuccessListener(documentReference -> {
-                                    Toast.makeText(getApplicationContext(), "Sikeres hozzáadás.", Toast.LENGTH_LONG).show();
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        Toast.makeText(getApplicationContext(), "Hiba!", Toast.LENGTH_LONG).show();
-                                    }
-                                });
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if (task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                kids.add(document.getString("name").toLowerCase().trim());
+                            }
+                            if (kids.contains(name.getText().toString().toLowerCase().trim())) {
+                                Toast.makeText(getApplicationContext(), "Ilyen nevű gyerek már van.", Toast.LENGTH_LONG).show();
+                                return;
+                            }
+                            if (kids.isEmpty() || !kids.contains(name.getText().toString().toLowerCase().trim())) {
+                                add();
+                            }
+                        }
                     }
                 });
+    }
 
+    public void add() {
+        Map<String, Object> kid = new HashMap<>();
+        kid.put("parentID", parentID);
+        kid.put("name", name.getText().toString());
+        kid.put("sex", sex);
+        kid.put("kg", weight.getText().toString());
+        kid.put("cm", height.getText().toString());
+        kid.put("birth", birthdate.getText().toString());
+        kid.put("avatar", selectedPic);
+
+        db.collection("kids")
+                .add(kid)
+                .addOnSuccessListener(documentReference -> {
+                    Toast.makeText(getApplicationContext(), "Sikeres hozzáadás.", Toast.LENGTH_LONG).show();
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(getApplicationContext(), "Hiba!", Toast.LENGTH_LONG).show();
+                    }
+                });
     }
 }
 
