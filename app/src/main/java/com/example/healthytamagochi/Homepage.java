@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -22,16 +23,17 @@ import java.util.Random;
 
 public class Homepage extends AppCompatActivity {
 
+    ImageView img;
+    Random rnd;
+    Spinner selectedKid;
+    TextView proba;
+    int nextActivityID;
+    boolean firstGame = true;
+    int numberOfQuestions;
+
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<String> kidNamesList = new ArrayList<>();
     String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-    ImageView img;
-    Random rnd;
-    int nextActivityID;
-    boolean firstGame = true;
-    Spinner selectedKid;
-    TextView proba;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,24 +53,22 @@ public class Homepage extends AppCompatActivity {
 
         img = findViewById(R.id.avatar_img);
         selectedKid = findViewById(R.id.selectedKid);
-
-
         kidNamesList.add("Válasszon egy gyermeket!"); //ha hozzáadok egy bármit akkor oké, enélkül nem
-
         // EZ SZARUL MŰKÖDIK A MANUÁLISAN HOZZÁADOTT STRING NÉLKÜL
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, R.layout.spinner_text, kidNamesList);
         adapter.setDropDownViewResource(R.layout.simple_spinner_text);
         selectedKid.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
-
 //        EZ A RÉGI XML-BŐL JÓL MŰKÖDÖTT
 //        Spinner spinner_selectedKid = findViewById(R.id.selectedKid);
 //        ArrayAdapter<CharSequence> adapter_selectedKid =
 //                ArrayAdapter.createFromResource(this, R.array.kids, R.layout.spinner_item);
 //        adapter_selectedKid.setDropDownViewResource(R.layout.spinner_dropdown_item);
 //        spinner_selectedKid.setAdapter(adapter_selectedKid);
+
+        //load number of questions in database
+        numberOfQuestions = getNumOfQuestions();
     }
 
     public void onBackPressed() {
@@ -91,6 +91,7 @@ public class Homepage extends AppCompatActivity {
         i.putExtra("selectedKid",selectedKid.getSelectedItem().toString().trim());
         i.putExtra("prevActivityID",nextActivityID);
         i.putExtra("firstGame",firstGame);
+        i.putExtra("NoOfQ",numberOfQuestions);
         if(nextActivityID==1)
         {
             i.setClass(this,Questions1.class);
@@ -111,6 +112,18 @@ public class Homepage extends AppCompatActivity {
         Intent i = new Intent();
         i.setClass(this, MainActivity.class);
         startActivity(i);
+    }
+
+    public int getNumOfQuestions(){
+        db.collection("questions").get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        numberOfQuestions = ((Integer) task.getResult().size());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Could not get number of questions.", Toast.LENGTH_LONG).show();
+                    }
+                });
+        return numberOfQuestions;
     }
 
 
