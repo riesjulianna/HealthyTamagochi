@@ -8,6 +8,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,7 +27,7 @@ import java.util.TimerTask;
 
 public class Questions1 extends AppCompatActivity {
 
-    ImageButton avatar;
+    ImageView avatar;
     String selectedPic, selectedKid;
     TextView time, question, a1, a2, a3, a4, response, name;
     int hour = 0;
@@ -48,17 +49,17 @@ public class Questions1 extends AppCompatActivity {
 
         avatar = findViewById(R.id.avatar);
         name = findViewById(R.id.textViewName);
-        time = findViewById(R.id.time);
+        time = findViewById(R.id.time_tv);
         option1 = findViewById(R.id.layout_1);
         option2 = findViewById(R.id.layout_2);
         option3 = findViewById(R.id.layout_3);
         option4 = findViewById(R.id.layout_4);
 
         question = findViewById(R.id.testViewQ);
-        a1 = findViewById(R.id.textView1);
-        a2 = findViewById(R.id.textView2);
-        a3 = findViewById(R.id.textView3);
-        a4 = findViewById(R.id.textView4);
+        a1 = findViewById(R.id.a1);
+        a2 = findViewById(R.id.a2);
+        a3 = findViewById(R.id.a3);
+        a4 = findViewById(R.id.a4);
         response = findViewById(R.id.textViewR);
         response.setVisibility(View.INVISIBLE);
 
