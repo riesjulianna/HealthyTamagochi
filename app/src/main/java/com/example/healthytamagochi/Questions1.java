@@ -1,11 +1,14 @@
 package com.example.healthytamagochi;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -13,15 +16,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -39,6 +52,8 @@ public class Questions1 extends AppCompatActivity {
     String A1, A2, A3, A4;
     int clickCount = 0;
     int points = 3;
+    int rndQuestion;
+    String resultDocID;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
@@ -135,13 +150,20 @@ public class Questions1 extends AppCompatActivity {
                     option2.setBackgroundResource(R.drawable.red_round_bground);
                     option3.setBackgroundResource(R.drawable.red_round_bground);
                     option4.setBackgroundResource(R.drawable.red_round_bground);
+                    option1.setClickable(false);
+                    option2.setClickable(false);
+                    option3.setClickable(false);
+                    option4.setClickable(false);
                     //HELYES VÁLASZ POPUP?
                     //pontokat beirni
+                    savePoints();
                 }
             } else {
                 // 0 pontot beirni
                 Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
                 response.setVisibility(View.VISIBLE);
+                savePoints();
+
             }
         });
         option2.setOnClickListener(view -> {
@@ -155,13 +177,20 @@ public class Questions1 extends AppCompatActivity {
                     option1.setBackgroundResource(R.drawable.red_round_bground);
                     option3.setBackgroundResource(R.drawable.red_round_bground);
                     option4.setBackgroundResource(R.drawable.red_round_bground);
+                    option1.setClickable(false);
+                    option2.setClickable(false);
+                    option3.setClickable(false);
+                    option4.setClickable(false);
                     //HELYES VÁLASZ POPUP?
                     //pontokat beirni
+                    savePoints();
+
                 }
             } else {
                 // 0 pontot beirni
                 Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
                 response.setVisibility(View.VISIBLE);
+                savePoints();
             }
         });
         option3.setOnClickListener(view -> {
@@ -175,13 +204,20 @@ public class Questions1 extends AppCompatActivity {
                     option1.setBackgroundResource(R.drawable.red_round_bground);
                     option2.setBackgroundResource(R.drawable.red_round_bground);
                     option4.setBackgroundResource(R.drawable.red_round_bground);
+                    option1.setClickable(false);
+                    option2.setClickable(false);
+                    option3.setClickable(false);
+                    option4.setClickable(false);
                     //HELYES VÁLASZ POPUP?
                     //pontokat beirni
+                    savePoints();
+
                 }
             } else {
                 // 0 pontot beirni
                 Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
                 response.setVisibility(View.VISIBLE);
+                savePoints();
             }
         });
         option4.setOnClickListener(view -> {
@@ -195,13 +231,19 @@ public class Questions1 extends AppCompatActivity {
                     option1.setBackgroundResource(R.drawable.red_round_bground);
                     option2.setBackgroundResource(R.drawable.red_round_bground);
                     option3.setBackgroundResource(R.drawable.red_round_bground);
+                    option1.setClickable(false);
+                    option2.setClickable(false);
+                    option3.setClickable(false);
+                    option4.setClickable(false);
                     //HELYES VÁLASZ POPUP?
                     //pontokat beirni
+                    savePoints();
                 }
             } else {
                 // 0 pontot beirni
                 Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
                 response.setVisibility(View.VISIBLE);
+                savePoints();
             }
         });
 
@@ -223,7 +265,7 @@ public class Questions1 extends AppCompatActivity {
         }
         Collections.shuffle(randomQuestionIDs);
 
-        Integer rndQuestion = randomQuestionIDs.get(1);
+        rndQuestion = randomQuestionIDs.get(1);
 
         DocumentReference docRefQuestions = db.collection("questions")
                 .document(String.valueOf(rndQuestion));
@@ -268,5 +310,38 @@ public class Questions1 extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void savePoints() {
+        int point = points;
+        int QuestionID = rndQuestion;
+        String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        db.collection("results")
+                .whereEqualTo("parentID",parentID)
+                .whereEqualTo("kidName",selectedKid)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        if(task.isSuccessful()) {
+                            for (QueryDocumentSnapshot document : task.getResult()) {
+                                resultDocID = document.getId();
+                            }
+                        }
+                    }
+                });
+//        DocumentReference resultsRef = db.collection("results").document(resultDocID);
+//        resultsRef.update()
+//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                    @Override
+//                    public void onSuccess(Void aVoid) {
+//                        Log.d(TAG, "DocumentSnapshot successfully updated!");
+//                    }
+//                })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(@NonNull Exception e) {
+//                        Log.w(TAG, "Error updating document", e);
+//                    }
+//                });
 
+    }
 }

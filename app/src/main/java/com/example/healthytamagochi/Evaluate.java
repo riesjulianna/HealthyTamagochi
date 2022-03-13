@@ -18,6 +18,8 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
@@ -39,6 +41,7 @@ public class Evaluate extends AppCompatActivity {
     int nextActivityID;
     int prevActivityID;
     boolean firstGame;
+    int numberOfQuestions;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -154,6 +157,7 @@ public class Evaluate extends AppCompatActivity {
         if(nextActivityID==1)
         {
             i.setClass(this,Questions1.class);
+            i.putExtra("NoOfQ",numberOfQuestions);
         }
         else if(nextActivityID==2)
         {
@@ -166,6 +170,19 @@ public class Evaluate extends AppCompatActivity {
 
         startActivity(i);
 
+    }
+    public int getNumOfQuestions(){
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+        db.collection("questions").get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        numberOfQuestions = ((Integer) task.getResult().size());
+                    } else {
+                        Toast.makeText(getApplicationContext(), "Could not get number of questions.", Toast.LENGTH_LONG).show();
+                    }
+                });
+        return numberOfQuestions;
     }
 
     public void onBackPressed(){
