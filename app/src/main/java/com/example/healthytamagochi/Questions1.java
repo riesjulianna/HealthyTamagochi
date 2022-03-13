@@ -297,7 +297,7 @@ public class Questions1 extends AppCompatActivity {
         i.putExtra("hour", hour);
         i.putExtra("min", min);
         i.putExtra("sec", sec);
-        i.putExtra("pont", 5);
+        i.putExtra("pont", points);
         i.putExtra("prevActivityID", prevActivityID);
         i.putExtra("firstGame", firstGame);
         startActivity(i);

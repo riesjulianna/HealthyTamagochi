@@ -28,14 +28,14 @@ import java.util.TimerTask;
 
 public class Evaluate extends AppCompatActivity {
 
-    ImageButton avatar;
+    ImageView avatar;
     String selectedPic,selectedKid;
-    TextView time;
+    TextView time,name;
     int hour=0;
     int min=0;
     int sec=0;
     int pont=0;
-    FrameLayout color ;
+    LinearLayout color ;
     TextView rating;
     Random rnd;
     int nextActivityID;
@@ -49,7 +49,8 @@ public class Evaluate extends AppCompatActivity {
         setContentView(R.layout.activity_evaluate);
 
         avatar = findViewById(R.id.avatar);
-        time=findViewById(R.id.time);
+        name = findViewById(R.id.textViewName);
+        time=findViewById(R.id.time_tv);
         color=findViewById(R.id.color);
         rating=findViewById(R.id.rating_tv);
 
@@ -83,15 +84,15 @@ public class Evaluate extends AppCompatActivity {
         {
             avatar.setImageResource(R.drawable.girl2);
         }
-
+        name.setText(selectedKid);
         rating.setText("Elért pont:  "+pont+"\nÜgyes vagy!");
         if(pont<2)
         {
-          color.setBackgroundColor(Color.parseColor("#ff3838"));
+          color.setBackgroundResource(R.drawable.red_round_bground);
         }
         else
         {
-            color.setBackgroundColor(Color.parseColor("#02de0a"));
+            color.setBackgroundResource(R.drawable.green_round_bground);
         }
 
         Timer T=new Timer();
