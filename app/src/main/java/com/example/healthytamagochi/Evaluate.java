@@ -1,13 +1,20 @@
 package com.example.healthytamagochi;
 
-import android.annotation.SuppressLint;
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -21,14 +28,14 @@ import java.util.TimerTask;
 
 public class Evaluate extends AppCompatActivity {
 
-    ImageButton avatar;
+    ImageView avatar;
+    TextView time,name;
     String selectedPic,selectedKid, response;
-    TextView time;
     int hour=0;
     int min=0;
     int sec=0;
     int pont=0;
-    FrameLayout color ;
+    LinearLayout color ;
     TextView rating;
     Random rnd;
     int nextActivityID;
@@ -36,14 +43,14 @@ public class Evaluate extends AppCompatActivity {
     boolean firstGame;
     int numberOfQuestions;
 
-    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_evaluate);
 
         avatar = findViewById(R.id.avatar);
-        time=findViewById(R.id.time);
+        name = findViewById(R.id.textViewName);
+        time=findViewById(R.id.time_tv);
         color=findViewById(R.id.color);
         rating=findViewById(R.id.rating_tv);
 
@@ -61,22 +68,21 @@ public class Evaluate extends AppCompatActivity {
             firstGame=b.getBoolean("firstGame");
             response=b.getString("response");
 
-        }
+        name.setText(selectedKid);
 
         String uri = "@drawable/" + selectedPic;
         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
         Drawable res = getResources().getDrawable(imageRes);
         avatar.setImageDrawable(res);
 
-
         rating.setText("3/"+pont+" pont\n\n"+response);
         if(pont<2)
         {
-          color.setBackgroundColor(Color.parseColor("#ff3838"));
+          color.setBackgroundResource(R.drawable.red_round_bground);
         }
         else
         {
-            color.setBackgroundColor(Color.parseColor("#02de0a"));
+            color.setBackgroundResource(R.drawable.green_round_bground);
         }
 
         Timer T=new Timer();
