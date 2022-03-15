@@ -1,27 +1,20 @@
 package com.example.healthytamagochi;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,7 +22,7 @@ import java.util.TimerTask;
 public class Evaluate extends AppCompatActivity {
 
     ImageButton avatar;
-    String selectedPic,selectedKid;
+    String selectedPic,selectedKid, response;
     TextView time;
     int hour=0;
     int min=0;
@@ -43,6 +36,7 @@ public class Evaluate extends AppCompatActivity {
     boolean firstGame;
     int numberOfQuestions;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,26 +59,17 @@ public class Evaluate extends AppCompatActivity {
             pont=b.getInt("pont");
             prevActivityID=b.getInt("prevActivityID");
             firstGame=b.getBoolean("firstGame");
+            response=b.getString("response");
+
         }
 
-        if (selectedPic.equals("boy1"))
-        {
-            avatar.setImageResource(R.drawable.boy1);
-        }
-        else if (selectedPic.equals("girl1"))
-        {
-            avatar.setImageResource(R.drawable.girl1);
-        }
-        else if (selectedPic.equals("boy2"))
-        {
-            avatar.setImageResource(R.drawable.boy2);
-        }
-        else if (selectedPic.equals("girl2"))
-        {
-            avatar.setImageResource(R.drawable.girl2);
-        }
+        String uri = "@drawable/" + selectedPic;
+        int imageRes = getResources().getIdentifier(uri, null, getPackageName());
+        Drawable res = getResources().getDrawable(imageRes);
+        avatar.setImageDrawable(res);
 
-        rating.setText("Elért pont:  "+pont+"\nÜgyes vagy!");
+
+        rating.setText("3/"+pont+" pont\n\n"+response);
         if(pont<2)
         {
           color.setBackgroundColor(Color.parseColor("#ff3838"));
@@ -103,7 +88,6 @@ public class Evaluate extends AppCompatActivity {
                     @Override
                     public void run()
                     {
-
                         if(sec%60==0 && sec!=0)
                         {
                             min++;

@@ -1,9 +1,8 @@
 package com.example.healthytamagochi;
 
-import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -11,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,6 +31,7 @@ public class Homepage extends AppCompatActivity {
     int nextActivityID;
     boolean firstGame = true;
     int numberOfQuestions;
+    String avatar;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<String> kidNamesList = new ArrayList<>();
@@ -39,7 +41,7 @@ public class Homepage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        proba=findViewById(R.id.proba_tv);
+        proba = findViewById(R.id.proba_tv);
 
         //GET KIDS FROM DB
         db.collection("kids")
@@ -53,19 +55,47 @@ public class Homepage extends AppCompatActivity {
 
         img = findViewById(R.id.avatar_img);
         selectedKid = findViewById(R.id.selectedKid);
-        kidNamesList.add("Válasszon egy gyermeket!"); //ha hozzáadok egy bármit akkor oké, enélkül nem
-        // EZ SZARUL MŰKÖDIK A MANUÁLISAN HOZZÁADOTT STRING NÉLKÜL
+        kidNamesList.add("Ki játszik?");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, R.layout.spinner_text, kidNamesList);
         adapter.setDropDownViewResource(R.layout.simple_spinner_text);
         selectedKid.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-//        EZ A RÉGI XML-BŐL JÓL MŰKÖDÖTT
-//        Spinner spinner_selectedKid = findViewById(R.id.selectedKid);
-//        ArrayAdapter<CharSequence> adapter_selectedKid =
-//                ArrayAdapter.createFromResource(this, R.array.kids, R.layout.spinner_item);
-//        adapter_selectedKid.setDropDownViewResource(R.layout.spinner_dropdown_item);
-//        spinner_selectedKid.setAdapter(adapter_selectedKid);
+
+        selectedKid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if(!selectedKid.getSelectedItem().toString().contains("?")) {
+                    db.collection("kids")
+                            .whereEqualTo("name", selectedKid.getSelectedItem().toString())
+                            .get()
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        avatar = document.getString("avatar");
+                                        String uri = "@drawable/" + avatar;
+                                        int imageRes = getResources().getIdentifier(uri, null, getPackageName());
+                                        Drawable res = getResources().getDrawable(imageRes);
+                                        img.setImageDrawable(res);
+                                        img.setVisibility(View.VISIBLE);
+                                    }
+                                } else {
+                                    //error handling?
+                                }
+                            });
+                }else{
+                    img.setVisibility(View.INVISIBLE);
+                }
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        //set img null
+        img.setVisibility(View.INVISIBLE);
 
         //load number of questions in database
         numberOfQuestions = getNumOfQuestions();
@@ -83,28 +113,27 @@ public class Homepage extends AppCompatActivity {
     }
 
     public void play_onClick(View v) {
-        rnd = new Random();
-        nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
+        if (selectedKid.getSelectedItem().toString().contains("?")) {
+            Toast.makeText(getApplicationContext(), "Válasszon gyereket!", Toast.LENGTH_LONG).show();
+        } else {
+            rnd = new Random();
+            nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
 
-        Intent i = new Intent();
-        i.putExtra("selectedPic","boy1");
-        i.putExtra("selectedKid",selectedKid.getSelectedItem().toString().trim());
-        i.putExtra("prevActivityID",nextActivityID);
-        i.putExtra("firstGame",firstGame);
-        i.putExtra("NoOfQ",numberOfQuestions);
-        if(nextActivityID==1)
-        {
-            i.setClass(this,Questions1.class);
+            Intent i = new Intent();
+            i.putExtra("selectedPic", avatar);
+            i.putExtra("selectedKid", selectedKid.getSelectedItem().toString().trim());
+            i.putExtra("prevActivityID", nextActivityID);
+            i.putExtra("firstGame", firstGame);
+            i.putExtra("NoOfQ", numberOfQuestions);
+            if (nextActivityID == 1) {
+                i.setClass(this, Questions1.class);
+            } else if (nextActivityID == 2) {
+                i.setClass(this, OkosTanyer.class);
+            } else if (nextActivityID == 3) {
+                i.setClass(this, TeethBrushing.class);
+            }
+            startActivity(i);
         }
-        else if(nextActivityID==2)
-        {
-            i.setClass(this,OkosTanyer.class);
-        }
-        else if(nextActivityID==3)
-        {
-            i.setClass(this,TeethBrushing.class);
-        }
-        startActivity(i);
     }
 
     public void signOutClick(View v) {
@@ -114,7 +143,7 @@ public class Homepage extends AppCompatActivity {
         startActivity(i);
     }
 
-    public int getNumOfQuestions(){
+    public int getNumOfQuestions() {
         db.collection("questions").get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
