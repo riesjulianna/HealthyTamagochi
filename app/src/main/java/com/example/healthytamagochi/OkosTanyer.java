@@ -5,18 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Point;
-import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -43,7 +39,6 @@ public class OkosTanyer extends AppCompatActivity {
     int sec=0;
     ImageView option1,option2,option4,option3,tanyer;
     float xDown=0,yDown=0;
-    float xDown = 0, yDown = 0;
     Button done;
     int prevActivityID;
     boolean firstGame;
@@ -74,6 +69,7 @@ public class OkosTanyer extends AppCompatActivity {
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
+        int orientation = getResources().getConfiguration().orientation;
 
         List<String> fruit_List = Arrays.asList(getResources().getStringArray(R.array.fruits));
         List<String> vegetables_List = Arrays.asList(getResources().getStringArray(R.array.vegetables));
@@ -192,7 +188,6 @@ public class OkosTanyer extends AppCompatActivity {
                 public boolean onTouch(View view, MotionEvent event) {
                     actualX=option1.getX();
                     actualY=option1.getY();
-                   
                         // rá teszi az ujját a képre
                         if(event.getAction() == MotionEvent.ACTION_DOWN)
                         {
@@ -217,64 +212,128 @@ public class OkosTanyer extends AppCompatActivity {
                         }
                         if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
                         {
-                            if(actualX>(width-(width*7.3/10.0)) &&
-                                    actualX<(width-(width*4.3/10.0)) &&
-                                    actualY>(height-(height*6.9/10.0)) &&
-                                    actualY<(height-(height*5.4/10.0)))
+                            if(orientation == Configuration.ORIENTATION_PORTRAIT)
                             {
-                                option1.setVisibility(View.GONE);
-                                if(starter==1  && rnd_type==0)
+                                if(actualX>(width-(width*7.3/10.0)) &&
+                                        actualX<(width-(width*4.3/10.0)) &&
+                                        actualY>(height-(height*6.9/10.0)) &&
+                                        actualY<(height-(height*5.4/10.0)))
                                 {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if(starter==2 && rnd_type==0)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
+                                    option1.setVisibility(View.GONE);
+                                    if(starter==1  && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==2 && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
 
-                                 if(starter==3 && rnd_type==1)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if(starter==4 && rnd_type==1)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                               if(starter==1 && rnd_type==1)
-                                {
-                                    if( score>0)
+                                    if(starter==3 && rnd_type==1)
                                     {
-                                        score--;
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==4 && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==1 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==2 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==3 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==4 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
                                     }
                                 }
-                                if(starter==2 && rnd_type==1)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
-                                }
-                                if(starter==3 && rnd_type==0)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
-                                }
-                                if(starter==4 && rnd_type==0)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
+                                else  {
+                                    // ha nem a tányérra húzta
+                                    option1.setX((float)(width-(width*(9.6/10.0))));
+                                    option1.setY((float)(height-(height*(8.14/10.0))));
                                 }
                             }
-                            else  {
-                                // ha nem a tányérra húzta
-                                option1.setX((float)(width-(width*(9.6/10.0))));
-                                option1.setY((float)(height-(height*(8.14/10.0))));
+                            else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
+                            {
+                                if(actualX>(width-(width*5.8/10.0)) &&
+                                        actualX<(width-(width*5.0/10.0)) &&
+                                        actualY>(height-(height*7.4/10.0)) &&
+                                        actualY<(height-(height*5.5/10.0)))
+                                {
+                                    option1.setVisibility(View.GONE);
+                                    if(starter==1  && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==2 && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+
+                                    if(starter==3 && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==4 && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==1 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==2 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==3 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==4 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                }
+                                else  {
+                                    // ha nem a tányérra húzta
+                                    option1.setX((float)(width-(width*(9.23/10.0))));
+                                    option1.setY((float)(height-(height*(8.14/10.0))));
+                                }
                             }
                         }
+
 
 
 
@@ -311,65 +370,128 @@ public class OkosTanyer extends AppCompatActivity {
                             option4.setY(option4.getY()+distanceY);
 
                         }
-                        if(event.getAction() == MotionEvent.ACTION_UP)
-                        {
-                            if(actualX>(width-(width*7.3/10.0)) &&
-                                    actualX<(width-(width*4.3/10.0)) &&
-                                    actualY>(height-(height*6.9/10.0)) &&
-                                    actualY<(height-(height*5.4/10.0)))
+                        if(event.getAction() == MotionEvent.ACTION_UP) {
+                            if (orientation == Configuration.ORIENTATION_PORTRAIT)
                             {
-                                option4.setVisibility(View.GONE);
-                                if(starter==4 && rnd_type==0)
+                                if(actualX>(width-(width*7.3/10.0)) &&
+                                        actualX<(width-(width*4.3/10.0)) &&
+                                        actualY>(height-(height*6.9/10.0)) &&
+                                        actualY<(height-(height*5.4/10.0)))
                                 {
-                                    done.setVisibility(View.VISIBLE);
-                                }
+                                    option4.setVisibility(View.GONE);
+                                    if(starter==4 && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
 
-                                if(starter==1 && rnd_type==1)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if(starter==2  && rnd_type==1)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if( starter==3 && rnd_type==1)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if(starter==4 && rnd_type==1)
-                                {
-                                    if( score>0)
+                                    if(starter==1 && rnd_type==1)
                                     {
-                                        score--;
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==2  && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if( starter==3 && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==4 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==1 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==2 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==3 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
                                     }
                                 }
-                                if(starter==1 && rnd_type==0)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
-                                }
-                                if(starter==2 && rnd_type==0)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
-                                }
-                                if(starter==3 && rnd_type==0)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
+                                else   {
+                                    // ha nem a tányérra húzta
+                                    option4.setX((float)(width-(width*(2.0/10.0))));
+                                    option4.setY((float)(height-(height*(3.8/10.0))));
                                 }
                             }
-                           else   {
-                                // ha nem a tányérra húzta
-                                option4.setX((float)(width-(width*(2.0/10.0))));
-                                option4.setY((float)(height-(height*(3.8/10.0))));
+                            else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
+                            {
+                                if(actualX>(width-(width*5.8/10.0)) &&
+                                        actualX<(width-(width*5.0/10.0)) &&
+                                        actualY>(height-(height*7.4/10.0)) &&
+                                        actualY<(height-(height*5.5/10.0)))
+                                {
+                                    option4.setVisibility(View.GONE);
+                                    if(starter==4 && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+
+                                    if(starter==1 && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==2  && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if( starter==3 && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==4 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==1 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==2 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==3 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                }
+                                else   {
+                                    // ha nem a tányérra húzta
+                                    option4.setX((float)(width-(width*(1.59/10.0))));
+                                    option4.setY((float)(height-(height*(4.32/10.0))));
+                                }
                             }
+
                         }
 
 
@@ -408,65 +530,124 @@ public class OkosTanyer extends AppCompatActivity {
                 }
                 if(event.getAction() == MotionEvent.ACTION_UP)
                 {
-                    if(actualX>(width-(width*7.3/10.0)) &&
-                            actualX<(width-(width*4.3/10.0)) &&
-                            actualY>(height-(height*6.9/10.0)) &&
-                            actualY<(height-(height*5.4/10.0)))
+                    if(orientation==Configuration.ORIENTATION_PORTRAIT)
                     {
-                        option2.setVisibility(View.GONE);
-                        if(starter==2 && rnd_type==0)
+                        if(actualX>(width-(width*7.3/10.0)) &&
+                                actualX<(width-(width*4.3/10.0)) &&
+                                actualY>(height-(height*6.9/10.0)) &&
+                                actualY<(height-(height*5.4/10.0)))
                         {
-                            done.setVisibility(View.VISIBLE);
-                        }
-                        if( starter==3 && rnd_type==0)
-                        {
-                            done.setVisibility(View.VISIBLE);
-                        }
-                        if(starter==1  && rnd_type==1)
-                        {
-                            done.setVisibility(View.VISIBLE);
-                        }
-                        if( starter==4 && rnd_type==1)
-                        {
-                            done.setVisibility(View.VISIBLE);
-                        }
-                        if(starter==2 && rnd_type==1)
-                        {
-                            if( score>0)
+                            option2.setVisibility(View.GONE);
+                            if(starter==2 && rnd_type==0)
                             {
-                                score--;
+                                done.setVisibility(View.VISIBLE);
                             }
-                        }
-                        if(starter==3 && rnd_type==1)
-                        {
-                            if( score>0)
+                            if( starter==3 && rnd_type==0)
                             {
-                                score--;
+                                done.setVisibility(View.VISIBLE);
                             }
-                        }
-                        if(starter==1 && rnd_type==0)
-                        {
-                            if( score>0)
+                            if(starter==1  && rnd_type==1)
                             {
-                                score--;
+                                done.setVisibility(View.VISIBLE);
                             }
-                        }
-                        if(starter==4 && rnd_type==0)
-                        {
-                            if( score>0)
+                            if( starter==4 && rnd_type==1)
                             {
-                                score--;
+                                done.setVisibility(View.VISIBLE);
                             }
-                        }
+                            if(starter==2 && rnd_type==1)
+                            {
+                                if( score>0)
+                                {
+                                    score--;
+                                }
+                            }
+                            if(starter==3 && rnd_type==1)
+                            {
+                                if( score>0)
+                                {
+                                    score--;
+                                }
+                            }
+                            if(starter==1 && rnd_type==0)
+                            {
+                                if( score>0)
+                                {
+                                    score--;
+                                }
+                            }
+                            if(starter==4 && rnd_type==0)
+                            {
+                                if( score>0)
+                                {
+                                    score--;
+                                }
+                            }
 
 
+                        }
+                        else{
+                            option2.setX((float)(width-(width*(2.0/10.0))));
+                            option2.setY((float)(height-(height*(8.14/10.0))));
+                        }
                     }
-                    else{
-                        option2.setX((float)(width-(width*(2.0/10.0))));
-                        option2.setY((float)(height-(height*(8.14/10.0))));
+                    else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
+                    {
+                        if(actualX>(width-(width*5.8/10.0)) &&
+                                actualX<(width-(width*5.0/10.0)) &&
+                                actualY>(height-(height*7.4/10.0)) &&
+                                actualY<(height-(height*5.5/10.0)))
+                        {
+                            option2.setVisibility(View.GONE);
+                            if(starter==2 && rnd_type==0)
+                            {
+                                done.setVisibility(View.VISIBLE);
+                            }
+                            if( starter==3 && rnd_type==0)
+                            {
+                                done.setVisibility(View.VISIBLE);
+                            }
+                            if(starter==1  && rnd_type==1)
+                            {
+                                done.setVisibility(View.VISIBLE);
+                            }
+                            if( starter==4 && rnd_type==1)
+                            {
+                                done.setVisibility(View.VISIBLE);
+                            }
+                            if(starter==2 && rnd_type==1)
+                            {
+                                if( score>0)
+                                {
+                                    score--;
+                                }
+                            }
+                            if(starter==3 && rnd_type==1)
+                            {
+                                if( score>0)
+                                {
+                                    score--;
+                                }
+                            }
+                            if(starter==1 && rnd_type==0)
+                            {
+                                if( score>0)
+                                {
+                                    score--;
+                                }
+                            }
+                            if(starter==4 && rnd_type==0)
+                            {
+                                if( score>0)
+                                {
+                                    score--;
+                                }
+                            }
+                        }
+                        else{
+                            option2.setX((float)(width-(width*(1.59/10.0))));
+                            option2.setY((float)(height-(height*(8.14/10.0))));
+                        }
                     }
-
-
 
                 }
 
@@ -504,61 +685,123 @@ public class OkosTanyer extends AppCompatActivity {
                     }
                         if(event.getAction() == MotionEvent.ACTION_UP)
                         {
-                            if(actualX>(width-(width*7.3/10.0)) &&
-                                    actualX<(width-(width*4.3/10.0)) &&
-                                    actualY>(height-(height*6.9/10.0)) &&
-                                    actualY<(height-(height*5.4/10.0)))
+                            if(orientation==Configuration.ORIENTATION_PORTRAIT)
                             {
-                                option3.setVisibility(View.GONE);
-                                if(starter==1 && rnd_type==0)
+                                if(actualX>(width-(width*7.3/10.0)) &&
+                                        actualX<(width-(width*4.3/10.0)) &&
+                                        actualY>(height-(height*6.9/10.0)) &&
+                                        actualY<(height-(height*5.4/10.0)))
                                 {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if(starter==3  && rnd_type==0)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if(starter==4 && rnd_type==0)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if(starter==2 && rnd_type==1)
-                                {
-                                    done.setVisibility(View.VISIBLE);
-                                }
-                                if(starter==1 && rnd_type==1)
-                                {
-                                    if( score>0)
+                                    option3.setVisibility(View.GONE);
+                                    if(starter==1 && rnd_type==0)
                                     {
-                                        score--;
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==3  && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==4 && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==2 && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==1 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==3 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==4 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==2 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
                                     }
                                 }
-                                if(starter==3 && rnd_type==1)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
-                                }
-                                if(starter==4 && rnd_type==1)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
-                                }
-                                if(starter==2 && rnd_type==0)
-                                {
-                                    if( score>0)
-                                    {
-                                        score--;
-                                    }
+                                else {
+                                    option3.setX((float)(width-(width*(9.6/10.0))));
+                                    option3.setY((float)(height-(height*(3.8/10.0))));
                                 }
                             }
-                            else {
-                                option3.setX((float)(width-(width*(9.6/10.0))));
-                                option3.setY((float)(height-(height*(3.8/10.0))));
+                            else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
+                            {
+                                if(actualX>(width-(width*5.8/10.0)) &&
+                                        actualX<(width-(width*5.0/10.0)) &&
+                                        actualY>(height-(height*7.4/10.0)) &&
+                                        actualY<(height-(height*5.5/10.0)))
+                                {
+                                    option3.setVisibility(View.GONE);
+                                    if(starter==1 && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==3  && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==4 && rnd_type==0)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==2 && rnd_type==1)
+                                    {
+                                        done.setVisibility(View.VISIBLE);
+                                    }
+                                    if(starter==1 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==3 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==4 && rnd_type==1)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                    if(starter==2 && rnd_type==0)
+                                    {
+                                        if( score>0)
+                                        {
+                                            score--;
+                                        }
+                                    }
+                                }
+                                else {
+                                    option3.setX((float)(width-(width*(9.23/10.0))));
+                                    option3.setY((float)(height-(height*(4.32/10.0))));
+                                }
                             }
+
                         }
 
 

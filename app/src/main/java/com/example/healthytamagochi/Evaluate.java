@@ -75,12 +75,30 @@ public class Evaluate extends AppCompatActivity {
             Drawable res = getResources().getDrawable(imageRes);
             avatar.setImageDrawable(res);
 
-            rating.setText("3/" + pont + " pont\n\n" + response);
-            if (pont < 2) {
-                color.setBackgroundResource(R.drawable.red_round_bground);
-            } else {
+            if(prevActivityID==1 && pont>1)
+            {
+                rating.setText("3/" + pont + " pont\n\n" + response);
                 color.setBackgroundResource(R.drawable.green_round_bground);
             }
+            else if(prevActivityID==1 && pont<=1)
+            {
+                rating.setText("3/" + pont + " pont\n\n" + response);
+                color.setBackgroundResource(R.drawable.red_round_bground);
+            }
+            else if(prevActivityID==2 || prevActivityID==3)
+            {
+                if(pont>1)
+                {
+                    rating.setText("3/" + pont + " pont\n\n" + "Ügyes vagy!");
+                    color.setBackgroundResource(R.drawable.green_round_bground);
+                }
+                else
+                {
+                    rating.setText("3/" + pont + " pont\n\n" + "Legközelebb ügyesebb leszel!");
+                    color.setBackgroundResource(R.drawable.red_round_bground);
+                }
+            }
+
 
             Timer T = new Timer();
             T.scheduleAtFixedRate(new TimerTask() {
