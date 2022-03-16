@@ -1,9 +1,11 @@
 package com.example.healthytamagochi;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +20,7 @@ import java.util.TimerTask;
 
 public class TeethBrushing extends AppCompatActivity {
 
-    ImageButton avatar;
+    ImageView avatar;
     String selectedPic,selectedKid;
     TextView time;
     int hour=0;
@@ -27,10 +29,11 @@ public class TeethBrushing extends AppCompatActivity {
     float xDown=0,yDown=0;
     Button done;
     ImageView kosz1,kosz2,kosz3,kefe;
-    TextView koord;
+    TextView koord,name;
     int db1=0,db2=0,db3=0;
     int prevActivityID;
     boolean firstGame;
+    float actualX,actualY;
 
 
     @Override
@@ -39,23 +42,21 @@ public class TeethBrushing extends AppCompatActivity {
         setContentView(R.layout.activity_teeth_brushing);
 
         avatar = findViewById(R.id.avatar);
-        time=findViewById(R.id.time);
+        time=findViewById(R.id.time_tv);
         kosz1=findViewById(R.id.kosz1);
         kosz2=findViewById(R.id.kosz2);
         kosz3=findViewById(R.id.kosz3);
         kefe=findViewById(R.id.fogkefe);
         koord=findViewById(R.id.leiras_tv);
         done=findViewById(R.id.Done_btn);
+        name=findViewById(R.id.textViewName);
 
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
 
-        kosz1.setX(300);
-        kosz1.setY(460);
-
-        kosz2.setX(600);
-        kosz2.setY(460);
-
-        kosz3.setX(400);
-        kosz3.setY(650);
+        int orientation = getResources().getConfiguration().orientation;
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -69,7 +70,7 @@ public class TeethBrushing extends AppCompatActivity {
         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
         Drawable res = getResources().getDrawable(imageRes);
         avatar.setImageDrawable(res);
-
+        name.setText(selectedKid);
         if(!firstGame)
         {
             hour=b.getInt("hour");
@@ -121,68 +122,119 @@ public class TeethBrushing extends AppCompatActivity {
         kefe.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
+                actualX=kefe.getX();
+                actualY=kefe.getY();
+                if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+                    if(actualX<(width-(width*6.8/10.0)) &&
+                            actualX>(width-(width*7.2/10.0))  &&
+                            actualY<(height-(height*5.8/10.0)) &&
+                            actualY>(height-(height*6.1/10.0)))
+                    {
+                        db1++;
+                    }
+                    if(actualX<(width-(width*4.1/10.0)) &&
+                            actualX>(width-(width*4.7/10.0))  &&
+                            actualY<(height-(height*5.8/10.0)) &&
+                            actualY>(height-(height*6.1/10.0)))
+                    {
+                        db2++;
+                    }
+                    if(actualX<(width-(width*5.5/10.0)) &&
+                            actualX>(width-(width*6.1/10.0))  &&
+                            actualY<(height-(height*4.7/10.0)) &&
+                            actualY>(height-(height*5.0/10.0)))
+                    {
+                        db3++;
+                    }
+
+
+                    if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
+                    {
+                        kefe.setX((float)(width-(width*6.9/10.0)));
+                        kefe.setY((float)(height-(height*8.11/10.0)));
+                    }
+                } else {
+                    // In Landscape
+
+                    if(db1>20 && db2>20 && db3>20)
+                    {
+                        done.setVisibility(View.VISIBLE);
+                    }
+                    if(actualX<(width-(width*5.8/10.0)) &&
+                            actualX>(width-(width*6.1/10.0))  &&
+                            actualY<(height-(height*6.1/10.0)) &&
+                            actualY>(height-(height*6.5/10.0)))
+                    {
+                        db1++;
+                    }
+                    if(actualX<(width-(width*4.3/10.0)) &&
+                            actualX>(width-(width*4.9/10.0))  &&
+                            actualY<(height-(height*6.1/10.0)) &&
+                            actualY>(height-(height*6.5/10.0)))
+                    {
+                        db2++;
+                    }
+                    if(actualX<(width-(width*5.5/10.0)) &&
+                            actualX>(width-(width*6.1/10.0))  &&
+                            actualY<(height-(height*5.1/10.0)) &&
+                            actualY>(height-(height*5.6/10.0)))
+                    {
+                        db3++;
+                    }
+
+
+                    if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
+                    {
+                        kefe.setX((float)(width-(width*5.8/10.0)));   //750
+                        kefe.setY((float)(height-(height*8.11/10.0)));
+                    }
+                }
+                // rá teszi az ujját a képre
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
+                {
+                    xDown=event.getX();
+                    yDown=event.getY();
+
+                }
+                //mozgatja az ujját
+                if(event.getAction() == MotionEvent.ACTION_MOVE) {
+                    float movedX, movedY;
+                    movedX = event.getX();
+                    movedY = event.getY();
+
+                    //kiszámolni mennyit mozdított az ujjával
+                    float distanceX = movedX - xDown;
+                    float distanceY = movedY - yDown;
+
+                    //oda tesszük a képet
+                    kefe.setX(kefe.getX() + distanceX);
+                    kefe.setY(kefe.getY() + distanceY);
+                }
+                if(db1>20)
+                {
+                    kosz1.setVisibility(View.INVISIBLE);
+                }
+                if(db2>20)
+                {
+                    kosz2.setVisibility(View.INVISIBLE);
+                }
+                if(db3>20)
+                {
+                    kosz3.setVisibility(View.INVISIBLE);
+                }
                 if(db1>20 && db2>20 && db3>20)
                 {
                     done.setVisibility(View.VISIBLE);
                 }
-                if(kefe.getX()>=100 && kefe.getX()<=300 && kefe.getY()>=400 && kefe.getY()<=500)
-                {
-                    db1++;
-                }
-                if(kefe.getX()>=300 && kefe.getX()<=600 && kefe.getY()>=400 && kefe.getY()<=500)
-                {
-                    db2++;
-                }
-                if(kefe.getX()>=200 && kefe.getX()<=400 && kefe.getY()>=600 && kefe.getY()<=700)
-                {
-                    db3++;
-                }
-
-                if(db1>20)
-                {
-                    kosz1.setImageResource(R.drawable.csillog);
-                }
-                if(db2>20)
-                {
-                    kosz2.setImageResource(R.drawable.csillog);
-                }
-                if(db3>20)
-                {
-                    kosz3.setImageResource(R.drawable.csillog);
-                }
-
-                    // rá teszi az ujját a képre
-                    if(event.getAction() == MotionEvent.ACTION_DOWN)
-                    {
-                        xDown=event.getX();
-                        yDown=event.getY();
-
-                    }
-                    //mozgatja az ujját
-                    if(event.getAction() == MotionEvent.ACTION_MOVE) {
-                        float movedX, movedY;
-                        movedX = event.getX();
-                        movedY = event.getY();
-
-                        //kiszámolni mennyit mozdított az ujjával
-                        float distanceX = movedX - xDown;
-                        float distanceY = movedY - yDown;
-
-                        //oda tesszük a képet
-                        kefe.setX(kefe.getX() + distanceX);
-                        kefe.setY(kefe.getY() + distanceY);
-                    }
-                    if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
-                    {
-                            kefe.setX(300);
-                            kefe.setY(0);
-                    }
-
 
 
                 return true;
             }
         });
+
+
+
+
 
     }
 
