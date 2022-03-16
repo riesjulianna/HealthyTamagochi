@@ -1,17 +1,24 @@
 package com.example.healthytamagochi;
 
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Point;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -27,20 +34,22 @@ import java.util.TimerTask;
 
 public class OkosTanyer extends AppCompatActivity {
 
-    ImageButton avatar;
-    String selectedPic, selectedKid;
-    TextView time, type_tv;
-    int hour = 0;
-    int min = 0;
-    int sec = 0;
-    ImageView apples, csoki, sali, teszta, tanyer;
+
+    ImageView avatar;
+    String selectedPic,selectedKid;
+    TextView time,type_tv,name;
+    int hour=0;
+    int min=0;
+    int sec=0;
+    ImageView option1,option2,option4,option3,tanyer;
+    float xDown=0,yDown=0;
     float xDown = 0, yDown = 0;
     Button done;
     int prevActivityID;
     boolean firstGame;
     Random rnd;
-    int starter, rnd_fruit1, rnd_fruit2, rnd_veg1, rnd_veg2,
-            resID_f1, resID_f2, resID_v1, resID_v2, score = 3, rnd_type;
+    int starter, rnd_fruit1,rnd_fruit2,rnd_veg1,rnd_veg2, resID_f1,resID_f2,resID_v1,resID_v2,score=3,rnd_type;
+    float actualX,actualY;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -49,14 +58,22 @@ public class OkosTanyer extends AppCompatActivity {
         setContentView(R.layout.activity_okos_tanyer);
 
         avatar = findViewById(R.id.avatar);
-        time = findViewById(R.id.time);
-        apples = findViewById(R.id.apples);
-        csoki = findViewById(R.id.csoki);
-        teszta = findViewById(R.id.teszta);
-        sali = findViewById(R.id.sali);
-        tanyer = findViewById(R.id.tanyer);
-        done = findViewById(R.id.Done_btn);
-        type_tv = findViewById(R.id.type_tv);
+        time=findViewById(R.id.time_tv);
+        option1=findViewById(R.id.apples);
+        option2=findViewById(R.id.csoki);
+        option3=findViewById(R.id.teszta);
+        option4=findViewById(R.id.sali);
+        tanyer=findViewById(R.id.tanyer);
+        done=findViewById(R.id.Done_btn);
+        type_tv=findViewById(R.id.type_tv);
+        name=findViewById(R.id.textViewName);
+
+
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int height = displayMetrics.heightPixels;
+        int width = displayMetrics.widthPixels;
+
 
         List<String> fruit_List = Arrays.asList(getResources().getStringArray(R.array.fruits));
         List<String> vegetables_List = Arrays.asList(getResources().getStringArray(R.array.vegetables));
@@ -84,36 +101,39 @@ public class OkosTanyer extends AppCompatActivity {
         String fruit2 = fruit_List.get(rnd_fruit2);
         String veg1 = vegetables_List.get(rnd_veg1);
         String veg2 = vegetables_List.get(rnd_veg2);
-        resID_f1 = getResources().getIdentifier(fruit1, "drawable", getPackageName());
-        resID_f2 = getResources().getIdentifier(fruit2, "drawable", getPackageName());
-        resID_v1 = getResources().getIdentifier(veg1, "drawable", getPackageName());
-        resID_v2 = getResources().getIdentifier(veg2, "drawable", getPackageName());
+      
+        resID_f1 = getResources().getIdentifier(fruit1 , "drawable", getPackageName());
+        resID_f2 = getResources().getIdentifier(fruit2 , "drawable", getPackageName());
+        resID_v1 = getResources().getIdentifier(veg1 , "drawable", getPackageName());
+        resID_v2 = getResources().getIdentifier(veg2 , "drawable", getPackageName());
 
-        switch (starter) {
-            case 1:
-                teszta.setImageResource(resID_f1);
-                csoki.setImageResource(resID_v1);
-                apples.setImageResource(resID_f2);
-                sali.setImageResource(resID_v2);
-                break;
-            case 2:
-                teszta.setImageResource(resID_v1);
-                csoki.setImageResource(resID_f1);
-                apples.setImageResource(resID_f2);
-                sali.setImageResource(resID_v2);
-                break;
-            case 3:
-                teszta.setImageResource(resID_f1);
-                csoki.setImageResource(resID_f2);
-                apples.setImageResource(resID_v1);
-                sali.setImageResource(resID_v2);
-                break;
-            case 4:
-                teszta.setImageResource(resID_f1);
-                csoki.setImageResource(resID_v1);
-                apples.setImageResource(resID_v2);
-                sali.setImageResource(resID_f2);
-                break;
+        if(starter==1)
+        {
+            option1.setImageResource(resID_f2);
+            option2.setImageResource(resID_v1);
+            option3.setImageResource(resID_f1);
+            option4.setImageResource(resID_v2);
+        }
+        else if(starter==2)
+        {
+            option1.setImageResource(resID_f2);
+            option2.setImageResource(resID_f1);
+            option3.setImageResource(resID_v1);
+            option4.setImageResource(resID_v2);
+        }
+        else if(starter==3)
+        {
+            option1.setImageResource(resID_v1);
+            option2.setImageResource(resID_f2);
+            option3.setImageResource(resID_f1);
+            option4.setImageResource(resID_v2);
+        }
+        else if(starter==4)
+        {
+            option1.setImageResource(resID_v2);
+            option2.setImageResource(resID_v1);
+            option3.setImageResource(resID_f1);
+            option4.setImageResource(resID_f2);
         }
 
 
@@ -124,6 +144,8 @@ public class OkosTanyer extends AppCompatActivity {
             prevActivityID = b.getInt("prevActivityID");
             firstGame = b.getBoolean("firstGame");
         }
+
+        name.setText(selectedKid);
 
         String uri = "@drawable/" + selectedPic;
         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
@@ -136,6 +158,7 @@ public class OkosTanyer extends AppCompatActivity {
             sec = b.getInt("sec");
         } else {
             firstGame = false;
+
         }
 
         Timer T = new Timer();
@@ -164,150 +187,285 @@ public class OkosTanyer extends AppCompatActivity {
             }
         }, 1000, 1000);
 
+  option1.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View view, MotionEvent event) {
+                    actualX=option1.getX();
+                    actualY=option1.getY();
+                   
+                        // rá teszi az ujját a képre
+                        if(event.getAction() == MotionEvent.ACTION_DOWN)
+                        {
+                            xDown=event.getX();
+                            yDown=event.getY();
 
-        apples.setOnTouchListener(new View.OnTouchListener() {
+                        }
+                        //mozgatja az ujját
+                        if(event.getAction() == MotionEvent.ACTION_MOVE)
+                        {
+                            float movedX,movedY;
+                            movedX=event.getX();
+                            movedY=event.getY();
+
+                            //kiszámolni mennyit mozdított az ujjával
+                            float distanceX=movedX-xDown;
+                            float distanceY=movedY-yDown;
+
+                            //oda tesszük a képet
+                            option1.setX(option1.getX()+distanceX);
+                            option1.setY(option1.getY()+distanceY);
+                        }
+                        if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
+                        {
+                            if(actualX>(width-(width*7.3/10.0)) &&
+                                    actualX<(width-(width*4.3/10.0)) &&
+                                    actualY>(height-(height*6.9/10.0)) &&
+                                    actualY<(height-(height*5.4/10.0)))
+                            {
+                                option1.setVisibility(View.GONE);
+                                if(starter==1  && rnd_type==0)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if(starter==2 && rnd_type==0)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+
+                                 if(starter==3 && rnd_type==1)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if(starter==4 && rnd_type==1)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                               if(starter==1 && rnd_type==1)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==2 && rnd_type==1)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==3 && rnd_type==0)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==4 && rnd_type==0)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                            }
+                            else  {
+                                // ha nem a tányérra húzta
+                                option1.setX((float)(width-(width*(9.6/10.0))));
+                                option1.setY((float)(height-(height*(8.14/10.0))));
+                            }
+                        }
+
+
+
+                    return true;
+                }
+            });
+
+
+       option4.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                type_tv.setText(score + "");
-
+                actualX=option4.getX();
+                actualY=option4.getY();
+                
                 // rá teszi az ujját a képre
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    xDown = event.getX();
-                    yDown = event.getY();
+                        if(event.getAction() == MotionEvent.ACTION_DOWN)
+                    {
+                        xDown=event.getX();
+                        yDown=event.getY();
+                    }
+                        //mozgatja az ujját
+                        if(event.getAction() == MotionEvent.ACTION_MOVE)
+                        {
+                            float movedX,movedY;
+                            movedX=event.getX();
+                            movedY=event.getY();
 
-                }
-                //mozgatja az ujját
-                if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    float movedX, movedY;
-                    movedX = event.getX();
-                    movedY = event.getY();
+                            //kiszámolni mennyit mozdított az ujjával
+                            float distanceX=movedX-xDown;
+                            float distanceY=movedY-yDown;
 
-                    //kiszámolni mennyit mozdított az ujjával
-                    float distanceX = movedX - xDown;
-                    float distanceY = movedY - yDown;
+                            //oda tesszük a képet
+                            option4.setX(option4.getX()+distanceX);
+                            option4.setY(option4.getY()+distanceY);
 
-                    //oda tesszük a képet
-                    apples.setX(apples.getX() + distanceX);
-                    apples.setY(apples.getY() + distanceY);
-                }
-                if (event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
+                        }
+                        if(event.getAction() == MotionEvent.ACTION_UP)
+                        {
+                            if(actualX>(width-(width*7.3/10.0)) &&
+                                    actualX<(width-(width*4.3/10.0)) &&
+                                    actualY>(height-(height*6.9/10.0)) &&
+                                    actualY<(height-(height*5.4/10.0)))
+                            {
+                                option4.setVisibility(View.GONE);
+                                if(starter==4 && rnd_type==0)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+
+                                if(starter==1 && rnd_type==1)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if(starter==2  && rnd_type==1)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if( starter==3 && rnd_type==1)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if(starter==4 && rnd_type==1)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==1 && rnd_type==0)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==2 && rnd_type==0)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==3 && rnd_type==0)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                            }
+                           else   {
+                                // ha nem a tányérra húzta
+                                option4.setX((float)(width-(width*(2.0/10.0))));
+                                option4.setY((float)(height-(height*(3.8/10.0))));
+                            }
+                        }
+
+
+
+                return true;
+            }
+        });
+
+
+        option2.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent event) {
+                actualX=option2.getX();
+                actualY=option2.getY();
+              
+                // rá teszi az ujját a képre
+                if(event.getAction() == MotionEvent.ACTION_DOWN)
                 {
-                    if (apples.getX() > 146 && apples.getX() < 540 && apples.getY() > 360 && apples.getY() < 850) {
-                        apples.setVisibility(View.GONE);
-                        if (starter == 1 || starter == 2 && (rnd_type == 0)) {
-                            done.setVisibility(View.VISIBLE);
-                        } else if (starter == 3 || starter == 4 && (rnd_type == 1)) {
-                            done.setVisibility(View.VISIBLE);
-                        } else {
-                            if (score >= 0) {
-                                score--;
-                            }
-                        }
-                    } else if (!(apples.getX() > 146 && apples.getX() < 540 && apples.getY() > 360 && apples.getY() < 850)) {
-                        apples.setX(0);
-                        apples.setY(1200);
-                    }
-                }
-
-
-                return true;
-            }
-        });
-
-
-        sali.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                // rá teszi az ujját a képre
-                type_tv.setText(score + "");
-
-                sali.setBackgroundColor(Color.parseColor("#f7f7f7"));
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    xDown = event.getX();
-                    yDown = event.getY();
+                    xDown=event.getX();
+                    yDown=event.getY();
                 }
                 //mozgatja az ujját
-                if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    float movedX, movedY;
-                    movedX = event.getX();
-                    movedY = event.getY();
+                if(event.getAction() == MotionEvent.ACTION_MOVE)
+                {
+                    float movedX,movedY;
+                    movedX=event.getX();
+                    movedY=event.getY();
 
                     //kiszámolni mennyit mozdított az ujjával
-                    float distanceX = movedX - xDown;
-                    float distanceY = movedY - yDown;
+                    float distanceX=movedX-xDown;
+                    float distanceY=movedY-yDown;
 
                     //oda tesszük a képet
-                    sali.setX(sali.getX() + distanceX);
-                    sali.setY(sali.getY() + distanceY);
-
+                    option2.setX(option2.getX()+distanceX);
+                    option2.setY(option2.getY()+distanceY);
                 }
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (sali.getX() > 146 && sali.getX() < 540 && sali.getY() > 360 && sali.getY() < 850) {
-                        sali.setVisibility(View.GONE);
-                        if (starter == 4 && (rnd_type == 0)) {
+                if(event.getAction() == MotionEvent.ACTION_UP)
+                {
+                    if(actualX>(width-(width*7.3/10.0)) &&
+                            actualX<(width-(width*4.3/10.0)) &&
+                            actualY>(height-(height*6.9/10.0)) &&
+                            actualY<(height-(height*5.4/10.0)))
+                    {
+                        option2.setVisibility(View.GONE);
+                        if(starter==2 && rnd_type==0)
+                        {
                             done.setVisibility(View.VISIBLE);
-                        } else if (starter == 1 || starter == 2 || starter == 3 && (rnd_type == 1)) {
+                        }
+                        if( starter==3 && rnd_type==0)
+                        {
                             done.setVisibility(View.VISIBLE);
-                        } else {
-                            if (score >= 0) {
+                        }
+                        if(starter==1  && rnd_type==1)
+                        {
+                            done.setVisibility(View.VISIBLE);
+                        }
+                        if( starter==4 && rnd_type==1)
+                        {
+                            done.setVisibility(View.VISIBLE);
+                        }
+                        if(starter==2 && rnd_type==1)
+                        {
+                            if( score>0)
+                            {
                                 score--;
                             }
                         }
-                    } else if (!(sali.getX() > 146 && sali.getX() < 540 && sali.getY() > 360 && sali.getY() < 850)) {
-                        sali.setX(700);
-                        sali.setY(1200);
-                    }
-                }
-
-
-                return true;
-            }
-        });
-
-
-        csoki.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent event) {
-                type_tv.setText(score + "");
-
-                // rá teszi az ujját a képre
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    xDown = event.getX();
-                    yDown = event.getY();
-                }
-                //mozgatja az ujját
-                if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    float movedX, movedY;
-                    movedX = event.getX();
-                    movedY = event.getY();
-
-                    //kiszámolni mennyit mozdított az ujjával
-                    float distanceX = movedX - xDown;
-                    float distanceY = movedY - yDown;
-
-                    //oda tesszük a képet
-                    csoki.setX(csoki.getX() + distanceX);
-                    csoki.setY(csoki.getY() + distanceY);
-                }
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (csoki.getX() > 146 && csoki.getX() < 540 && csoki.getY() > 360 && csoki.getY() < 850) {
-                        csoki.setVisibility(View.GONE);
-                        if (starter == 2 || starter == 3 && (rnd_type == 0)) {
-                            done.setVisibility(View.VISIBLE);
-                        } else if (starter == 1 || starter == 4 && (rnd_type == 1)) {
-                            done.setVisibility(View.VISIBLE);
-                        } else {
-
-                            if (score >= 0) {
+                        if(starter==3 && rnd_type==1)
+                        {
+                            if( score>0)
+                            {
+                                score--;
+                            }
+                        }
+                        if(starter==1 && rnd_type==0)
+                        {
+                            if( score>0)
+                            {
+                                score--;
+                            }
+                        }
+                        if(starter==4 && rnd_type==0)
+                        {
+                            if( score>0)
+                            {
                                 score--;
                             }
                         }
 
 
-                    } else {
-                        csoki.setX(700);
-                        csoki.setY(0);
                     }
+                    else{
+                        option2.setX((float)(width-(width*(2.0/10.0))));
+                        option2.setY((float)(height-(height*(8.14/10.0))));
+                    }
+
 
 
                 }
@@ -317,48 +475,92 @@ public class OkosTanyer extends AppCompatActivity {
             }
         });
 
-        teszta.setOnTouchListener(new View.OnTouchListener() {
+        option3.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View view, MotionEvent event) {
-                type_tv.setText(score + "");
+                actualX=option3.getX();
+                actualY=option3.getY();
+              
+                        // rá teszi az ujját a képre
+                        if(event.getAction() == MotionEvent.ACTION_DOWN)
+                        {
+                            xDown=event.getX();
+                            yDown=event.getY();
+                        }
+                        //mozgatja az ujját
+                        if(event.getAction() == MotionEvent.ACTION_MOVE)
+                        {
+                            float movedX,movedY;
+                            movedX=event.getX();
+                            movedY=event.getY();
 
-                // rá teszi az ujját a képre
-                if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                    xDown = event.getX();
-                    yDown = event.getY();
-                }
-                //mozgatja az ujját
-                if (event.getAction() == MotionEvent.ACTION_MOVE) {
-                    float movedX, movedY;
-                    movedX = event.getX();
-                    movedY = event.getY();
+                            //kiszámolni mennyit mozdított az ujjával
+                            float distanceX=movedX-xDown;
+                            float distanceY=movedY-yDown;
 
-                    //kiszámolni mennyit mozdított az ujjával
-                    float distanceX = movedX - xDown;
-                    float distanceY = movedY - yDown;
-
-                    //oda tesszük a képet
-                    teszta.setX(teszta.getX() + distanceX);
-                    teszta.setY(teszta.getY() + distanceY);
-                }
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    if (teszta.getX() > 146 && teszta.getX() < 540 && teszta.getY() > 360 && teszta.getY() < 850) {
-                        teszta.setVisibility(View.GONE);
-                        if (starter == 1 || starter == 3 || starter == 4 && (rnd_type == 0)) {
-                            done.setVisibility(View.VISIBLE);
-                        } else if (starter == 2 && (rnd_type == 1)) {
-                            done.setVisibility(View.VISIBLE);
-                        } else {
-
-                            if (score >= 0) {
-                                score--;
+                            //oda tesszük a képet
+                            option3.setX(option3.getX()+distanceX);
+                            option3.setY(option3.getY()+distanceY);
+                    }
+                        if(event.getAction() == MotionEvent.ACTION_UP)
+                        {
+                            if(actualX>(width-(width*7.3/10.0)) &&
+                                    actualX<(width-(width*4.3/10.0)) &&
+                                    actualY>(height-(height*6.9/10.0)) &&
+                                    actualY<(height-(height*5.4/10.0)))
+                            {
+                                option3.setVisibility(View.GONE);
+                                if(starter==1 && rnd_type==0)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if(starter==3  && rnd_type==0)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if(starter==4 && rnd_type==0)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if(starter==2 && rnd_type==1)
+                                {
+                                    done.setVisibility(View.VISIBLE);
+                                }
+                                if(starter==1 && rnd_type==1)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==3 && rnd_type==1)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==4 && rnd_type==1)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                                if(starter==2 && rnd_type==0)
+                                {
+                                    if( score>0)
+                                    {
+                                        score--;
+                                    }
+                                }
+                            }
+                            else {
+                                option3.setX((float)(width-(width*(9.6/10.0))));
+                                option3.setY((float)(height-(height*(3.8/10.0))));
                             }
                         }
-                    } else if (!(teszta.getX() > 146 && teszta.getX() < 540 && teszta.getY() > 360 && teszta.getY() < 850)) {
-                        teszta.setX(0);
-                        teszta.setY(0);
-                    }
-                }
+
 
 
                 return true;
@@ -391,11 +593,13 @@ public class OkosTanyer extends AppCompatActivity {
         startActivity(i);
     }
 
+
     public void onBackPressed() {
         Intent i = new Intent();
         i.setClass(this, Homepage.class);
         startActivity(i);
     }
+
 
 
 }
