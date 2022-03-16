@@ -1,23 +1,20 @@
 package com.example.healthytamagochi;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -25,19 +22,15 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.type.Date;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class AddChild extends AppCompatActivity {
@@ -95,9 +88,7 @@ public class AddChild extends AppCompatActivity {
                     resID = getResources().getIdentifier(girl_avatars_List.get(2), "drawable", getPackageName());
                     pic3.setImageResource(resID);
                     resID = getResources().getIdentifier(girl_avatars_List.get(3), "drawable", getPackageName());
-                    pic4.setImageResource(resID);
 
-                    sex = spinner_sex.getSelectedItem().toString().trim();
                 } else {
                     resID = getResources().getIdentifier(boy_avatars_List.get(0), "drawable", getPackageName());
                     pic1.setImageResource(resID);
@@ -106,10 +97,10 @@ public class AddChild extends AppCompatActivity {
                     resID = getResources().getIdentifier(boy_avatars_List.get(2), "drawable", getPackageName());
                     pic3.setImageResource(resID);
                     resID = getResources().getIdentifier(boy_avatars_List.get(3), "drawable", getPackageName());
-                    pic4.setImageResource(resID);
 
-                    sex = spinner_sex.getSelectedItem().toString().trim();
                 }
+                pic4.setImageResource(resID);
+                sex = spinner_sex.getSelectedItem().toString().trim();
             }
 
             @Override
@@ -119,57 +110,45 @@ public class AddChild extends AppCompatActivity {
 
         });
 
-        option1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                option1.setBackgroundResource(R.drawable.green_round_bground);
-                option2.setBackgroundResource(R.drawable.white_round_bground);
-                option3.setBackgroundResource(R.drawable.white_round_bground);
-                option4.setBackgroundResource(R.drawable.white_round_bground);
-                if (sex.equals("Lány")) {
-                    selectedPic = girl_avatars_List.get(0);
-                } else
-                    selectedPic = boy_avatars_List.get(0);
-            }
+        option1.setOnClickListener(view -> {
+            option1.setBackgroundResource(R.drawable.green_round_bground);
+            option2.setBackgroundResource(R.drawable.white_round_bground);
+            option3.setBackgroundResource(R.drawable.white_round_bground);
+            option4.setBackgroundResource(R.drawable.white_round_bground);
+            if (sex.equals("Lány")) {
+                selectedPic = girl_avatars_List.get(0);
+            } else
+                selectedPic = boy_avatars_List.get(0);
         });
-        option2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                option2.setBackgroundResource(R.drawable.green_round_bground);
-                option1.setBackgroundResource(R.drawable.white_round_bground);
-                option3.setBackgroundResource(R.drawable.white_round_bground);
-                option4.setBackgroundResource(R.drawable.white_round_bground);
-                if (sex.equals("Lány")) {
-                    selectedPic = girl_avatars_List.get(1);
-                } else
-                    selectedPic = boy_avatars_List.get(1);
-            }
+        option2.setOnClickListener(view -> {
+            option2.setBackgroundResource(R.drawable.green_round_bground);
+            option1.setBackgroundResource(R.drawable.white_round_bground);
+            option3.setBackgroundResource(R.drawable.white_round_bground);
+            option4.setBackgroundResource(R.drawable.white_round_bground);
+            if (sex.equals("Lány")) {
+                selectedPic = girl_avatars_List.get(1);
+            } else
+                selectedPic = boy_avatars_List.get(1);
         });
-        option3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                option3.setBackgroundResource(R.drawable.green_round_bground);
-                option1.setBackgroundResource(R.drawable.white_round_bground);
-                option2.setBackgroundResource(R.drawable.white_round_bground);
-                option4.setBackgroundResource(R.drawable.white_round_bground);
-                if (sex.equals("Lány")) {
-                    selectedPic = girl_avatars_List.get(2);
-                } else
-                    selectedPic = boy_avatars_List.get(2);
-            }
+        option3.setOnClickListener(view -> {
+            option3.setBackgroundResource(R.drawable.green_round_bground);
+            option1.setBackgroundResource(R.drawable.white_round_bground);
+            option2.setBackgroundResource(R.drawable.white_round_bground);
+            option4.setBackgroundResource(R.drawable.white_round_bground);
+            if (sex.equals("Lány")) {
+                selectedPic = girl_avatars_List.get(2);
+            } else
+                selectedPic = boy_avatars_List.get(2);
         });
-        option4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                option4.setBackgroundResource(R.drawable.green_round_bground);
-                option1.setBackgroundResource(R.drawable.white_round_bground);
-                option2.setBackgroundResource(R.drawable.white_round_bground);
-                option1.setBackgroundResource(R.drawable.white_round_bground);
-                if (sex.equals("Lány")) {
-                    selectedPic = girl_avatars_List.get(3);
-                } else
-                    selectedPic = boy_avatars_List.get(3);
-            }
+        option4.setOnClickListener(view -> {
+            option4.setBackgroundResource(R.drawable.green_round_bground);
+            option1.setBackgroundResource(R.drawable.white_round_bground);
+            option2.setBackgroundResource(R.drawable.white_round_bground);
+            option1.setBackgroundResource(R.drawable.white_round_bground);
+            if (sex.equals("Lány")) {
+                selectedPic = girl_avatars_List.get(3);
+            } else
+                selectedPic = boy_avatars_List.get(3);
         });
 
 
@@ -244,6 +223,7 @@ public class AddChild extends AppCompatActivity {
         kid.put("cm", height.getText().toString());
         kid.put("birth", birthdate.getText().toString());
         kid.put("avatar", selectedPic);
+        kid.put("registration", Timestamp.now());
 
         db.collection("kids")
                 .add(kid)
@@ -256,6 +236,27 @@ public class AddChild extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Hiba!", Toast.LENGTH_LONG).show();
                     }
                 });
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("registered", Timestamp.now());
+        db.collection("results")
+                .document(parentID)
+                .collection("kids")
+                .document(name.getText().toString())
+                .set(data)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+
     }
 }
 

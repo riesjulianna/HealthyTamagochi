@@ -1,18 +1,17 @@
 package com.example.healthytamagochi;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -25,7 +24,6 @@ public class TeethBrushing extends AppCompatActivity {
     int hour=0;
     int min=0;
     int sec=0;
-    int pont=0;
     float xDown=0,yDown=0;
     Button done;
     ImageView kosz1,kosz2,kosz3,kefe;
@@ -66,32 +64,20 @@ public class TeethBrushing extends AppCompatActivity {
             firstGame=b.getBoolean("firstGame");
             prevActivityID=b.getInt("prevActivityID");
         }
-        if(firstGame==false)
+
+        String uri = "@drawable/" + selectedPic;
+        int imageRes = getResources().getIdentifier(uri, null, getPackageName());
+        Drawable res = getResources().getDrawable(imageRes);
+        avatar.setImageDrawable(res);
+
+        if(!firstGame)
         {
             hour=b.getInt("hour");
             min=b.getInt("min");
             sec=b.getInt("sec");
         }
-        else if(firstGame)
-        {
+        else {
             firstGame=false;
-        }
-
-        if (selectedPic.equals("boy1"))
-        {
-            avatar.setImageResource(R.drawable.boy1);
-        }
-        else if (selectedPic.equals("girl1"))
-        {
-            avatar.setImageResource(R.drawable.girl1);
-        }
-        else if (selectedPic.equals("boy2"))
-        {
-            avatar.setImageResource(R.drawable.boy2);
-        }
-        else if (selectedPic.equals("girl2"))
-        {
-            avatar.setImageResource(R.drawable.girl2);
         }
 
         Timer T=new Timer();

@@ -18,10 +18,10 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -29,8 +29,8 @@ import java.util.TimerTask;
 public class Evaluate extends AppCompatActivity {
 
     ImageView avatar;
-    String selectedPic,selectedKid;
     TextView time,name;
+    String selectedPic,selectedKid, response;
     int hour=0;
     int min=0;
     int sec=0;
@@ -50,97 +50,77 @@ public class Evaluate extends AppCompatActivity {
 
         avatar = findViewById(R.id.avatar);
         name = findViewById(R.id.textViewName);
-        time=findViewById(R.id.time_tv);
-        color=findViewById(R.id.color);
-        rating=findViewById(R.id.rating_tv);
+        time = findViewById(R.id.time_tv);
+        color = findViewById(R.id.color);
+        rating = findViewById(R.id.rating_tv);
 
-        numberOfQuestions=getNumOfQuestions();
+        numberOfQuestions = getNumOfQuestions();
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
             selectedKid = b.getString("selectedKid");
-            hour=b.getInt("hour");
-            min=b.getInt("min");
-            sec=b.getInt("sec");
-            pont=b.getInt("pont");
-            prevActivityID=b.getInt("prevActivityID");
-            firstGame=b.getBoolean("firstGame");
-        }
+            hour = b.getInt("hour");
+            min = b.getInt("min");
+            sec = b.getInt("sec");
+            pont = b.getInt("pont");
+            prevActivityID = b.getInt("prevActivityID");
+            firstGame = b.getBoolean("firstGame");
+            response = b.getString("response");
 
-        if (selectedPic.equals("boy1"))
-        {
-            avatar.setImageResource(R.drawable.boy1);
-        }
-        else if (selectedPic.equals("girl1"))
-        {
-            avatar.setImageResource(R.drawable.girl1);
-        }
-        else if (selectedPic.equals("boy2"))
-        {
-            avatar.setImageResource(R.drawable.boy2);
-        }
-        else if (selectedPic.equals("girl2"))
-        {
-            avatar.setImageResource(R.drawable.girl2);
-        }
-        name.setText(selectedKid);
-        rating.setText("Elért pont:  "+pont+"\nÜgyes vagy!");
-        if(pont<2)
-        {
-          color.setBackgroundResource(R.drawable.red_round_bground);
-        }
-        else
-        {
-            color.setBackgroundResource(R.drawable.green_round_bground);
-        }
+            name.setText(selectedKid);
 
-        Timer T=new Timer();
-        T.scheduleAtFixedRate(new TimerTask() {
-            @Override
-            public void run() {
-                runOnUiThread(new Runnable()
-                {
-                    @Override
-                    public void run()
-                    {
+            String uri = "@drawable/" + selectedPic;
+            int imageRes = getResources().getIdentifier(uri, null, getPackageName());
+            Drawable res = getResources().getDrawable(imageRes);
+            avatar.setImageDrawable(res);
 
-                        if(sec%60==0 && sec!=0)
-                        {
-                            min++;
-                            sec=0;
-                        }
-                        if(min%60==0 && min!=0)
-                        {
-                            hour++;
-                            min=0;
-                        }
-                        if(hour%24==0)
-                        {
-                            hour=0;
-                        }
-                        String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
-                        time.setText(curTime); //change clock to your textview
-                        if (min>=15 || hour>0)
-                        {
-                            time.setTextColor(Color.parseColor("#FF1111"));
-                        }
-                        sec++;
-
-                    }
-                });
+            rating.setText("3/" + pont + " pont\n\n" + response);
+            if (pont < 2) {
+                color.setBackgroundResource(R.drawable.red_round_bground);
+            } else {
+                color.setBackgroundResource(R.drawable.green_round_bground);
             }
-        }, 1000, 1000);
 
-        rnd = new Random();
-        nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
+            Timer T = new Timer();
+            T.scheduleAtFixedRate(new TimerTask() {
+                @Override
+                public void run() {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if (sec % 60 == 0 && sec != 0) {
+                                min++;
+                                sec = 0;
+                            }
+                            if (min % 60 == 0 && min != 0) {
+                                hour++;
+                                min = 0;
+                            }
+                            if (hour % 24 == 0) {
+                                hour = 0;
+                            }
+                            String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
+                            time.setText(curTime); //change clock to your textview
+                            if (min >= 15 || hour > 0) {
+                                time.setTextColor(Color.parseColor("#FF1111"));
+                            }
+                            sec++;
 
-        while (nextActivityID==prevActivityID)
-        {
+                        }
+                    });
+                }
+            }, 1000, 1000);
+
+            rnd = new Random();
             nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
-        }
-        prevActivityID=nextActivityID;
 
+            while (nextActivityID == prevActivityID) {
+                nextActivityID = rnd.nextInt(4 - 1) + 1;   //1,2,3 lehet
+            }
+            prevActivityID = nextActivityID;
+
+        }
     }
     public int getNumOfQuestions(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();

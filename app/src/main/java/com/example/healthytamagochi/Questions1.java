@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,20 +30,20 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.nio.charset.StandardCharsets;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.HashMap;
+import java.util.Date;
 import java.util.List;
-import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public class Questions1 extends AppCompatActivity {
 
     ImageView avatar;
-    String selectedPic, selectedKid;
-    TextView time, question, a1, a2, a3, a4, response, name;
+    String selectedPic, selectedKid, response;
+    TextView time, question, a1, a2, a3, a4, name;
     int hour = 0;
     int min = 0;
     int sec = 0;
@@ -52,8 +53,7 @@ public class Questions1 extends AppCompatActivity {
     String A1, A2, A3, A4;
     int points = 3;
     int rndQuestion;
-    String resultDocID;
-
+    Boolean next = false;
     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
@@ -74,13 +74,10 @@ public class Questions1 extends AppCompatActivity {
         a2 = findViewById(R.id.a2);
         a3 = findViewById(R.id.a3);
         a4 = findViewById(R.id.a4);
-        response = findViewById(R.id.textViewR);
-        response.setVisibility(View.INVISIBLE);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
             selectedPic = b.getString("selectedPic");
-            //avatar beallitas?
             selectedKid = b.getString("selectedKid");
             name.setText(selectedKid);
             prevActivityID = b.getInt("prevActivityID");
@@ -90,22 +87,14 @@ public class Questions1 extends AppCompatActivity {
             hour = b.getInt("hour");
             min = b.getInt("min");
             sec = b.getInt("sec");
-        } else if (firstGame) {
+        } else {
             firstGame = false;
         }
-        // String pic="R.drawable"+selectedPic;
-        //avatar.setImageResource(Integer.parseInt(pic));
 
-        if (selectedPic.equals("boy1")) {
-            avatar.setImageResource(R.drawable.boy1);
-        } else if (selectedPic.equals("girl1")) {
-            avatar.setImageResource(R.drawable.girl1);
-        } else if (selectedPic.equals("boy2")) {
-            avatar.setImageResource(R.drawable.boy2);
-        } else if (selectedPic.equals("girl2")) {
-            avatar.setImageResource(R.drawable.girl2);
-        }
-
+        String uri = "@drawable/" + selectedPic;
+        int imageRes = getResources().getIdentifier(uri, null, getPackageName());
+        Drawable res = getResources().getDrawable(imageRes);
+        avatar.setImageDrawable(res);
 
         Timer T = new Timer();
         T.scheduleAtFixedRate(new TimerTask() {
@@ -153,15 +142,15 @@ public class Questions1 extends AppCompatActivity {
                     option2.setClickable(false);
                     option3.setClickable(false);
                     option4.setClickable(false);
-                    //HELYES VÁLASZ POPUP?
-                    //pontokat beirni
                     savePoints();
+                    next = true;
                 }
             } else {
-                // 0 pontot beirni
-                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
-                response.setVisibility(View.VISIBLE);
+                // 0 pont
+                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.",
+                        Toast.LENGTH_LONG).show();
                 savePoints();
+                next = true;
 
             }
         });
@@ -180,16 +169,17 @@ public class Questions1 extends AppCompatActivity {
                     option2.setClickable(false);
                     option3.setClickable(false);
                     option4.setClickable(false);
-                    //HELYES VÁLASZ POPUP?
-                    //pontokat beirni
                     savePoints();
+                    next = true;
 
                 }
             } else {
-                // 0 pontot beirni
-                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
-                response.setVisibility(View.VISIBLE);
+                // 0 pont
+                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.",
+                        Toast.LENGTH_LONG).show();
                 savePoints();
+                next = true;
+
             }
         });
         option3.setOnClickListener(view -> {
@@ -207,16 +197,15 @@ public class Questions1 extends AppCompatActivity {
                     option2.setClickable(false);
                     option3.setClickable(false);
                     option4.setClickable(false);
-                    //HELYES VÁLASZ POPUP?
-                    //pontokat beirni
                     savePoints();
-
+                    next = true;
                 }
             } else {
-                // 0 pontot beirni
-                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
-                response.setVisibility(View.VISIBLE);
+                // 0 pont
+                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.",
+                        Toast.LENGTH_LONG).show();
                 savePoints();
+                next = true;
             }
         });
         option4.setOnClickListener(view -> {
@@ -234,15 +223,14 @@ public class Questions1 extends AppCompatActivity {
                     option2.setClickable(false);
                     option3.setClickable(false);
                     option4.setClickable(false);
-                    //HELYES VÁLASZ POPUP?
-                    //pontokat beirni
                     savePoints();
+                    next = true;
                 }
             } else {
-                // 0 pontot beirni
-                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.", Toast.LENGTH_LONG).show();
-                response.setVisibility(View.VISIBLE);
+                Toast.makeText(getApplicationContext(), "Sajnos ez most nem sikerült.",
+                        Toast.LENGTH_LONG).show();
                 savePoints();
+                next = true;
             }
         });
 
@@ -260,7 +248,8 @@ public class Questions1 extends AppCompatActivity {
                 randomQuestionIDs.add(i);
             }
         } else {
-            Toast.makeText(getApplicationContext(), "Error: number of questions is zero.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Error: number of questions is zero.",
+                    Toast.LENGTH_LONG).show();
         }
         Collections.shuffle(randomQuestionIDs);
 
@@ -280,9 +269,10 @@ public class Questions1 extends AppCompatActivity {
                 A3 = answerIDs.get(2);
                 a4.setText(document.getString(answerIDs.get(3)));
                 A4 = answerIDs.get(3);
-                response.setText(document.getString("response"));
+                response = document.getString("response");
             } else {
-                Toast.makeText(getApplicationContext(), "Error while loading in question.", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Error while loading in question.",
+                        Toast.LENGTH_LONG).show();
             }
         });
         //END
@@ -290,17 +280,23 @@ public class Questions1 extends AppCompatActivity {
     }
 
     public void question_DoneClick(View v) {
-        Intent i = new Intent();
-        i.setClass(this, Evaluate.class);
-        i.putExtra("selectedPic", selectedPic);
-        i.putExtra("selectedKid", selectedKid);
-        i.putExtra("hour", hour);
-        i.putExtra("min", min);
-        i.putExtra("sec", sec);
-        i.putExtra("pont", points);
-        i.putExtra("prevActivityID", prevActivityID);
-        i.putExtra("firstGame", firstGame);
-        startActivity(i);
+        if (next) {
+            Intent i = new Intent();
+            i.setClass(this, Evaluate.class);
+            i.putExtra("selectedPic", selectedPic);
+            i.putExtra("selectedKid", selectedKid);
+            i.putExtra("hour", hour);
+            i.putExtra("min", min);
+            i.putExtra("sec", sec);
+            i.putExtra("pont", points);//IDE BERAKTAM A PONTOKAT
+            i.putExtra("prevActivityID", prevActivityID);
+            i.putExtra("firstGame", firstGame);
+            i.putExtra("response", response);
+            startActivity(i);
+        } else {
+            Toast.makeText(getApplicationContext(), "Még próbálkozz!",
+                    Toast.LENGTH_LONG).show();
+        }
     }
 
     public void onBackPressed() {
@@ -313,34 +309,42 @@ public class Questions1 extends AppCompatActivity {
         int point = points;
         int QuestionID = rndQuestion;
         String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        db.collection("results")
-                .whereEqualTo("parentID",parentID)
-                .whereEqualTo("kidName",selectedKid)
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                resultDocID = document.getId();
-                            }
-                        }
-                    }
-                });
-//        DocumentReference resultsRef = db.collection("results").document(resultDocID);
-//        resultsRef.update()
-//                .addOnSuccessListener(new OnSuccessListener<Void>() {
+        DocumentReference ref = db.collection("results")
+                .document(parentID)
+                .collection("kids").document(selectedKid);
+        Date date = new Date();
+        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        String timestamp = formatter.format(date);
+        ref.update(timestamp + "," +"qID:"+QuestionID, point);
+//        db.collection("results")
+//                .whereEqualTo("parentID", parentID)
+//                .whereEqualTo("kidName", selectedKid)
+//                .get()
+//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
 //                    @Override
-//                    public void onSuccess(Void aVoid) {
-//                        Log.d(TAG, "DocumentSnapshot successfully updated!");
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w(TAG, "Error updating document", e);
+//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
+//                        if (task.isSuccessful()) {
+//                            for (QueryDocumentSnapshot document : task.getResult()) {
+//                                resultDocID = document.getId();
+//                                Log.d("------------", resultDocID);
+//                            }
+//                            DocumentReference resultsRef = db.collection("results").document(resultDocID);
+//                            resultsRef.update("Qid+hanyadik", point)
+//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//
+//                                        @Override
+//                                        public void onSuccess(Void unused) {
+//
+//                                        }
+//                                    })
+//                                    .addOnFailureListener(new OnFailureListener() {
+//                                        @Override
+//                                        public void onFailure(@NonNull Exception e) {
+//
+//                                        }
+//                                    });
+//                        }
 //                    }
 //                });
-
     }
 }
