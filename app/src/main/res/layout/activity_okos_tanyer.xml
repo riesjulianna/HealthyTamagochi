@@ -17,13 +17,15 @@
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal0"
-        app:srcCompat="@drawable/cat_one" />
+        app:srcCompat="@drawable/cat_one"
+        android:contentDescription="@string/option1"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:gravity="center|left"
         android:text=""
         android:textColor="#D1F4F4"
@@ -31,7 +33,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintDimensionRatio="2:1"
         app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintTop_toTopOf="@id/horizontal0" />
+        app:layout_constraintTop_toTopOf="@id/horizontal0"
+        tools:ignore="RtlHardcoded" />
 
 
     <TextView
@@ -69,10 +72,12 @@
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@id/vertical2"
         app:layout_constraintTop_toTopOf="@id/horizontal5"
-        app:srcCompat="@drawable/tanyer" />
+        app:srcCompat="@drawable/tanyer"
+        android:contentDescription="@string/tanyer"
+        tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/apples"
+        android:id="@+id/option1"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -81,10 +86,12 @@
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintTop_toTopOf="@id/horizontal3"
         app:layout_constraintBottom_toBottomOf="@id/horizontal4"
-        app:srcCompat="@drawable/alma" />
+        app:srcCompat="@drawable/alma"
+        android:contentDescription="@string/option2"
+        tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/csoki"
+        android:id="@+id/option2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -93,11 +100,13 @@
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical4"
         app:layout_constraintTop_toTopOf="@id/horizontal3"
-        app:srcCompat="@drawable/csoki" />
+        app:srcCompat="@drawable/csoki"
+        android:contentDescription="TODO"
+        tools:ignore="ContentDescription,HardcodedText" />
 
 
     <ImageView
-        android:id="@+id/teszta"
+        android:id="@+id/option3"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -106,10 +115,12 @@
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal7"
-        app:srcCompat="@drawable/teszta" />
+        app:srcCompat="@drawable/teszta"
+        android:contentDescription="@string/option3"
+        tools:ignore="ContentDescription" />
 
     <ImageView
-        android:id="@+id/sali"
+        android:id="@+id/option4"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -118,7 +129,9 @@
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical4"
         app:layout_constraintTop_toTopOf="@id/horizontal7"
-        app:srcCompat="@drawable/salata" />
+        app:srcCompat="@drawable/salata"
+        android:contentDescription="@string/option4"
+        tools:ignore="ContentDescription" />
 
     <Button
         android:id="@+id/Done_btn"
@@ -127,7 +140,7 @@
         android:backgroundTint="#9CFAF1"
         android:gravity="center"
         android:onClick="DoneClick"
-        android:text="Tovább"
+        android:text="@string/tovabb"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/horizontal10"
         app:layout_constraintEnd_toEndOf="@id/vertical3"

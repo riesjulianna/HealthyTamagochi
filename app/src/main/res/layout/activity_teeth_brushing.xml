@@ -18,13 +18,14 @@
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal0"
-        app:srcCompat="@drawable/cat_one" />
+        app:srcCompat="@drawable/cat_one"
+        android:contentDescription="@string/avatar" />
 
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:gravity="center|left"
         android:text=""
         android:textColor="#D1F4F4"
@@ -32,7 +33,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintDimensionRatio="2:1"
         app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintTop_toTopOf="@id/horizontal0" />
+        app:layout_constraintTop_toTopOf="@id/horizontal0"
+        tools:ignore="RtlHardcoded" />
 
 
     <TextView
@@ -59,7 +61,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@id/vertical5"
-        app:layout_constraintTop_toTopOf="@id/horizontal1" />
+        app:layout_constraintTop_toTopOf="@id/horizontal1"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/szaj"
@@ -70,7 +73,9 @@
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal31"
-        app:srcCompat="@drawable/szaj" />
+        app:srcCompat="@drawable/szaj"
+        android:contentDescription="@string/szaj"
+        tools:ignore="ContentDescription" />
     <ImageView
         android:id="@+id/kosz1"
         android:layout_width="0dp"
@@ -79,7 +84,8 @@
         app:layout_constraintTop_toTopOf="@id/horizontal10"
         app:layout_constraintEnd_toEndOf="@id/vertical11"
         app:layout_constraintBottom_toBottomOf="@id/horizontal11"
-        app:srcCompat="@drawable/kosz" />
+        app:srcCompat="@drawable/kosz"
+        android:contentDescription="@string/kosz" />
 
     <ImageView
         android:id="@+id/kosz2"
@@ -89,7 +95,8 @@
         app:layout_constraintTop_toTopOf="@id/horizontal10"
         app:layout_constraintEnd_toEndOf="@id/vertical13"
         app:layout_constraintBottom_toBottomOf="@id/horizontal11"
-        app:srcCompat="@drawable/kosz" />
+        app:srcCompat="@drawable/kosz"
+        android:contentDescription="@string/kosz"/>
 
     <ImageView
         android:id="@+id/kosz3"
@@ -99,7 +106,8 @@
         app:layout_constraintTop_toTopOf="@id/horizontal11"
         app:layout_constraintEnd_toEndOf="@id/vertical12"
         app:layout_constraintBottom_toBottomOf="@id/horizontal12"
-        app:srcCompat="@drawable/kosz" />
+        app:srcCompat="@drawable/kosz"
+        android:contentDescription="@string/kosz"/>
 
     <ImageView
         android:id="@+id/fogkefe"
@@ -110,7 +118,8 @@
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintTop_toTopOf="@id/horizontal3"
         app:layout_constraintBottom_toBottomOf="@id/horizontal4"
-        app:srcCompat="@drawable/fogkefe" />
+        app:srcCompat="@drawable/fogkefe"
+        android:contentDescription="@string/fogkefe"/>
 
     <Button
         android:id="@+id/Done_btn"
@@ -119,12 +128,13 @@
         android:backgroundTint="#9CFAF1"
         android:gravity="center"
         android:onClick="DoneClick"
-        android:text="Tovább"
+        android:text="@string/tov_bb"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/horizontal21"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@+id/vertical1"
-        app:layout_constraintTop_toTopOf="@id/horizontal20" />
+        app:layout_constraintTop_toTopOf="@id/horizontal20"
+        android:contentDescription="@string/tovabb"/>
 
 
 

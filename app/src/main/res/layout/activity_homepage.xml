@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="signOutClick"
-        android:text="Kijelentkezés" />
+        android:text="@string/kijelentkezes" />
 
     <Button
         android:id="@+id/addKid_btn"
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="addKid_onClick"
-        android:text="Gyermek hozzáadása" />
+        android:text="@string/hozaadas" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
                 android:background="@android:color/transparent"
                 android:gravity="center"
                 android:spinnerMode="dropdown" />
@@ -62,10 +62,11 @@
                 android:id="@+id/drop_img"
                 android:layout_width="80dp"
                 android:layout_height="80dp"
-                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:layout_gravity="center"
-                android:src="@drawable/drop" />
+                android:src="@drawable/drop"
+                android:contentDescription="@string/drop_img" />
 
         </RelativeLayout>
 
@@ -75,7 +76,8 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            app:srcCompat="@drawable/girl2" />
+            app:srcCompat="@drawable/girl2"
+            android:contentDescription="@string/avatar" />
     </LinearLayout>
 
     <LinearLayout
@@ -90,7 +92,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="play_onClick"
-            android:text="Kezdődhet a játék" />
+            android:text="@string/kezdes" />
     </LinearLayout>
 
 </LinearLayout>

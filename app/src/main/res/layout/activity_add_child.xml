@@ -35,7 +35,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:autofillHints=""
-                android:hint="Név"
+                android:hint="@string/nev"
                 android:inputType="none"
                 android:textColorHint="#78909C" />
 
@@ -67,16 +67,18 @@
                     android:layout_marginLeft="5dp"
                     android:background="@android:color/transparent"
                     android:gravity="center"
-                    android:spinnerMode="dropdown" />
+                    android:spinnerMode="dropdown"
+                    tools:ignore="RtlHardcoded" />
 
                 <ImageView
                     android:id="@+id/drop_img"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
                     android:layout_gravity="center"
-                    android:src="@drawable/drop" />
+                    android:src="@drawable/drop"
+                    tools:ignore="ContentDescription" />
 
             </RelativeLayout>
 
@@ -149,7 +151,8 @@
                     android:id="@+id/layoutUpper"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:id="@+id/option1_layout"
@@ -189,12 +192,12 @@
 
                         <ImageView
                             android:id="@+id/pic2"
-                            android:layout_width="150dp"
+                            android:layout_width="0dp"
                             android:layout_height="150dp"
                             android:layout_weight="1"
                             android:contentDescription="@string/karakter"
                             app:srcCompat="@drawable/girl2"
-                            tools:ignore="ImageContrastCheck" />
+                            tools:ignore="ImageContrastCheck,NestedWeights" />
                     </LinearLayout>
 
                 </LinearLayout>
@@ -204,7 +207,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/layoutUpper"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:baselineAligned="false">
 
                     <LinearLayout
                         android:id="@+id/option3_layout"
@@ -244,12 +248,12 @@
 
                         <ImageView
                             android:id="@+id/pic4"
-                            android:layout_width="150dp"
+                            android:layout_width="0dp"
                             android:layout_height="150dp"
                             android:layout_weight="1"
                             android:contentDescription="@string/karakter"
                             app:srcCompat="@drawable/cat_one"
-                            tools:ignore="ImageContrastCheck" />
+                            tools:ignore="ImageContrastCheck,NestedWeights" />
                     </LinearLayout>
 
                 </LinearLayout>
