@@ -2,8 +2,8 @@
 <resources>
     <string-array name="fruits">
         <item>alma</item>
-        <item>csoki</item>
-        <item>cat_one</item>
-        <item>cat_two</item>
+        <item>szolo</item>
+        <item>banan</item>
+        <item>szilva</item>
     </string-array>
 </resources>

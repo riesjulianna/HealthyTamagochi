@@ -17,13 +17,14 @@
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal0"
-        app:srcCompat="@drawable/cat_one" />
+        app:srcCompat="@drawable/cat_one"
+        android:contentDescription="@string/avatar" />
 
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginLeft="5dp"
+        android:layout_marginStart="5dp"
         android:gravity="center|left"
         android:text=""
         android:textColor="#D1F4F4"
@@ -31,7 +32,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintDimensionRatio="2:1"
         app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintTop_toTopOf="@id/horizontal0" />
+        app:layout_constraintTop_toTopOf="@id/horizontal0"
+        tools:ignore="RtlHardcoded" />
 
 
     <TextView
@@ -160,7 +162,7 @@
         android:backgroundTint="#9CFAF1"
         android:gravity="center"
         android:onClick="question_DoneClick"
-        android:text="Tovább"
+        android:text="@string/tovabb"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal13"
         app:layout_constraintEnd_toEndOf="@id/vertical3"

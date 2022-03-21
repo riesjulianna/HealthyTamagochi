@@ -69,7 +69,7 @@ public class AddChild extends AppCompatActivity {
         List<String> girl_avatars_List = Arrays.asList(getResources().getStringArray(R.array.girl_avatars));
         List<String> boy_avatars_List = Arrays.asList(getResources().getStringArray(R.array.boy_avatars));
 
-        Spinner spinner_sex = (Spinner) findViewById(R.id.sex);
+        Spinner spinner_sex = findViewById(R.id.sex);
         ArrayAdapter<CharSequence> adapter_sex = ArrayAdapter.createFromResource(this,
                 R.array.sex, R.layout.spinner_text);
         adapter_sex.setDropDownViewResource(R.layout.simple_spinner_text);

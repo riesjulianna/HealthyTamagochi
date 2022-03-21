@@ -1,7 +1,5 @@
 package com.example.healthytamagochi;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -9,27 +7,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -100,29 +88,26 @@ public class Questions1 extends AppCompatActivity {
         T.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
+                runOnUiThread(() -> {
 
-                        if (sec % 60 == 0 && sec != 0) {
-                            min++;
-                            sec = 0;
-                        }
-                        if (min % 60 == 0 && min != 0) {
-                            hour++;
-                            min = 0;
-                        }
-                        if (hour % 24 == 0) {
-                            hour = 0;
-                        }
-                        @SuppressLint("DefaultLocale") String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
-                        time.setText(curTime); //change clock to your textview
-                        if (min >= 15 || hour > 0) {
-                            time.setTextColor(Color.parseColor("#FF1111"));
-                        }
-                        sec++;
-
+                    if (sec % 60 == 0 && sec != 0) {
+                        min++;
+                        sec = 0;
                     }
+                    if (min % 60 == 0 && min != 0) {
+                        hour++;
+                        min = 0;
+                    }
+                    if (hour % 24 == 0) {
+                        hour = 0;
+                    }
+                    @SuppressLint("DefaultLocale") String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
+                    time.setText(curTime); //change clock to your textview
+                    if (min >= 15 || hour > 0) {
+                        time.setTextColor(Color.parseColor("#FF1111"));
+                    }
+                    sec++;
+
                 });
             }
         }, 1000, 1000);
@@ -313,7 +298,7 @@ public class Questions1 extends AppCompatActivity {
                 .document(parentID)
                 .collection("kids").document(selectedKid);
         Date date = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String timestamp = formatter.format(date);
         ref.update(timestamp + "," +"qID:"+QuestionID, point);
 //        db.collection("results")

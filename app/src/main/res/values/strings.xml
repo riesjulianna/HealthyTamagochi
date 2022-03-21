@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">Pear+</string>
     <string name="bejelentkezes1">Bejelentkezés</string>
     <string name="felhasznalonev1">Felhasználónév</string>
@@ -52,6 +52,21 @@
     <string name="image_view_item_transform_content_description">Represents an image view in the
         item
     </string>
+    <string name="option1" tools:ignore="Typos">option1</string>
+    <string name="option2">option2</string>
+    <string name="option3">option3</string>
+    <string name="option4">option4</string>
+    <string name="tanyer">tanyer</string>
+    <string name="drop_img">drop_img</string>
+    <string name="szaj">szaj</string>
+    <string name="kosz">kosz</string>
+    <string name="fogkefe">fogkefe</string>
+    <string name="tovabb">Tovább</string>
+    <string name="nev">Név</string>
+    <string name="hozaadas">Gyermek hozzáadása</string>
+    <string name="kezdes">Kezdődhet a játék</string>
+    <string name="elfelejtette_jelszavat">Elfelejtette jelszavát?</string>
+    <string name="tov_bb">Tovább</string>
 
 
 </resources>

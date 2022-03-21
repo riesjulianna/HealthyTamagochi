@@ -147,7 +147,7 @@ public class Homepage extends AppCompatActivity {
         db.collection("questions").get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        numberOfQuestions = ((Integer) task.getResult().size());
+                        numberOfQuestions = task.getResult().size();
                     } else {
                         Toast.makeText(getApplicationContext(), "Could not get number of questions.", Toast.LENGTH_LONG).show();
                     }

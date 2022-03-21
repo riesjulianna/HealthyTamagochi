@@ -2,23 +2,16 @@ package com.example.healthytamagochi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -43,6 +36,7 @@ public class Evaluate extends AppCompatActivity {
     boolean firstGame;
     int numberOfQuestions;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +66,7 @@ public class Evaluate extends AppCompatActivity {
 
             String uri = "@drawable/" + selectedPic;
             int imageRes = getResources().getIdentifier(uri, null, getPackageName());
-            Drawable res = getResources().getDrawable(imageRes);
+            @SuppressLint("UseCompatLoadingForDrawables") Drawable res = getResources().getDrawable(imageRes);
             avatar.setImageDrawable(res);
 
             if(prevActivityID==1 && pont>1)
@@ -104,28 +98,25 @@ public class Evaluate extends AppCompatActivity {
             T.scheduleAtFixedRate(new TimerTask() {
                 @Override
                 public void run() {
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if (sec % 60 == 0 && sec != 0) {
-                                min++;
-                                sec = 0;
-                            }
-                            if (min % 60 == 0 && min != 0) {
-                                hour++;
-                                min = 0;
-                            }
-                            if (hour % 24 == 0) {
-                                hour = 0;
-                            }
-                            String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
-                            time.setText(curTime); //change clock to your textview
-                            if (min >= 15 || hour > 0) {
-                                time.setTextColor(Color.parseColor("#FF1111"));
-                            }
-                            sec++;
-
+                    runOnUiThread(() -> {
+                        if (sec % 60 == 0 && sec != 0) {
+                            min++;
+                            sec = 0;
                         }
+                        if (min % 60 == 0 && min != 0) {
+                            hour++;
+                            min = 0;
+                        }
+                        if (hour % 24 == 0) {
+                            hour = 0;
+                        }
+                        @SuppressLint("DefaultLocale") String curTime = String.format("%02d : %02d : %02d", hour, min, sec);
+                        time.setText(curTime); //change clock to your textview
+                        if (min >= 15 || hour > 0) {
+                            time.setTextColor(Color.parseColor("#FF1111"));
+                        }
+                        sec++;
+
                     });
                 }
             }, 1000, 1000);
@@ -145,7 +136,7 @@ public class Evaluate extends AppCompatActivity {
         db.collection("questions").get()
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
-                        numberOfQuestions = ((Integer) task.getResult().size());
+                        numberOfQuestions = task.getResult().size();
                     } else {
                         Toast.makeText(getApplicationContext(), "Could not get number of questions.", Toast.LENGTH_LONG).show();
                     }
