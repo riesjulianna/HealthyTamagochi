@@ -3,6 +3,7 @@ package com.example.healthytamagochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -19,7 +20,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Evaluate extends AppCompatActivity {
+public class Evaluate extends Activity {
 
     ImageView avatar;
     TextView time,name;

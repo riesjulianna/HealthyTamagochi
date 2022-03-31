@@ -7,10 +7,12 @@
     android:background="#f8931f"
     android:orientation="vertical"
     tools:context=".OkosTanyer" >
+
     <ImageView
         android:id="@+id/avatar"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/option1"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintDimensionRatio="1:1"
@@ -18,8 +20,7 @@
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal0"
         app:srcCompat="@drawable/cat_one"
-        android:contentDescription="@string/option1"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/textViewName"
@@ -65,40 +66,37 @@
         android:id="@+id/tanyer"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/tanyer"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@id/vertical2"
         app:layout_constraintTop_toTopOf="@id/horizontal5"
-        app:srcCompat="@drawable/tanyer"
-        android:contentDescription="@string/tanyer"
         tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/option1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="centerCrop"
-        app:layout_constraintDimensionRatio="1:1"
-        app:layout_constraintStart_toStartOf="@id/vertical1"
-        app:layout_constraintEnd_toEndOf="@id/vertical2"
-        app:layout_constraintTop_toTopOf="@id/horizontal3"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal4"
-        app:srcCompat="@drawable/alma"
         android:contentDescription="@string/option2"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal4"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="@id/vertical2"
+        app:layout_constraintStart_toStartOf="@id/vertical1"
+        app:layout_constraintTop_toTopOf="@id/horizontal3"
         tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/option2"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="TODO"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@id/horizontal4"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical4"
         app:layout_constraintTop_toTopOf="@id/horizontal3"
-        app:srcCompat="@drawable/csoki"
-        android:contentDescription="TODO"
         tools:ignore="ContentDescription,HardcodedText" />
 
 
@@ -106,28 +104,26 @@
         android:id="@+id/option3"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/option3"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@id/horizontal8"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal7"
-        app:srcCompat="@drawable/teszta"
-        android:contentDescription="@string/option3"
         tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/option4"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/option4"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="@id/horizontal8"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical4"
         app:layout_constraintTop_toTopOf="@id/horizontal7"
-        app:srcCompat="@drawable/salata"
-        android:contentDescription="@string/option4"
         tools:ignore="ContentDescription" />
 
     <Button

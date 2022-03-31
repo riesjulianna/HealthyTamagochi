@@ -1,5 +1,6 @@
 package com.example.healthytamagochi;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddChild extends AppCompatActivity {
+public class AddChild extends Activity {
 
     EditText weight, height, name;
     TextView birthdate;

@@ -7,6 +7,7 @@
     android:background="#0f4d66"
     tools:context=".Homepage">
 
+
     <TextView
         android:id="@+id/signOut_btn"
         style="@style/textView"
@@ -14,6 +15,7 @@
         android:onClick="signOutClick"
         android:text="@string/kijelentkezes"
         android:textStyle="italic"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/horizontal9"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical4"
@@ -25,19 +27,21 @@
         android:gravity="center"
         android:onClick="addKid_onClick"
         android:text="@string/hozaadas"
-        app:layout_constraintTop_toTopOf="@id/horizontal0"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintEnd_toEndOf="@id/vertical1"/>
+        app:layout_constraintTop_toTopOf="@id/horizontal0" />
 
 
     <TextView
         android:id="@+id/proba_tv"
-       style="@style/textView"
-        app:layout_constraintTop_toTopOf="@id/horizontal5"
+        style="@style/textView"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintEnd_toEndOf="@id/vertical1"/>
+        app:layout_constraintTop_toTopOf="@id/horizontal5" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
@@ -46,10 +50,11 @@
         android:background="@drawable/edittext_bg"
         android:gravity="center"
         android:orientation="horizontal"
-        app:layout_constraintTop_toTopOf="@id/horizontal2"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintEnd_toEndOf="@id/vertical1">
+        app:layout_constraintTop_toTopOf="@id/horizontal2">
 
         <Spinner
             android:id="@+id/selectedKid"
@@ -60,18 +65,20 @@
             android:layout_marginStart="5dp"
             android:background="@android:color/transparent"
             android:gravity="center"
-            android:spinnerMode="dropdown" />
+            android:spinnerMode="dropdown"
+            android:visibility="invisible" />
 
         <ImageView
             android:id="@+id/drop_img"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="15dp"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
             android:layout_gravity="center"
+            android:layout_marginEnd="15dp"
             android:contentDescription="@string/drop_img"
-            android:src="@drawable/drop" />
+            android:src="@drawable/drop"
+            android:visibility="invisible" />
 
     </RelativeLayout>
 
@@ -80,10 +87,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/avatar"
-        app:layout_constraintTop_toTopOf="@id/horizontal4"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/horizontal5"
+        app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"/>
+        app:layout_constraintTop_toTopOf="@id/horizontal4" />
 
 
     <Button
@@ -91,10 +99,23 @@
         style="@style/green_button"
         android:onClick="play_onClick"
         android:text="@string/kezdes"
-        app:layout_constraintTop_toTopOf="@id/horizontal6"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/horizontal7"
+        app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"/>
+        app:layout_constraintTop_toTopOf="@id/horizontal6" />
+
+    <ImageView
+        android:id="@+id/loadingScreen"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal21"
+        app:layout_constraintEnd_toEndOf="@id/vertical21"
+        app:layout_constraintStart_toStartOf="@id/vertical20"
+        app:layout_constraintTop_toTopOf="@id/horizontal20"
+        app:srcCompat="@drawable/loading_screen" />
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical0"
@@ -121,6 +142,19 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="1" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical4"
@@ -195,6 +229,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.08" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="1" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
