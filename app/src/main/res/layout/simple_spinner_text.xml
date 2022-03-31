@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@android:id/text1"
-    style="@style/simple_spinner_text"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ellipsize="marquee"
     android:padding="10dp"
-    android:singleLine="true" />
+    android:singleLine="true"
+    android:textSize="16sp"
+    android:layout_marginStart="5dp"
+    android:background="#D0EDF8"
+    android:textColor="#0f4d66"/>

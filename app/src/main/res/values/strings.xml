@@ -64,9 +64,12 @@
     <string name="tovabb">Tovább</string>
     <string name="nev">Név</string>
     <string name="hozaadas">Gyermek hozzáadása</string>
-    <string name="kezdes">Kezdődhet a játék</string>
+    <string name="kezdes">Kezdés</string>
     <string name="elfelejtette_jelszavat">Elfelejtette jelszavát?</string>
     <string name="tov_bb">Tovább</string>
+    <string name="e_mail_cim">E-mail cím</string>
+
+
 
 
 </resources>

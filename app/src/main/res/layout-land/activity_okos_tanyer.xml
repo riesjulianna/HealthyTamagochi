@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A1745"
+    android:background="#0f4d66"
     android:orientation="vertical"
     tools:context=".OkosTanyer" >
     <ImageView
@@ -51,12 +51,8 @@
 
     <TextView
         android:id="@+id/type_tv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center"
+        style="@style/textView"
         android:text=""
-        android:textColor="#D1F4F4"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@id/vertical2"
@@ -129,10 +125,7 @@
 
     <Button
         android:id="@+id/Done_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9CFAF1"
-        android:gravity="center"
+        style="@style/green_button"
         android:onClick="DoneClick"
         android:text="@string/tovabb"
         android:visibility="gone"

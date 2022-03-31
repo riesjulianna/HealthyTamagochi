@@ -10,28 +10,39 @@
 
     <EditText
         android:id="@+id/emailParent"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/edittext_bg"
         android:hint="@string/e_mail_cim"
         android:inputType="textEmailAddress"
+        android:paddingStart="15dp"
         android:text=""
+        android:textColor="#CDF8E9"
+        android:textColorHint="#CDF8E9"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal0"
-        style="@style/editText"
-        android:autofillHints="emailAddress" />
+        android:autofillHints=""
+        tools:ignore="RtlSymmetry" />
     <EditText
         android:id="@+id/password"
-        style="@style/editText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:inputType="textPassword"
         android:text=""
         android:hint="@string/jelszo"
+        android:textColor="#CDF8E9"
+        android:textColorHint="#CDF8E9"
+        android:textSize="19sp"
+        android:background="@drawable/edittext_bg"
         app:layout_constraintTop_toTopOf="@id/horizontal2"
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
         android:paddingStart="15dp"
-        android:autofillHints=""
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="Autofill,RtlSymmetry" />
     <TextView
         android:id="@+id/forgotPassword"
         android:layout_width="0dp"
@@ -70,20 +81,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.28" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.32" />
+        app:layout_constraintGuide_percent="0.33" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.43" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -91,26 +102,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.42" />
+        app:layout_constraintGuide_percent="0.45" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.46" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.50" />
+        app:layout_constraintGuide_percent="0.55" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.58" />
+        app:layout_constraintGuide_percent="0.65" />
 
 
     <androidx.constraintlayout.widget.Guideline
