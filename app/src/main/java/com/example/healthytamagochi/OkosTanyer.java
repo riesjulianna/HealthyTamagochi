@@ -1,9 +1,8 @@
 package com.example.healthytamagochi;
 
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -29,7 +28,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class OkosTanyer extends AppCompatActivity {
+public class OkosTanyer extends Activity {
 
 
     ImageView avatar;
@@ -64,6 +63,8 @@ public class OkosTanyer extends AppCompatActivity {
         done=findViewById(R.id.Done_btn);
         type_tv=findViewById(R.id.type_tv);
         name=findViewById(R.id.textViewName);
+
+        tanyer.setBackgroundResource(R.drawable.tanyer);
 
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
@@ -218,10 +219,10 @@ public class OkosTanyer extends AppCompatActivity {
           {
               if(orientation == Configuration.ORIENTATION_PORTRAIT)
               {
-                  if(actualX>(width-(width*7.3/10.0)) &&
-                          actualX<(width-(width*4.3/10.0)) &&
-                          actualY>(height-(height*6.9/10.0)) &&
-                          actualY<(height-(height*5.4/10.0)))
+                  if(actualX>(width*2.2/10.0) &&
+                          actualX<(width*6.3/10.0) &&
+                          actualY>(height*3.3/10.0) &&
+                          actualY<(height*5.7/10.0))
                   {
                       option1.setVisibility(View.GONE);
                       if(starter==1  && rnd_type==0)
@@ -272,8 +273,8 @@ public class OkosTanyer extends AppCompatActivity {
                   }
                   else  {
                       // ha nem a tányérra húzta
-                      option1.setX((float)(width-(width*(9.6/10.0))));
-                      option1.setY((float)(height-(height*(8.14/10.0))));
+                      option1.setX((float)(width*(0.2/10.0)));
+                      option1.setY((float)(height*(2.0/10.0)));
                   }
               }
               else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
@@ -374,10 +375,10 @@ public class OkosTanyer extends AppCompatActivity {
                    if(event.getAction() == MotionEvent.ACTION_UP) {
                        if (orientation == Configuration.ORIENTATION_PORTRAIT)
                        {
-                           if(actualX>(width-(width*7.3/10.0)) &&
-                                   actualX<(width-(width*4.3/10.0)) &&
-                                   actualY>(height-(height*6.9/10.0)) &&
-                                   actualY<(height-(height*5.4/10.0)))
+                           if(actualX>(width*2.2/10.0) &&
+                                   actualX<(width*6.3/10.0) &&
+                                   actualY>(height*3.3/10.0) &&
+                                   actualY<(height*5.7/10.0))
                            {
                                option4.setVisibility(View.GONE);
                                if(starter==4 && rnd_type==0)
@@ -428,8 +429,8 @@ public class OkosTanyer extends AppCompatActivity {
                            }
                            else   {
                                // ha nem a tányérra húzta
-                               option4.setX((float)(width-(width*(2.0/10.0))));
-                               option4.setY((float)(height-(height*(3.8/10.0))));
+                               option4.setX((float)(width*(8.0/10.0)));
+                               option4.setY((float)(height*(7.0/10.0)));
                            }
                        }
                        else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
@@ -530,10 +531,10 @@ public class OkosTanyer extends AppCompatActivity {
             {
                 if(orientation==Configuration.ORIENTATION_PORTRAIT)
                 {
-                    if(actualX>(width-(width*7.3/10.0)) &&
-                            actualX<(width-(width*4.3/10.0)) &&
-                            actualY>(height-(height*6.9/10.0)) &&
-                            actualY<(height-(height*5.4/10.0)))
+                    if(actualX>(width*2.2/10.0) &&
+                            actualX<(width*6.3/10.0) &&
+                            actualY>(height*3.3/10.0) &&
+                            actualY<(height*5.7/10.0))
                     {
                         option2.setVisibility(View.GONE);
                         if(starter==2 && rnd_type==0)
@@ -584,8 +585,8 @@ public class OkosTanyer extends AppCompatActivity {
 
                     }
                     else{
-                        option2.setX((float)(width-(width*(2.0/10.0))));
-                        option2.setY((float)(height-(height*(8.14/10.0))));
+                        option2.setX((float)(width*(8.0/10.0)));
+                        option2.setY((float)(height*(2.0/10.0)));
                     }
                 }
                 else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
@@ -682,10 +683,10 @@ public class OkosTanyer extends AppCompatActivity {
                     {
                         if(orientation==Configuration.ORIENTATION_PORTRAIT)
                         {
-                            if(actualX>(width-(width*7.3/10.0)) &&
-                                    actualX<(width-(width*4.3/10.0)) &&
-                                    actualY>(height-(height*6.9/10.0)) &&
-                                    actualY<(height-(height*5.4/10.0)))
+                            if(actualX>(width*2.2/10.0) &&
+                                    actualX<(width*6.3/10.0) &&
+                                    actualY>(height*3.3/10.0) &&
+                                    actualY<(height*5.7/10.0))
                             {
                                 option3.setVisibility(View.GONE);
                                 if(starter==1 && rnd_type==0)
@@ -734,8 +735,8 @@ public class OkosTanyer extends AppCompatActivity {
                                 }
                             }
                             else {
-                                option3.setX((float)(width-(width*(9.6/10.0))));
-                                option3.setY((float)(height-(height*(3.8/10.0))));
+                                option3.setX((float)(width*(0.2/10.0)));
+                                option3.setY((float)(height*(7.0/10.0)));
                             }
                         }
                         else if(orientation==Configuration.ORIENTATION_LANDSCAPE)

@@ -3,6 +3,7 @@ package com.example.healthytamagochi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -27,7 +28,7 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Questions1 extends AppCompatActivity {
+public class Questions1 extends Activity {
 
     ImageView avatar;
     String selectedPic, selectedKid, response;

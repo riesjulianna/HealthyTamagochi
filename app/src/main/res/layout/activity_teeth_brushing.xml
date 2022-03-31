@@ -68,58 +68,54 @@
         android:id="@+id/szaj"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/szaj"
         app:layout_constraintBottom_toBottomOf="@id/horizontal30"
         app:layout_constraintDimensionRatio="2:1"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal31"
-        app:srcCompat="@drawable/szaj"
-        android:contentDescription="@string/szaj"
         tools:ignore="ContentDescription" />
+
     <ImageView
         android:id="@+id/kosz1"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/vertical10"
-        app:layout_constraintTop_toTopOf="@id/horizontal10"
-        app:layout_constraintEnd_toEndOf="@id/vertical11"
+        android:contentDescription="@string/kosz"
         app:layout_constraintBottom_toBottomOf="@id/horizontal11"
-        app:srcCompat="@drawable/kosz"
-        android:contentDescription="@string/kosz" />
+        app:layout_constraintEnd_toEndOf="@id/vertical11"
+        app:layout_constraintStart_toStartOf="@id/vertical10"
+        app:layout_constraintTop_toTopOf="@id/horizontal10" />
 
     <ImageView
         android:id="@+id/kosz2"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/vertical12"
-        app:layout_constraintTop_toTopOf="@id/horizontal10"
-        app:layout_constraintEnd_toEndOf="@id/vertical13"
+        android:contentDescription="@string/kosz"
         app:layout_constraintBottom_toBottomOf="@id/horizontal11"
-        app:srcCompat="@drawable/kosz"
-        android:contentDescription="@string/kosz"/>
+        app:layout_constraintEnd_toEndOf="@id/vertical13"
+        app:layout_constraintStart_toStartOf="@id/vertical12"
+        app:layout_constraintTop_toTopOf="@id/horizontal10" />
 
     <ImageView
         android:id="@+id/kosz3"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/vertical11"
-        app:layout_constraintTop_toTopOf="@id/horizontal11"
-        app:layout_constraintEnd_toEndOf="@id/vertical12"
+        android:contentDescription="@string/kosz"
         app:layout_constraintBottom_toBottomOf="@id/horizontal12"
-        app:srcCompat="@drawable/kosz"
-        android:contentDescription="@string/kosz"/>
+        app:layout_constraintEnd_toEndOf="@id/vertical12"
+        app:layout_constraintStart_toStartOf="@id/vertical11"
+        app:layout_constraintTop_toTopOf="@id/horizontal11" />
 
     <ImageView
         android:id="@+id/fogkefe"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintDimensionRatio="2:1"
-        app:layout_constraintStart_toStartOf="@id/vertical5"
-        app:layout_constraintEnd_toEndOf="@id/vertical4"
-        app:layout_constraintTop_toTopOf="@id/horizontal3"
+        android:contentDescription="@string/fogkefe"
         app:layout_constraintBottom_toBottomOf="@id/horizontal4"
-        app:srcCompat="@drawable/fogkefe"
-        android:contentDescription="@string/fogkefe"/>
+        app:layout_constraintDimensionRatio="2:1"
+        app:layout_constraintEnd_toEndOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@id/vertical5"
+        app:layout_constraintTop_toTopOf="@id/horizontal3" />
 
     <Button
         android:id="@+id/Done_btn"

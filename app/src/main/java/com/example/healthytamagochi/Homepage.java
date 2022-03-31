@@ -1,12 +1,16 @@
 package com.example.healthytamagochi;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,16 +26,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Homepage extends AppCompatActivity {
+public class Homepage extends Activity {
 
-    ImageView img;
+    ImageView avatar_img,downArrow,loading;
     Random rnd;
     Spinner selectedKid;
-    TextView proba;
+    TextView proba,signOut;
     int nextActivityID;
     boolean firstGame = true;
     int numberOfQuestions;
     String avatar;
+    Button addKid,play;
+    RelativeLayout relativeLayout;
+
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     List<String> kidNamesList = new ArrayList<>();
@@ -42,6 +49,32 @@ public class Homepage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         proba = findViewById(R.id.proba_tv);
+        signOut=findViewById(R.id.signOut_btn);
+        addKid=findViewById(R.id.addKid_btn);
+        relativeLayout=findViewById(R.id.relativeLayout3);
+        selectedKid=findViewById(R.id.selectedKid);
+        downArrow=findViewById(R.id.drop_img);
+        avatar_img = findViewById(R.id.avatar_img);
+        play=findViewById(R.id.play_btn);
+        loading=findViewById(R.id.loadingScreen);
+
+        loading.setBackgroundResource(R.drawable.loading_screen);
+
+        Handler handler=new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loading.setVisibility(View.INVISIBLE);
+                signOut.setVisibility(View.VISIBLE);
+                addKid.setVisibility(View.VISIBLE);
+                relativeLayout.setVisibility(View.VISIBLE);
+                selectedKid.setVisibility(View.VISIBLE);
+                downArrow.setVisibility(View.VISIBLE);
+                avatar_img.setVisibility(View.VISIBLE);
+                play.setVisibility(View.VISIBLE);
+                proba.setVisibility(View.VISIBLE);
+            }
+        },2000);
 
         //GET KIDS FROM DB
         db.collection("kids")
@@ -53,8 +86,6 @@ public class Homepage extends AppCompatActivity {
                 });
         //END************
 
-        img = findViewById(R.id.avatar_img);
-        selectedKid = findViewById(R.id.selectedKid);
         kidNamesList.add("Ki játszik?");
         ArrayAdapter<String> adapter = new ArrayAdapter<>(
                 this, R.layout.spinner_text, kidNamesList);
@@ -76,15 +107,15 @@ public class Homepage extends AppCompatActivity {
                                         String uri = "@drawable/" + avatar;
                                         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
                                         Drawable res = getResources().getDrawable(imageRes);
-                                        img.setImageDrawable(res);
-                                        img.setVisibility(View.VISIBLE);
+                                        avatar_img.setImageDrawable(res);
+                                        avatar_img.setVisibility(View.VISIBLE);
                                     }
                                 } else {
                                     //error handling?
                                 }
                             });
                 }else{
-                    img.setVisibility(View.INVISIBLE);
+                    avatar_img.setVisibility(View.INVISIBLE);
                 }
             }
             @Override
@@ -95,7 +126,7 @@ public class Homepage extends AppCompatActivity {
 
 
         //set img null
-        img.setVisibility(View.INVISIBLE);
+        avatar_img.setVisibility(View.INVISIBLE);
 
         //load number of questions in database
         numberOfQuestions = getNumOfQuestions();
