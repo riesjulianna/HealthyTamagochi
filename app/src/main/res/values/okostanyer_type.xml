@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="okostanyer_type">
-        <item>Gyümölcs</item>
-        <item>Zöldség</item>
+        <item>Húzd a tányérra a gyümölcsöt!</item>
+        <item>Húzd a tányérra a zöldséget!</item>
     </string-array>
 </resources>

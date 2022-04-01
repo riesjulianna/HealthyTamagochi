@@ -1,6 +1,7 @@
 package com.example.healthytamagochi;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
@@ -18,7 +19,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class TeethBrushing extends AppCompatActivity {
+public class TeethBrushing extends Activity {
 
     ImageView avatar;
     String selectedPic,selectedKid;
@@ -28,7 +29,7 @@ public class TeethBrushing extends AppCompatActivity {
     int sec=0;
     float xDown=0,yDown=0;
     Button done;
-    ImageView kosz1,kosz2,kosz3,kefe;
+    ImageView kosz1,kosz2,kosz3,kefe,szaj;
     TextView koord,name;
     int db1=0,db2=0,db3=0;
     int prevActivityID;
@@ -51,6 +52,13 @@ public class TeethBrushing extends AppCompatActivity {
         koord=findViewById(R.id.leiras_tv);
         done=findViewById(R.id.Done_btn);
         name=findViewById(R.id.textViewName);
+        szaj=findViewById(R.id.szaj);
+
+        kefe.setBackgroundResource(R.drawable.fogkefe);
+        szaj.setBackgroundResource(R.drawable.szaj);
+        kosz1.setBackgroundResource(R.drawable.kosz);
+        kosz2.setBackgroundResource(R.drawable.kosz);
+        kosz3.setBackgroundResource(R.drawable.kosz);
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -119,13 +127,14 @@ public class TeethBrushing extends AppCompatActivity {
 
 
         kefe.setOnTouchListener((view, event) -> {
+            koord.setText(width+"  height   "+height);
             actualX=kefe.getX();
             actualY=kefe.getY();
             if (orientation == Configuration.ORIENTATION_PORTRAIT) {
-                if(actualX<(width-(width*6.8/10.0)) &&
-                        actualX>(width-(width*7.2/10.0))  &&
-                        actualY<(height-(height*5.8/10.0)) &&
-                        actualY>(height-(height*6.1/10.0)))
+                if(actualX<(width*4.5/10.0) &&
+                        actualX>(width*2.6/10.0)  &&
+                        actualY<(height*5.0/10.0) &&
+                        actualY>(height*2.5/10.0))
                 {
                     db1++;
                 }
@@ -147,8 +156,8 @@ public class TeethBrushing extends AppCompatActivity {
 
                 if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
                 {
-                    kefe.setX((float)(width-(width*6.9/10.0)));
-                    kefe.setY((float)(height-(height*8.11/10.0)));
+                    kefe.setX((float)(width*3.1/10.0));
+                    kefe.setY((float)(height*1.8/10.0));
                 }
             } else {
                 // In Landscape

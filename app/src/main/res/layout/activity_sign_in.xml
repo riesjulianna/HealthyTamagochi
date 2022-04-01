@@ -1,65 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:adjustViewBounds="true"
-    android:backgroundTint="#2196F3"
-    android:gravity="center"
+    android:background="#0f4d66"
     android:orientation="vertical"
-    android:scaleType="fitCenter"
     tools:context=".SignIn">
 
     <EditText
         android:id="@+id/emailParent"
-        style="@style/signin_editText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:autofillHints=""
-        android:hint="@string/email"
+        android:hint="@string/e_mail_cim"
         android:inputType="textEmailAddress"
-        android:textColorHint="#78909C" />
-
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@id/horizontal1"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal0"
+        style="@style/editText"
+        android:autofillHints="emailAddress" />
     <EditText
         android:id="@+id/password"
-        style="@style/signin_editText"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:hint="@string/jelszo"
-        android:importantForAutofill="no"
+        style="@style/editText"
         android:inputType="textPassword"
-        android:textColorHint="#78909C" />
+        android:text=""
+        android:hint="@string/jelszo"
+        app:layout_constraintTop_toTopOf="@id/horizontal2"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        android:paddingStart="15dp"
+        android:autofillHints=""
+        tools:ignore="RtlSymmetry" />
+    <TextView
+        android:id="@+id/forgotPassword"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:text="@string/elfelejtette_jelszavat"
+        android:textColor="#CDF8E9"
+        android:textSize="17sp"
+        android:visibility="invisible"
+        app:layout_constraintTop_toTopOf="@id/horizontal4"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        />
 
     <Button
         android:id="@+id/signIn"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:layout_marginBottom="10dp"
-        android:backgroundTint="#FFC107"
-        android:defaultFocusHighlightEnabled="true"
-        android:focusable="auto"
-        android:focusableInTouchMode="false"
-        android:focusedByDefault="true"
+        style="@style/green_button"
         android:onClick="signInClick"
         android:text="@string/bejelentkezes"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        tools:text="Bejelentkezés" />
+        app:layout_constraintBottom_toBottomOf="@id/horizontal7"
+        app:layout_constraintEnd_toEndOf="@id/vertical3"
+        app:layout_constraintStart_toStartOf="@id/vertical2"
+        app:layout_constraintTop_toTopOf="@id/horizontal6" />
 
-    <TextView
-        android:id="@+id/forgotPassword"
-        android:layout_width="match_parent"
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal0"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:text="@string/elfelejtette_jelszavat"
-        android:textColor="#000C51"
-        android:textSize="20sp"
-        android:visibility="gone" />
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.28" />
 
-</LinearLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.32" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.46" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.50" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.58" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
+</androidx.constraintlayout.widget.ConstraintLayout>

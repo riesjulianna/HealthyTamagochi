@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#010E3C"
+    android:background="#0f4d66"
     tools:context=".Evaluate">
 
 
@@ -74,13 +74,9 @@
 
 
     <Button
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9CFAF1"
-        android:gravity="center"
+        style="@style/green_button"
         android:onClick="evaluate_DoneClick"
         android:text="@string/tovabb"
-        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal5"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@+id/vertical1"

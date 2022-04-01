@@ -1,8 +1,10 @@
 package com.example.healthytamagochi;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -33,15 +35,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class AddChild extends AppCompatActivity {
+public class AddChild extends Activity {
 
     EditText weight, height, name;
     TextView birthdate;
-    ImageView pic1, pic2, pic3, pic4;
+    ImageView pic1, pic2, pic3;
     String selectedPic = "";
     String sex;
     int resID;
-    LinearLayout option1, option2, option3, option4;
+    LinearLayout option1, option2, option3;
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -59,11 +61,9 @@ public class AddChild extends AppCompatActivity {
         pic1 = findViewById(R.id.pic1);
         pic2 = findViewById(R.id.pic2);
         pic3 = findViewById(R.id.pic3);
-        pic4 = findViewById(R.id.pic4);
         option1 = findViewById(R.id.option1_layout);
         option2 = findViewById(R.id.option2_layout);
         option3 = findViewById(R.id.option3_layout);
-        option4 = findViewById(R.id.option4_layout);
 
 
         List<String> girl_avatars_List = Arrays.asList(getResources().getStringArray(R.array.girl_avatars));
@@ -99,7 +99,6 @@ public class AddChild extends AppCompatActivity {
                     resID = getResources().getIdentifier(boy_avatars_List.get(3), "drawable", getPackageName());
 
                 }
-                pic4.setImageResource(resID);
                 sex = spinner_sex.getSelectedItem().toString().trim();
             }
 
@@ -111,47 +110,32 @@ public class AddChild extends AppCompatActivity {
         });
 
         option1.setOnClickListener(view -> {
-            option1.setBackgroundResource(R.drawable.green_round_bground);
-            option2.setBackgroundResource(R.drawable.white_round_bground);
-            option3.setBackgroundResource(R.drawable.white_round_bground);
-            option4.setBackgroundResource(R.drawable.white_round_bground);
+            option1.setBackgroundResource(R.drawable.edittext_bg);
+            option2.setBackgroundResource(R.drawable.transparent_bground);
+            option3.setBackgroundResource(R.drawable.transparent_bground);
             if (sex.equals("Lány")) {
                 selectedPic = girl_avatars_List.get(0);
             } else
                 selectedPic = boy_avatars_List.get(0);
         });
         option2.setOnClickListener(view -> {
-            option2.setBackgroundResource(R.drawable.green_round_bground);
-            option1.setBackgroundResource(R.drawable.white_round_bground);
-            option3.setBackgroundResource(R.drawable.white_round_bground);
-            option4.setBackgroundResource(R.drawable.white_round_bground);
+            option2.setBackgroundResource(R.drawable.edittext_bg);
+            option1.setBackgroundResource(R.drawable.transparent_bground);
+            option3.setBackgroundResource(R.drawable.transparent_bground);
             if (sex.equals("Lány")) {
                 selectedPic = girl_avatars_List.get(1);
             } else
                 selectedPic = boy_avatars_List.get(1);
         });
         option3.setOnClickListener(view -> {
-            option3.setBackgroundResource(R.drawable.green_round_bground);
-            option1.setBackgroundResource(R.drawable.white_round_bground);
-            option2.setBackgroundResource(R.drawable.white_round_bground);
-            option4.setBackgroundResource(R.drawable.white_round_bground);
+            option3.setBackgroundResource(R.drawable.edittext_bg);
+            option1.setBackgroundResource(R.drawable.transparent_bground);
+            option2.setBackgroundResource(R.drawable.transparent_bground);
             if (sex.equals("Lány")) {
                 selectedPic = girl_avatars_List.get(2);
             } else
                 selectedPic = boy_avatars_List.get(2);
         });
-        option4.setOnClickListener(view -> {
-            option4.setBackgroundResource(R.drawable.green_round_bground);
-            option1.setBackgroundResource(R.drawable.white_round_bground);
-            option2.setBackgroundResource(R.drawable.white_round_bground);
-            option1.setBackgroundResource(R.drawable.white_round_bground);
-            if (sex.equals("Lány")) {
-                selectedPic = girl_avatars_List.get(3);
-            } else
-                selectedPic = boy_avatars_List.get(3);
-        });
-
-
     }
 
     public void dateSelecterOpen(View v) {

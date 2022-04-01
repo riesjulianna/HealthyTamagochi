@@ -1,187 +1,344 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/layout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#0f4d66"
     tools:context=".Registration">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <EditText
+        android:id="@+id/emailParent"
+        style="@style/editText"
+        android:autofillHints="@string/szuloemail"
+        android:hint="@string/szuloemail"
+        android:inputType="textEmailAddress"
+        app:layout_constraintTop_toTopOf="@id/horizontal0"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+       />
 
-        <LinearLayout
+    <EditText
+        android:id="@+id/password"
+        style="@style/editText"
+        android:autofillHints="@string/jelszo1"
+        android:hint="@string/jelszo1"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintTop_toTopOf="@id/horizontal2"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"/>
+
+
+    <EditText
+        android:id="@+id/password2"
+        style="@style/editText"
+        android:autofillHints="@string/jelszo2"
+        android:hint="@string/jelszo2"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintTop_toTopOf="@id/horizontal4"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"/>
+
+    <TextView
+        android:id="@+id/validPassword"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintTop_toTopOf="@id/horizontal6"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal7"/>
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center_vertical"
+        android:text="@string/vegzettseg"
+        android:textColor="#00fbfb"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal9"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal8" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/edittext_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintTop_toTopOf="@id/horizontal10"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal11">
+
+        <Spinner
+            android:id="@+id/edu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:spinnerMode="dropdown" />
 
-            <TextView
-                android:id="@+id/textView8"
-                style="@style/title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/regisztracio" />
+        <ImageView
+            android:id="@+id/drop_img"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="25dp"
+            android:contentDescription="@string/drop_img"
+            android:src="@drawable/drop"
+            tools:ignore="ContentDescription" />
 
-            <EditText
-                android:id="@+id/emailParent"
-                style="@style/signup_editText"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:ems="10"
-                android:hint="@string/szuloemail"
-                android:inputType="textEmailAddress"
-                android:textColorHint="#78909C"
-                android:autofillHints="" />
-
-            <EditText
-                android:id="@+id/password"
-                style="@style/signup_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/jelszo1"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:textColorHint="#78909C"
-                android:autofillHints="" />
+    </RelativeLayout>
 
 
-            <EditText
-                android:id="@+id/password2"
-                style="@style/signup_editText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/jelszo2"
-                android:inputType="textPassword"
-                android:minHeight="48dp"
-                android:textColorHint="#78909C"
-                android:autofillHints="" />
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:gravity="center_vertical"
+        android:text="@string/lakhely"
+        android:textColor="#00fbfb"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal13"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal12" />
 
-            <TextView
-                android:id="@+id/validPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="20sp" />
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/edittext_bg"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintTop_toTopOf="@id/horizontal14"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal15">
 
-            <TextView
-                android:id="@+id/textView20"
-                style="@style/textView"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:text="@string/vegzettseg"
-                android:textColor="#006366"
-                android:textStyle="bold" />
+        <Spinner
+            android:id="@+id/residences"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginStart="5dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:spinnerMode="dropdown" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/spinner_background"
-                android:gravity="center"
-                android:orientation="horizontal">
+        <ImageView
+            android:id="@+id/drop_img2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="25dp"
+            android:contentDescription="@string/drop_img"
+            android:src="@drawable/drop" />
 
-                <Spinner
-                    android:id="@+id/edu"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:background="@android:color/transparent"
-                    android:gravity="center"
-                    android:spinnerMode="dropdown" />
-
-                <ImageView
-                    android:id="@+id/drop_img"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:src="@drawable/drop"
-                    android:contentDescription="@string/drop_img"
-                    tools:ignore="ContentDescription" />
-
-            </RelativeLayout>
+    </RelativeLayout>
 
 
-            <TextView
-                android:id="@+id/textView15"
-                style="@style/textView"
-                android:layout_width="match_parent"
-                android:layout_height="32dp"
-                android:text="@string/lakhely"
-                android:textColor="#006366"
-                android:textStyle="bold" />
+    <CheckBox
+        android:id="@+id/acceptRules"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:text="@string/adatvedelmitajekoztato"
+        android:textColor="#B2DEFF"
+        android:textSize="16sp"
+        android:buttonTint="#00fbfb"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintTop_toTopOf="@id/horizontal16"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal17"/>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_marginStart="5dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/spinner_background"
-                android:gravity="center"
-                android:orientation="horizontal">
+    <Button
+        android:id="@+id/SignUpButton"
+        android:onClick="registrationClick"
+        android:text="@string/regisztracio"
+        tools:ignore="DuplicateSpeakableTextCheck"
+        app:layout_constraintStart_toStartOf="@id/vertical2"
+        app:layout_constraintEnd_toEndOf="@id/vertical3"
+        app:layout_constraintTop_toTopOf="@id/horizontal18"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal19"
+        style="@style/green_button" />
 
-                <Spinner
-                    android:id="@+id/residences"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="5dp"
-                    android:background="@android:color/transparent"
-                    android:gravity="center"
-                    android:spinnerMode="dropdown" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.15" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.22" />
 
-                <ImageView
-                    android:id="@+id/drop_img2"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_centerVertical="true"
-                    android:layout_gravity="center"
-                    android:src="@drawable/drop"
-                    android:contentDescription="@string/drop_img" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.26" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.33" />
 
-            </RelativeLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.44" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.48" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.52" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.57" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.58" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.65" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.68" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.73" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.74" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.81" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.83" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.88" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.9" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.96" />
 
 
-            <View
-                android:id="@+id/divider3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:background="#bdbdbd" />
 
-            <CheckBox
-                android:id="@+id/acceptRules"
-                style="@style/checkBox"
-                android:layout_width="match_parent"
-                android:layout_height="81dp"
-                android:minHeight="48dp"
-                android:text="@string/adatvedelmitajekoztato" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="41dp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75" />
 
-            <Button
-                android:id="@+id/SignUpButton"
-                style="@style/buttons"
-                android:layout_width="match_parent"
-                android:layout_height="95dp"
-                android:onClick="registrationClick"
-                android:text="@string/regisztracio"
-                tools:ignore="DuplicateSpeakableTextCheck" />
 
-        </LinearLayout>
-    </ScrollView>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
