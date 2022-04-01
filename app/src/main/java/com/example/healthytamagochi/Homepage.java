@@ -56,7 +56,7 @@ public class Homepage extends Activity {
         downArrow=findViewById(R.id.drop_img);
         avatar_img = findViewById(R.id.avatar_img);
         play=findViewById(R.id.play_btn);
-        loading=findViewById(R.id.loadingScreen);
+        loading=findViewById(R.id.loadingImg);
 
         loading.setBackgroundResource(R.drawable.loading_screen);
 

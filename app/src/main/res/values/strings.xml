@@ -68,8 +68,7 @@
     <string name="elfelejtette_jelszavat">Elfelejtette jelszavát?</string>
     <string name="tov_bb">Tovább</string>
     <string name="e_mail_cim">E-mail cím</string>
-
-
+    <string name="loading">loading</string>
 
 
 </resources>
