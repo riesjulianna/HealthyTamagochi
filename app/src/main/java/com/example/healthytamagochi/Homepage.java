@@ -1,10 +1,12 @@
 package com.example.healthytamagochi;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,8 +17,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -24,19 +24,20 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 public class Homepage extends Activity {
 
-    ImageView avatar_img,downArrow,loading;
+    ImageView avatar_img, downArrow, loading;
     Random rnd;
     Spinner selectedKid;
-    TextView proba,signOut;
-    int nextActivityID;
+    TextView point, signOut;
+    int nextActivityID, points;
     boolean firstGame = true;
     int numberOfQuestions;
-    String avatar;
-    Button addKid,play;
+    String avatar, all;
+    Button addKid, play;
     RelativeLayout relativeLayout;
 
 
@@ -48,19 +49,19 @@ public class Homepage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        proba = findViewById(R.id.proba_tv);
-        signOut=findViewById(R.id.signOut_btn);
-        addKid=findViewById(R.id.addKid_btn);
-        relativeLayout=findViewById(R.id.relativeLayout3);
-        selectedKid=findViewById(R.id.selectedKid);
-        downArrow=findViewById(R.id.drop_img);
+        point = findViewById(R.id.proba_tv);
+        signOut = findViewById(R.id.signOut_btn);
+        addKid = findViewById(R.id.addKid_btn);
+        relativeLayout = findViewById(R.id.relativeLayout3);
+        selectedKid = findViewById(R.id.selectedKid);
+        downArrow = findViewById(R.id.drop_img);
         avatar_img = findViewById(R.id.avatar_img);
-        play=findViewById(R.id.play_btn);
-        loading=findViewById(R.id.loadingImg);
+        play = findViewById(R.id.play_btn);
+        loading = findViewById(R.id.loadingImg);
 
         loading.setBackgroundResource(R.drawable.loading_screen);
 
-        Handler handler=new Handler();
+        Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -72,9 +73,9 @@ public class Homepage extends Activity {
                 downArrow.setVisibility(View.VISIBLE);
                 avatar_img.setVisibility(View.VISIBLE);
                 play.setVisibility(View.VISIBLE);
-                proba.setVisibility(View.VISIBLE);
+                point.setVisibility(View.INVISIBLE);
             }
-        },2000);
+        }, 2000);
 
         //GET KIDS FROM DB
         db.collection("kids")
@@ -96,7 +97,8 @@ public class Homepage extends Activity {
         selectedKid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(!selectedKid.getSelectedItem().toString().contains("?")) {
+                showPoints(selectedKid.getSelectedItem().toString());
+                if (!selectedKid.getSelectedItem().toString().contains("?")) {
                     db.collection("kids")
                             .whereEqualTo("name", selectedKid.getSelectedItem().toString())
                             .get()
@@ -114,10 +116,11 @@ public class Homepage extends Activity {
                                     //error handling?
                                 }
                             });
-                }else{
+                } else {
                     avatar_img.setVisibility(View.INVISIBLE);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
@@ -184,6 +187,42 @@ public class Homepage extends Activity {
                     }
                 });
         return numberOfQuestions;
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void showPoints(String kid) {
+        List<String> pointsList = new ArrayList<>();
+        db.collection("results").document(parentID)
+                .collection("kids").document(kid)
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if (document.exists()) {
+                            Map<String, Object> allPoints = document.getData();
+                            Log.d("db", String.valueOf(allPoints.size()-1));
+                            all = String.valueOf((allPoints.size()-1)*3);
+
+                            Map<String, Object> reachedPoints = document.getData();
+                            if (reachedPoints != null) {
+                                for (Map.Entry<String, Object> entry : reachedPoints.entrySet()) {
+                                    pointsList.add(entry.getValue().toString());
+                                }
+                            }
+                            pointsList.removeIf(s -> s.length() > 1);
+                            for (String s : pointsList) {
+                                Log.d("elért pont:", s);
+                                points += Integer.parseInt(s);
+                                Log.d("pontok osszeadva", String.valueOf(points));
+                            }
+                        }
+                        point.setText(points+" / "+all);
+                    }
+                });
+        point.setVisibility(View.VISIBLE);
+        pointsList.clear();
+        all="";
+        points=0;
     }
 
 
