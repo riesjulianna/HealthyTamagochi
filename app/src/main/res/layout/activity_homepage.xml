@@ -33,6 +33,16 @@
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal0" />
 
+    <TextView
+        android:id="@+id/pontok"
+        style="@style/textView"
+        android:visibility="invisible"
+        android:text=" Eddig elért pontok: "
+        app:layout_constraintBottom_toBottomOf="@id/horizontal6"
+        app:layout_constraintEnd_toEndOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal5" />
+
 
     <TextView
         android:id="@+id/proba_tv"
@@ -40,7 +50,7 @@
         android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintStart_toStartOf="@id/vertical4"
         app:layout_constraintTop_toTopOf="@id/horizontal5" />
 
     <RelativeLayout

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#0A1745"
+    android:background="#9e005c"
     tools:context=".TeethBrushing" >
 
     <ImageView
@@ -52,12 +52,9 @@
 
     <TextView
         android:id="@+id/leiras_tv"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        style="@style/textView2"
         android:gravity="center"
         android:text="Tisztítsd meg a fogakat a fogkefe segítségével!"
-        android:textColor="#D1F4F4"
-        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@id/vertical5"
@@ -69,11 +66,13 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/szaj"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal30"
-        app:layout_constraintDimensionRatio="2:1"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintBottom_toBottomOf="@+id/horizontal12"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal31"
+        app:srcCompat="@drawable/szaj"
         tools:ignore="ContentDescription" />
 
     <ImageView
@@ -81,6 +80,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/kosz"
+        android:src="@drawable/kosz"
         app:layout_constraintBottom_toBottomOf="@id/horizontal11"
         app:layout_constraintEnd_toEndOf="@id/vertical11"
         app:layout_constraintStart_toStartOf="@id/vertical10"
@@ -91,6 +91,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/kosz"
+        android:src="@drawable/kosz"
         app:layout_constraintBottom_toBottomOf="@id/horizontal11"
         app:layout_constraintEnd_toEndOf="@id/vertical13"
         app:layout_constraintStart_toStartOf="@id/vertical12"
@@ -101,34 +102,35 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/kosz"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal12"
+        android:src="@drawable/kosz"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal33"
         app:layout_constraintEnd_toEndOf="@id/vertical12"
         app:layout_constraintStart_toStartOf="@id/vertical11"
-        app:layout_constraintTop_toTopOf="@id/horizontal11" />
+        app:layout_constraintTop_toTopOf="@id/horizontal32" />
 
     <ImageView
         android:id="@+id/fogkefe"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/fogkefe"
+        android:src="@drawable/fogkefe"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="@id/horizontal4"
-        app:layout_constraintDimensionRatio="2:1"
-        app:layout_constraintEnd_toEndOf="@id/vertical4"
-        app:layout_constraintStart_toStartOf="@id/vertical5"
+        app:layout_constraintEnd_toEndOf="@id/vertical21"
+        app:layout_constraintStart_toStartOf="@id/vertical20"
         app:layout_constraintTop_toTopOf="@id/horizontal3" />
 
     <Button
         android:id="@+id/Done_btn"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:backgroundTint="#9CFAF1"
+       style="@style/magenta_button"
         android:gravity="center"
         android:onClick="DoneClick"
         android:text="@string/tov_bb"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/horizontal21"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"
-        app:layout_constraintStart_toStartOf="@+id/vertical1"
+        app:layout_constraintEnd_toEndOf="@id/vertical13"
+        app:layout_constraintStart_toStartOf="@+id/vertical10"
         app:layout_constraintTop_toTopOf="@id/horizontal20"
         android:contentDescription="@string/tovabb"/>
 
@@ -173,7 +175,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.31" />
+        app:layout_constraintGuide_percent="0.27" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical11"
@@ -194,7 +196,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.69" />
+        app:layout_constraintGuide_percent="0.73" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.38" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.62" />
 
 
 
@@ -217,60 +233,68 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.21" />
+        app:layout_constraintGuide_percent="0.23" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.34" />
+        app:layout_constraintGuide_percent="0.37" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.52" />
+        app:layout_constraintGuide_percent="0.53" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.58" />
+        app:layout_constraintGuide_percent="0.61" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.66" />
+        app:layout_constraintGuide_percent="0.78" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.90" />
+        app:layout_constraintGuide_percent="0.85" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal21"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="1" />
+        app:layout_constraintGuide_percent="0.95" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/horizontal30"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.75" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal31"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.42" />
+        app:layout_constraintGuide_percent="0.35" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal32"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.59" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal33"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.67" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

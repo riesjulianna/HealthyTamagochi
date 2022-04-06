@@ -54,11 +54,9 @@ public class TeethBrushing extends Activity {
         name=findViewById(R.id.textViewName);
         szaj=findViewById(R.id.szaj);
 
-        kefe.setBackgroundResource(R.drawable.fogkefe);
+
         szaj.setBackgroundResource(R.drawable.szaj);
-        kosz1.setBackgroundResource(R.drawable.kosz);
-        kosz2.setBackgroundResource(R.drawable.kosz);
-        kosz3.setBackgroundResource(R.drawable.kosz);
+
 
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
@@ -127,28 +125,27 @@ public class TeethBrushing extends Activity {
 
 
         kefe.setOnTouchListener((view, event) -> {
-            koord.setText(width+"  height   "+height);
             actualX=kefe.getX();
             actualY=kefe.getY();
             if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 if(actualX<(width*4.5/10.0) &&
-                        actualX>(width*2.6/10.0)  &&
-                        actualY<(height*5.0/10.0) &&
-                        actualY>(height*2.5/10.0))
+                        actualX>(width*2.5/10.0)  &&
+                        actualY<(height*6.2/10.0) &&
+                        actualY>(height*5.2/10.0))
                 {
                     db1++;
                 }
-                if(actualX<(width-(width*4.1/10.0)) &&
-                        actualX>(width-(width*4.7/10.0))  &&
-                        actualY<(height-(height*5.8/10.0)) &&
-                        actualY>(height-(height*6.1/10.0)))
+                if(actualX<(width*7.5/10.0) &&
+                        actualX>(width*5.5/10.0)  &&
+                        actualY<(height*6.2/10.0) &&
+                        actualY>(height*5.2/10.0))
                 {
                     db2++;
                 }
-                if(actualX<(width-(width*5.5/10.0)) &&
-                        actualX>(width-(width*6.1/10.0))  &&
-                        actualY<(height-(height*4.7/10.0)) &&
-                        actualY>(height-(height*5.0/10.0)))
+                if(actualX<(width*5.5/10.0) &&
+                        actualX>(width*4.0/10.0)  &&
+                        actualY<(height*6.5/10.0) &&
+                        actualY>(height*5.7/10.0))
                 {
                     db3++;
                 }
@@ -156,34 +153,29 @@ public class TeethBrushing extends Activity {
 
                 if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
                 {
-                    kefe.setX((float)(width*3.1/10.0));
-                    kefe.setY((float)(height*1.8/10.0));
+                    kefe.setX((float)(width*3.8/10.0));
+                    kefe.setY((float)(height*2.3/10.0));
                 }
             } else {
                 // In Landscape
-
-                if(db1>20 && db2>20 && db3>20)
-                {
-                    done.setVisibility(View.VISIBLE);
-                }
-                if(actualX<(width-(width*5.8/10.0)) &&
-                        actualX>(width-(width*6.1/10.0))  &&
-                        actualY<(height-(height*6.1/10.0)) &&
-                        actualY>(height-(height*6.5/10.0)))
+                if(actualX<(width*5.0/10.0) &&
+                        actualX>(width*4.0/10.0)  &&
+                        actualY<(height*6.8/10.0) &&
+                        actualY>(height*5.5/10.0))
                 {
                     db1++;
                 }
-                if(actualX<(width-(width*4.3/10.0)) &&
-                        actualX>(width-(width*4.9/10.0))  &&
-                        actualY<(height-(height*6.1/10.0)) &&
-                        actualY>(height-(height*6.5/10.0)))
+                if(actualX<(width*6.0/10.0) &&
+                        actualX>(width*4.8/10.0)  &&
+                        actualY<(height*6.8/10.0) &&
+                        actualY>(height*5.5/10.0))
                 {
                     db2++;
                 }
-                if(actualX<(width-(width*5.5/10.0)) &&
-                        actualX>(width-(width*6.1/10.0))  &&
-                        actualY<(height-(height*5.1/10.0)) &&
-                        actualY>(height-(height*5.6/10.0)))
+                if(actualX<(width*5.5/10.0) &&
+                        actualX>(width*4.2/10.0)  &&
+                        actualY<(height*7.7/10.0) &&
+                        actualY>(height*6.2/10.0))
                 {
                     db3++;
                 }
@@ -191,8 +183,8 @@ public class TeethBrushing extends Activity {
 
                 if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
                 {
-                    kefe.setX((float)(width-(width*5.8/10.0)));   //750
-                    kefe.setY((float)(height-(height*8.11/10.0)));
+                    kefe.setX((float)(width*1.2/10.0));
+                    kefe.setY((float)(height*2.1/10.0));
                 }
             }
             // rá teszi az ujját a képre
@@ -216,19 +208,19 @@ public class TeethBrushing extends Activity {
                 kefe.setX(kefe.getX() + distanceX);
                 kefe.setY(kefe.getY() + distanceY);
             }
-            if(db1>8)
+            if(db1>20)
             {
                 kosz1.setVisibility(View.INVISIBLE);
             }
-            if(db2>8)
+            if(db2>20)
             {
                 kosz2.setVisibility(View.INVISIBLE);
             }
-            if(db3>8)
+            if(db3>20)
             {
                 kosz3.setVisibility(View.INVISIBLE);
             }
-            if(db1>8 && db2>8 && db3>8)
+            if(db1>20 && db2>20 && db3>20)
             {
                 done.setVisibility(View.VISIBLE);
             }

@@ -32,7 +32,7 @@ public class Homepage extends Activity {
     ImageView avatar_img, downArrow, loading;
     Random rnd;
     Spinner selectedKid;
-    TextView point, signOut;
+    TextView point, signOut,eddigiPont;
     int nextActivityID, points;
     boolean firstGame = true;
     int numberOfQuestions;
@@ -58,6 +58,7 @@ public class Homepage extends Activity {
         avatar_img = findViewById(R.id.avatar_img);
         play = findViewById(R.id.play_btn);
         loading = findViewById(R.id.loadingImg);
+        eddigiPont=findViewById(R.id.pontok);
 
         loading.setBackgroundResource(R.drawable.loading_screen);
 
@@ -74,6 +75,7 @@ public class Homepage extends Activity {
                 avatar_img.setVisibility(View.VISIBLE);
                 play.setVisibility(View.VISIBLE);
                 point.setVisibility(View.INVISIBLE);
+                eddigiPont.setVisibility(View.VISIBLE);
             }
         }, 2000);
 
