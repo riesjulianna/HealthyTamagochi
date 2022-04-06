@@ -84,16 +84,16 @@ public class OkosTanyer extends Activity {
         rnd_type = rnd.nextInt(2);   //0,1 lehet
         type_tv.setText(type_List.get(rnd_type));
 
-        rnd_fruit1 = rnd.nextInt(4);
-        rnd_fruit2 = rnd.nextInt(4);
+        rnd_fruit1 = rnd.nextInt(2);
+        rnd_fruit2 = rnd.nextInt(2);
         while (rnd_fruit1 == rnd_fruit2) {
-            rnd_fruit2 = rnd.nextInt(4);
+            rnd_fruit2 = rnd.nextInt(2);
         }
 
-        rnd_veg1 = rnd.nextInt(4);
-        rnd_veg2 = rnd.nextInt(4);
+        rnd_veg1 = rnd.nextInt(2);
+        rnd_veg2 = rnd.nextInt(2);
         while (rnd_veg1 == rnd_veg2) {
-            rnd_veg2 = rnd.nextInt(4);
+            rnd_veg2 = rnd.nextInt(2);
         }
 
         String fruit1 = fruit_List.get(rnd_fruit1);
@@ -274,15 +274,15 @@ public class OkosTanyer extends Activity {
                   else  {
                       // ha nem a tányérra húzta
                       option1.setX((float)(width*(0.2/10.0)));
-                      option1.setY((float)(height*(2.0/10.0)));
+                      option1.setY((float)(height*(2.1/10.0)));
                   }
               }
               else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
               {
-                  if(actualX>(width-(width*5.8/10.0)) &&
-                          actualX<(width-(width*5.0/10.0)) &&
-                          actualY>(height-(height*7.4/10.0)) &&
-                          actualY<(height-(height*5.5/10.0)))
+                  if(actualX>(width*3.5/10.0) &&
+                          actualX<(width*6.5/10.0) &&
+                          actualY>(height*2.7/10.0) &&
+                          actualY<(height*7.3/10.0))
                   {
                       option1.setVisibility(View.GONE);
                       if(starter==1  && rnd_type==0)
@@ -333,8 +333,8 @@ public class OkosTanyer extends Activity {
                   }
                   else  {
                       // ha nem a tányérra húzta
-                      option1.setX((float)(width-(width*(9.23/10.0))));
-                      option1.setY((float)(height-(height*(8.14/10.0))));
+                      option1.setX((float)(width*(0.2/10.0)));
+                      option1.setY((float)(height*(1.5/10.0)));
                   }
               }
           }
@@ -429,16 +429,16 @@ public class OkosTanyer extends Activity {
                            }
                            else   {
                                // ha nem a tányérra húzta
-                               option4.setX((float)(width*(8.0/10.0)));
-                               option4.setY((float)(height*(7.0/10.0)));
+                               option4.setX((float)(width*(7.0/10.0)));
+                               option4.setY((float)(height*(6.7/10.0)));
                            }
                        }
                        else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
                        {
-                           if(actualX>(width-(width*5.8/10.0)) &&
-                                   actualX<(width-(width*5.0/10.0)) &&
-                                   actualY>(height-(height*7.4/10.0)) &&
-                                   actualY<(height-(height*5.5/10.0)))
+                           if(actualX>(width*3.5/10.0) &&
+                                   actualX<(width*6.5/10.0) &&
+                                   actualY>(height*2.7/10.0) &&
+                                   actualY<(height*7.3/10.0))
                            {
                                option4.setVisibility(View.GONE);
                                if(starter==4 && rnd_type==0)
@@ -489,8 +489,8 @@ public class OkosTanyer extends Activity {
                            }
                            else   {
                                // ha nem a tányérra húzta
-                               option4.setX((float)(width-(width*(1.59/10.0))));
-                               option4.setY((float)(height-(height*(4.32/10.0))));
+                               option4.setX((float)(width*(8.0/10.0)));
+                               option4.setY((float)(height*(5.6/10.0)));
                            }
                        }
 
@@ -585,16 +585,16 @@ public class OkosTanyer extends Activity {
 
                     }
                     else{
-                        option2.setX((float)(width*(8.0/10.0)));
-                        option2.setY((float)(height*(2.0/10.0)));
+                        option2.setX((float)(width*(7.0/10.0)));
+                        option2.setY((float)(height*(2.1/10.0)));
                     }
                 }
                 else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
                 {
-                    if(actualX>(width-(width*5.8/10.0)) &&
-                            actualX<(width-(width*5.0/10.0)) &&
-                            actualY>(height-(height*7.4/10.0)) &&
-                            actualY<(height-(height*5.5/10.0)))
+                    if(actualX>(width*3.5/10.0) &&
+                            actualX<(width*6.5/10.0) &&
+                            actualY>(height*2.7/10.0) &&
+                            actualY<(height*7.3/10.0))
                     {
                         option2.setVisibility(View.GONE);
                         if(starter==2 && rnd_type==0)
@@ -643,8 +643,8 @@ public class OkosTanyer extends Activity {
                         }
                     }
                     else{
-                        option2.setX((float)(width-(width*(1.59/10.0))));
-                        option2.setY((float)(height-(height*(8.14/10.0))));
+                        option2.setX((float)(width*(8.0/10.0)));
+                        option2.setY((float)(height*(1.5/10.0)));
                     }
                 }
 
@@ -736,15 +736,15 @@ public class OkosTanyer extends Activity {
                             }
                             else {
                                 option3.setX((float)(width*(0.2/10.0)));
-                                option3.setY((float)(height*(7.0/10.0)));
+                                option3.setY((float)(height*(6.7/10.0)));
                             }
                         }
                         else if(orientation==Configuration.ORIENTATION_LANDSCAPE)
                         {
-                            if(actualX>(width-(width*5.8/10.0)) &&
-                                    actualX<(width-(width*5.0/10.0)) &&
-                                    actualY>(height-(height*7.4/10.0)) &&
-                                    actualY<(height-(height*5.5/10.0)))
+                            if(actualX>(width*3.5/10.0) &&
+                                    actualX<(width*6.5/10.0) &&
+                                    actualY>(height*2.7/10.0) &&
+                                    actualY<(height*7.3/10.0))
                             {
                                 option3.setVisibility(View.GONE);
                                 if(starter==1 && rnd_type==0)
@@ -793,8 +793,8 @@ public class OkosTanyer extends Activity {
                                 }
                             }
                             else {
-                                option3.setX((float)(width-(width*(9.23/10.0))));
-                                option3.setY((float)(height-(height*(4.32/10.0))));
+                                option3.setX((float)(width*(0.2/10.0)));
+                                option3.setY((float)(height*(5.6/10.0)));
                             }
                         }
 

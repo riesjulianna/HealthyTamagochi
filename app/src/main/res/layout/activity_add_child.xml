@@ -140,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:src="@drawable/avatar_1" />
+             />
     </LinearLayout>
 
     <LinearLayout
@@ -157,7 +157,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:src="@drawable/avatar_2" />
+            />
     </LinearLayout>
 
     <LinearLayout
@@ -174,7 +174,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
-            android:src="@drawable/avatar_3" />
+            />
     </LinearLayout>
 
 

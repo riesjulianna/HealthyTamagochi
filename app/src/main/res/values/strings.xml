@@ -69,6 +69,8 @@
     <string name="tov_bb">Tovább</string>
     <string name="e_mail_cim">E-mail cím</string>
     <string name="loading">loading</string>
+    <string name="nyilfel">nyilfel</string>
+    <string name="nyille">nyille</string>
 
 
 </resources>

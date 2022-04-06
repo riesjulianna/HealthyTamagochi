@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="vegetables">
-        <item>pari</item>
-        <item>salata</item>
-        <item>retek</item>
-        <item>repa</item>
+        <item>dinnye</item>
+        <item>gomba</item>
     </string-array>
 </resources>
