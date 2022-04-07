@@ -75,7 +75,7 @@ public class Homepage extends Activity {
                 avatar_img.setVisibility(View.VISIBLE);
                 play.setVisibility(View.VISIBLE);
                 point.setVisibility(View.INVISIBLE);
-                eddigiPont.setVisibility(View.VISIBLE);
+                eddigiPont.setVisibility(View.INVISIBLE);
             }
         }, 2000);
 
@@ -221,6 +221,7 @@ public class Homepage extends Activity {
                         point.setText(points+" / "+all);
                     }
                 });
+        eddigiPont.setVisibility(View.VISIBLE);
         point.setVisibility(View.VISIBLE);
         pointsList.clear();
         all="";
