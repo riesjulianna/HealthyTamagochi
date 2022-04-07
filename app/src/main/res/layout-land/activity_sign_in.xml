@@ -8,18 +8,24 @@
     android:orientation="vertical"
     tools:context=".SignIn">
 
-    <EditText
-        android:id="@+id/emailParent"
+    <ImageView
+        android:id="@+id/pearplus_kep"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:src="@drawable/pearplus_felirat2"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal0"
+        app:layout_constraintEnd_toEndOf="@id/vertical2"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal8" />
+
+    <EditText
+        android:id="@+id/emailParent"
         android:background="@drawable/edittext_bg"
         android:hint="@string/e_mail_cim"
         android:inputType="textEmailAddress"
         android:paddingStart="15dp"
         android:text=""
-        android:textColor="#CDF8E9"
-        android:textColorHint="#CDF8E9"
-        android:textSize="18sp"
+       style="@style/editText"
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical0"
@@ -28,15 +34,11 @@
         tools:ignore="RtlSymmetry" />
     <EditText
         android:id="@+id/password"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
         android:inputType="textPassword"
         android:text=""
         android:hint="@string/jelszo"
-        android:textColor="#CDF8E9"
-        android:textColorHint="#CDF8E9"
-        android:textSize="19sp"
-        android:background="@drawable/edittext_bg"
+        style="@style/editText"
+        android:fontFamily="sans-serif"
         app:layout_constraintTop_toTopOf="@id/horizontal2"
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintStart_toStartOf="@id/vertical0"
@@ -122,6 +124,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.65" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
 
 
     <androidx.constraintlayout.widget.Guideline

@@ -8,40 +8,52 @@
     android:background="#0f4d66"
     tools:context=".Registration">
 
+    <ImageView
+        android:id="@+id/pearplus_kep"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/pearplus_felirat2"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal0"
+        app:layout_constraintEnd_toEndOf="@id/vertical5"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal20" />
+
     <EditText
         android:id="@+id/emailParent"
         style="@style/editText"
         android:autofillHints="@string/szuloemail"
+        android:fontFamily="sans-serif"
         android:hint="@string/szuloemail"
         android:inputType="textEmailAddress"
-        app:layout_constraintTop_toTopOf="@id/horizontal0"
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
-       />
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal0" />
 
     <EditText
         android:id="@+id/password"
         style="@style/editText"
         android:autofillHints="@string/jelszo1"
+        android:fontFamily="sans-serif"
         android:hint="@string/jelszo1"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
-        app:layout_constraintTop_toTopOf="@id/horizontal2"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal3"/>
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal2" />
 
 
     <EditText
         android:id="@+id/password2"
         style="@style/editText"
         android:autofillHints="@string/jelszo2"
+        android:fontFamily="sans-serif"
         android:hint="@string/jelszo2"
         android:inputType="textPassword"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
-        app:layout_constraintTop_toTopOf="@id/horizontal4"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal5"/>
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal4" />
 
     <TextView
         android:id="@+id/validPassword"
@@ -187,52 +199,55 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.12" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
+        app:layout_constraintGuide_percent="0.19" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.26" />
+        app:layout_constraintGuide_percent="0.22" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33" />
+        app:layout_constraintGuide_percent="0.29" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.35" />
+        app:layout_constraintGuide_percent="0.32" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.42" />
+        app:layout_constraintGuide_percent="0.39" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.44" />
+        app:layout_constraintGuide_percent="0.41" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.48" />
+        app:layout_constraintGuide_percent="0.47" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal8"
@@ -311,6 +326,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.96" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
 
 
 
@@ -339,6 +360,13 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.75" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

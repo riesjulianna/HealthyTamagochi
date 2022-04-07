@@ -8,6 +8,16 @@
     android:background="#0f4d66"
     tools:context=".Registration">
 
+    <ImageView
+        android:id="@+id/pearplus_kep"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/pearplus_felirat2"
+        app:layout_constraintTop_toTopOf="@id/horizontal20"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal0"
+        app:layout_constraintEnd_toEndOf="@id/vertical6"
+        app:layout_constraintStart_toStartOf="@id/vertical0" />
+
     <EditText
         android:id="@+id/emailParent"
         style="@style/editText"
@@ -26,6 +36,7 @@
         android:autofillHints="@string/jelszo1"
         android:hint="@string/jelszo1"
         android:inputType="textPassword"
+        android:fontFamily="sans-serif"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal2"
@@ -38,6 +49,7 @@
         android:autofillHints="@string/jelszo2"
         android:hint="@string/jelszo2"
         android:inputType="textPassword"
+        android:fontFamily="sans-serif"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal4"
@@ -290,6 +302,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.98" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -331,6 +350,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.52" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
