@@ -7,19 +7,44 @@
     android:background="#0f4d66"
     tools:context=".Homepage">
 
-
-    <TextView
-        android:id="@+id/signOut_btn"
-        style="@style/textView"
-        android:gravity="end"
-        android:onClick="signOutClick"
-        android:text="@string/kijelentkezes"
-        android:textStyle="italic"
-        android:visibility="invisible"
+    <ImageView
+        android:id="@+id/pearplus_kep"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/pearplus_felirat2"
         app:layout_constraintBottom_toBottomOf="@id/horizontal9"
-        app:layout_constraintEnd_toEndOf="@id/vertical1"
-        app:layout_constraintStart_toStartOf="@id/vertical4"
+        app:layout_constraintEnd_toEndOf="@id/vertical5"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal8" />
+
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal22"
+        app:layout_constraintEnd_toEndOf="@id/vertical21"
+        app:layout_constraintStart_toStartOf="@id/vertical4"
+        app:layout_constraintTop_toTopOf="@id/horizontal8">
+
+        <ImageView
+            android:id="@+id/exit_kep"
+            android:src="@drawable/exit"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="signOutClick"
+            android:visibility="invisible"
+            />
+        <TextView
+            android:id="@+id/exit_tv"
+            style="@style/textView"
+            android:layout_marginStart="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/kijelentkezes"
+            android:textStyle="italic"
+            android:onClick="signOutClick"
+            android:visibility="invisible"
+           />
+    </RelativeLayout>
 
     <Button
         android:id="@+id/addKid_btn"
@@ -37,10 +62,12 @@
         android:id="@+id/pontok"
         style="@style/textView"
         android:visibility="invisible"
-        android:text=" Eddig elért pontok: "
+        android:gravity="end|center_vertical"
+        android:text=" Eddig elért pontok:"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
-        app:layout_constraintEnd_toEndOf="@id/vertical4"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintEnd_toEndOf="@id/vertical6"
+        app:layout_constraintStart_toStartOf="@id/vertical20"
         app:layout_constraintTop_toTopOf="@id/horizontal5" />
 
 
@@ -48,9 +75,11 @@
         android:id="@+id/proba_tv"
         style="@style/textView"
         android:visibility="invisible"
+        android:gravity="start|center_vertical"
+        android:layout_marginStart="0dp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
-        app:layout_constraintEnd_toEndOf="@id/vertical1"
-        app:layout_constraintStart_toStartOf="@id/vertical4"
+        app:layout_constraintEnd_toEndOf="@id/vertical21"
+        app:layout_constraintStart_toStartOf="@id/vertical6"
         app:layout_constraintTop_toTopOf="@id/horizontal5" />
 
     <RelativeLayout
@@ -115,18 +144,19 @@
         app:layout_constraintStart_toStartOf="@id/vertical2"
         app:layout_constraintTop_toTopOf="@id/horizontal6" />
 
+
     <ImageView
-        android:contentDescription="@string/loading"
         android:id="@+id/loadingImg"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:contentDescription="@string/loading"
         app:layout_constraintBottom_toBottomOf="@id/horizontal21"
         app:layout_constraintEnd_toEndOf="@id/vertical21"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@id/vertical20"
         app:layout_constraintTop_toTopOf="@id/horizontal20"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/loading_screen" />
-
-
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical0"
@@ -172,7 +202,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.55" />
+        app:layout_constraintGuide_percent="0.65" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -180,33 +225,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1" />
+        app:layout_constraintGuide_percent="0.15" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.18" />
+        app:layout_constraintGuide_percent="0.23" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25" />
+        app:layout_constraintGuide_percent="0.27" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.33" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.4" />
+        app:layout_constraintGuide_percent="0.38" />
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal5"
         android:layout_width="wrap_content"
@@ -225,7 +270,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.9" />
+        app:layout_constraintGuide_percent="0.86" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -234,12 +279,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.02" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.08" />
+        app:layout_constraintGuide_percent="0.14" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal20"
@@ -253,6 +299,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.06" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

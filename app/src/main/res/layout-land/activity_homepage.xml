@@ -7,10 +7,34 @@
     android:background="#0f4d66"
     tools:context=".Homepage">
 
+    <ImageView
+        android:id="@+id/pearplus_kep"
+        android:src="@drawable/pearplus_felirat2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:onClick="signOutClick"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal0"
+        app:layout_constraintEnd_toEndOf="@id/vertical2"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal8"
+        />
+
+    <ImageView
+        android:id="@+id/exit_kep"
+        android:src="@drawable/exit"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:onClick="signOutClick"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal9"
+        app:layout_constraintEnd_toEndOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@id/vertical5"
+        app:layout_constraintTop_toTopOf="@id/horizontal8"
+        />
+
     <TextView
         android:id="@+id/signOut_btn"
         style="@style/textView"
-        android:gravity="end"
+        android:gravity="start|center_vertical"
         android:onClick="signOutClick"
         android:text="@string/kijelentkezes"
         android:textStyle="italic"
@@ -30,13 +54,25 @@
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintEnd_toEndOf="@id/vertical1"/>
 
+    <TextView
+        android:id="@+id/pontok"
+        style="@style/textView"
+        android:text=" Eddig elért pontok: "
+        android:textStyle="bold"
+        android:gravity="end|center_vertical"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal6"
+        app:layout_constraintEnd_toEndOf="@id/vertical6"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal5" />
+
 
     <TextView
         android:id="@+id/proba_tv"
        style="@style/textView"
+        android:gravity="start|center_vertical"
         app:layout_constraintTop_toTopOf="@id/horizontal5"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintStart_toStartOf="@id/vertical6"
         app:layout_constraintEnd_toEndOf="@id/vertical1"/>
 
     <RelativeLayout
@@ -128,6 +164,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.7" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 
     <androidx.constraintlayout.widget.Guideline

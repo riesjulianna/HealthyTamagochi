@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0f4d66"
+    android:background="#01a89e"
     tools:context=".Questions1">
 
     <ImageView
@@ -142,22 +142,9 @@
             android:textSize="17sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewR"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#7DE8F6"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal12"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"
-        app:layout_constraintStart_toStartOf="@+id/vertical1"
-        app:layout_constraintTop_toTopOf="@id/horizontal11" />
-
 
     <Button
-        style="@style/green_button"
+        style="@style/dark_blue_button"
         android:onClick="question_DoneClick"
         android:text="@string/tovabb"
         app:layout_constraintBottom_toBottomOf="@id/horizontal13"
@@ -290,7 +277,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.92" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

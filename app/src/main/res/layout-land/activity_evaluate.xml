@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0f4d66"
+    android:background="#01a89e"
     tools:context=".Evaluate">
 
 
@@ -51,35 +51,48 @@
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintTop_toTopOf="@id/horizontal0" />
 
-    <LinearLayout
+    <View
         android:id="@+id/color"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center"
+        android:background="@drawable/darker_blue_round_bground"
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintEnd_toEndOf="@id/vertical4"
-        app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintTop_toTopOf="@id/horizontal2">
+        app:layout_constraintStart_toStartOf="@id/vertical7"
+        app:layout_constraintTop_toTopOf="@id/horizontal2"/>
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:progressDrawable="@drawable/customprogressbar"
+        app:layout_constraintTop_toTopOf="@id/horizontal6"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal7"
+        app:layout_constraintEnd_toEndOf="@id/vertical6"
+        app:layout_constraintStart_toStartOf="@id/vertical5"
+        />
 
 
         <TextView
             android:id="@+id/rating_tv"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:gravity="center"
-            android:textColor="#050000"
-            android:textSize="20sp" />
+            style="@style/textView2"
+            app:layout_constraintTop_toTopOf="@id/horizontal8"
+            app:layout_constraintBottom_toBottomOf="@id/horizontal9"
+            app:layout_constraintEnd_toEndOf="@id/vertical6"
+            app:layout_constraintStart_toStartOf="@id/vertical5"/>
 
-    </LinearLayout>
 
 
     <Button
-        style="@style/green_button"
+        style="@style/dark_blue_button"
         android:onClick="evaluate_DoneClick"
         android:text="@string/tovabb"
         app:layout_constraintBottom_toBottomOf="@id/horizontal5"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"
-        app:layout_constraintStart_toStartOf="@+id/vertical1"
+        app:layout_constraintEnd_toEndOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@+id/vertical7"
         app:layout_constraintTop_toTopOf="@id/horizontal4" />
 
 
@@ -109,7 +122,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.80" />
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.23" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.77" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.2" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -139,7 +173,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.60" />
+        app:layout_constraintGuide_percent="0.8" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal4"
@@ -154,5 +188,32 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.97" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

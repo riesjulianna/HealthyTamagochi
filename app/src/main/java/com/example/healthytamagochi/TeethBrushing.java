@@ -55,15 +55,18 @@ public class TeethBrushing extends Activity {
         szaj=findViewById(R.id.szaj);
 
 
-        szaj.setBackgroundResource(R.drawable.szaj);
-
-
         DisplayMetrics displayMetrics = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
         int height = displayMetrics.heightPixels;
         int width = displayMetrics.widthPixels;
 
         int orientation = getResources().getConfiguration().orientation;
+
+            szaj.setBackgroundResource(R.drawable.szaj);
+            kefe.setBackgroundResource(R.drawable.fogkefe);
+            kosz1.setBackgroundResource(R.drawable.kosz);
+            kosz2.setBackgroundResource(R.drawable.kosz);
+            kosz3.setBackgroundResource(R.drawable.kosz);
 
         Bundle b = getIntent().getExtras();
         if (b != null) {
@@ -183,7 +186,7 @@ public class TeethBrushing extends Activity {
 
                 if(event.getAction() == MotionEvent.ACTION_UP)  //amikor elengeded
                 {
-                    kefe.setX((float)(width*1.2/10.0));
+                    kefe.setX((float)(width*4.2/10.0));
                     kefe.setY((float)(height*2.1/10.0));
                 }
             }

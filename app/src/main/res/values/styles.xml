@@ -88,4 +88,14 @@
         <item name="android:background">@drawable/magenta_round_bground</item>
     </style>
 
+    <style name="dark_blue_button">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:textColor">#FBFDFD</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold|italic</item>
+        <item name="android:background">@drawable/darker_blue_round_bground</item>
+    </style>
+
 </resources>

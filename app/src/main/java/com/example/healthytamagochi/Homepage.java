@@ -3,6 +3,7 @@ package com.example.healthytamagochi;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -29,10 +31,10 @@ import java.util.Random;
 
 public class Homepage extends Activity {
 
-    ImageView avatar_img, downArrow, loading;
+    ImageView avatar_img, downArrow, loading,exit_kep;
     Random rnd;
     Spinner selectedKid;
-    TextView point, signOut,eddigiPont;
+    TextView point,eddigiPont,exit_tv;
     int nextActivityID, points;
     boolean firstGame = true;
     int numberOfQuestions;
@@ -50,7 +52,8 @@ public class Homepage extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
         point = findViewById(R.id.proba_tv);
-        signOut = findViewById(R.id.signOut_btn);
+        exit_kep = findViewById(R.id.exit_kep);
+        exit_tv = findViewById(R.id.exit_tv);
         addKid = findViewById(R.id.addKid_btn);
         relativeLayout = findViewById(R.id.relativeLayout3);
         selectedKid = findViewById(R.id.selectedKid);
@@ -60,22 +63,34 @@ public class Homepage extends Activity {
         loading = findViewById(R.id.loadingImg);
         eddigiPont=findViewById(R.id.pontok);
 
-        loading.setBackgroundResource(R.drawable.loading_screen);
+        int orientation = getResources().getConfiguration().orientation;
+
+        if (orientation == Configuration.ORIENTATION_PORTRAIT)
+        {
+            loading.setBackgroundResource(R.drawable.loading_screen);
+        }
+
+
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                loading.setVisibility(View.INVISIBLE);
-                signOut.setVisibility(View.VISIBLE);
-                addKid.setVisibility(View.VISIBLE);
-                relativeLayout.setVisibility(View.VISIBLE);
-                selectedKid.setVisibility(View.VISIBLE);
-                downArrow.setVisibility(View.VISIBLE);
-                avatar_img.setVisibility(View.VISIBLE);
-                play.setVisibility(View.VISIBLE);
-                point.setVisibility(View.INVISIBLE);
-                eddigiPont.setVisibility(View.INVISIBLE);
+                if (orientation == Configuration.ORIENTATION_PORTRAIT)
+                {
+                    loading.setVisibility(View.INVISIBLE);
+                    exit_kep.setVisibility(View.VISIBLE);
+                    exit_tv.setVisibility(View.VISIBLE);
+                    addKid.setVisibility(View.VISIBLE);
+                    relativeLayout.setVisibility(View.VISIBLE);
+                    selectedKid.setVisibility(View.VISIBLE);
+                    downArrow.setVisibility(View.VISIBLE);
+                    avatar_img.setVisibility(View.VISIBLE);
+                    play.setVisibility(View.VISIBLE);
+                    point.setVisibility(View.INVISIBLE);
+                    eddigiPont.setVisibility(View.INVISIBLE);
+                }
+
             }
         }, 2000);
 

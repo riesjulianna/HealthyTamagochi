@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,13 +31,14 @@ public class Evaluate extends Activity {
     int min=0;
     int sec=0;
     int pont=0;
-    LinearLayout color ;
+    View color ;
     TextView rating;
     Random rnd;
     int nextActivityID;
     int prevActivityID;
     boolean firstGame;
     int numberOfQuestions;
+    ProgressBar pbar;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -48,6 +51,9 @@ public class Evaluate extends Activity {
         time = findViewById(R.id.time_tv);
         color = findViewById(R.id.color);
         rating = findViewById(R.id.rating_tv);
+        pbar=findViewById(R.id.progressBar);
+
+        pbar.setMax(3);
 
         numberOfQuestions = getNumOfQuestions();
 
@@ -70,29 +76,26 @@ public class Evaluate extends Activity {
             @SuppressLint("UseCompatLoadingForDrawables") Drawable res = getResources().getDrawable(imageRes);
             avatar.setImageDrawable(res);
 
-            if(prevActivityID==1 && pont>1)
+            if(prevActivityID==1 )
             {
                 rating.setText("3/" + pont + " pont\n\n" + response);
-                color.setBackgroundResource(R.drawable.green_round_bground);
             }
-            else if(prevActivityID==1 && pont<=1)
+            else if(prevActivityID==2 ) {
+                rating.setText("3/" + pont + " pont\n\n" + "A zöldség és gyümölcs fogyasztása nagyon fontos. Naponta legalább ötször fogyasszunk zöldséget és gyümölcsöt friss, fagyasztott, szárított vagy konzerv formájában.");
+            }
+            else if (prevActivityID==3 )
             {
-                rating.setText("3/" + pont + " pont\n\n" + response);
-                color.setBackgroundResource(R.drawable.red_round_bground);
+                    rating.setText("3/" + pont + " pont\n\n" + "Naponta kétszer, reggel és este fogat kell mosni, hogy fogaink tiszták és fehérek maradjanak.");
+
             }
-            else if(prevActivityID==2 || prevActivityID==3)
-            {
-                if(pont>1)
-                {
-                    rating.setText("3/" + pont + " pont\n\n" + "Ügyes vagy!");
-                    color.setBackgroundResource(R.drawable.green_round_bground);
-                }
-                else
-                {
-                    rating.setText("3/" + pont + " pont\n\n" + "Legközelebb ügyesebb leszel!");
-                    color.setBackgroundResource(R.drawable.red_round_bground);
-                }
+            if(pont ==1){
+                pbar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#67013C")));
             }
+            if(pont ==2){
+                pbar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#f8931f")));            }
+            if(pont ==3){
+                pbar.setProgressTintList(ColorStateList.valueOf(Color.parseColor("#00ff01")));            }
+            pbar.setProgress(pont);
 
 
             Timer T = new Timer();
@@ -132,6 +135,7 @@ public class Evaluate extends Activity {
 
         }
     }
+
     public int getNumOfQuestions(){
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         db.collection("questions").get()

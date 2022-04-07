@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#0A1745"
+    android:background="#01a89e"
     tools:context=".Questions1">
 
     <ImageView
@@ -142,30 +142,15 @@
             android:textSize="17sp" />
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textViewR"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:gravity="center"
-        android:text=""
-        android:textColor="#7DE8F6"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal12"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"
-        app:layout_constraintStart_toStartOf="@+id/vertical1"
-        app:layout_constraintTop_toTopOf="@id/horizontal11" />
 
     <Button
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9CFAF1"
-        android:gravity="center"
+        style="@style/dark_blue_button"
         android:onClick="question_DoneClick"
         android:text="@string/tovabb"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal13"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"
-        app:layout_constraintStart_toStartOf="@+id/vertical1"
+        app:layout_constraintEnd_toEndOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@+id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal12" />
 
 
@@ -196,6 +181,12 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.80" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.20" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal0"
@@ -294,7 +285,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.97" />
+        app:layout_constraintGuide_percent="0.95" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

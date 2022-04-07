@@ -69,12 +69,11 @@
         android:layout_height="0dp"
         android:contentDescription="@string/szaj"
         app:layout_constraintBottom_toBottomOf="@id/horizontal30"
-        app:layout_constraintDimensionRatio="4:1"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal31"
-        app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/szaj" />
 
     <ImageView
@@ -115,8 +114,10 @@
         android:id="@+id/fogkefe"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/vertical5"
-        app:layout_constraintEnd_toEndOf="@id/vertical4"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="@id/vertical10"
+        app:layout_constraintEnd_toEndOf="@id/vertical13"
         app:layout_constraintTop_toTopOf="@id/horizontal3"
         app:layout_constraintBottom_toBottomOf="@id/horizontal4"
         app:srcCompat="@drawable/fogkefe"
@@ -124,16 +125,13 @@
 
     <Button
         android:id="@+id/Done_btn"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="#9CFAF1"
-        android:gravity="center"
+        style="@style/magenta_button"
         android:onClick="DoneClick"
         android:text="@string/tovabb"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@id/horizontal21"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"
-        app:layout_constraintStart_toStartOf="@+id/vertical1"
+        app:layout_constraintEnd_toEndOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@+id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal20" />
 
 
@@ -262,7 +260,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="1" />
+        app:layout_constraintGuide_percent="0.97" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal30"
