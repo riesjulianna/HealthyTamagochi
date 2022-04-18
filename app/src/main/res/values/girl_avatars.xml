@@ -3,7 +3,6 @@
     <string-array name="girl_avatars">
         <item>girl1</item>
         <item>girl2</item>
-        <item>cat_one</item>
-        <item>cat_two</item>
+        <item>girl3</item>
     </string-array>
 </resources>

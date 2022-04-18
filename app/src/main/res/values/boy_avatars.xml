@@ -3,7 +3,6 @@
     <string-array name="boy_avatars">
         <item>boy1</item>
         <item>boy2</item>
-        <item>dog_one</item>
-        <item>dog_two</item>
+        <item>boy3</item>
     </string-array>
 </resources>

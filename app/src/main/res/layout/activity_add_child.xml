@@ -9,6 +9,16 @@
     android:background="#0f4d66"
     tools:context=".AddChild">
 
+    <ImageView
+        android:id="@+id/pearplus_kep"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:src="@drawable/pearplus_felirat2"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal0"
+        app:layout_constraintEnd_toEndOf="@id/vertical4"
+        app:layout_constraintStart_toStartOf="@id/vertical2"
+        app:layout_constraintTop_toTopOf="@id/horizontal16" />
+
 
     <TextView
         android:id="@+id/textView7"
@@ -353,6 +363,13 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.94" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.02" />
 
 
 

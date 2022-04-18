@@ -87,7 +87,6 @@ public class AddChild extends Activity {
                     pic2.setImageResource(resID);
                     resID = getResources().getIdentifier(girl_avatars_List.get(2), "drawable", getPackageName());
                     pic3.setImageResource(resID);
-                    resID = getResources().getIdentifier(girl_avatars_List.get(3), "drawable", getPackageName());
 
                 } else {
                     resID = getResources().getIdentifier(boy_avatars_List.get(0), "drawable", getPackageName());
@@ -96,7 +95,6 @@ public class AddChild extends Activity {
                     pic2.setImageResource(resID);
                     resID = getResources().getIdentifier(boy_avatars_List.get(2), "drawable", getPackageName());
                     pic3.setImageResource(resID);
-                    resID = getResources().getIdentifier(boy_avatars_List.get(3), "drawable", getPackageName());
 
                 }
                 sex = spinner_sex.getSelectedItem().toString().trim();
