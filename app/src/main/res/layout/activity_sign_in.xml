@@ -52,7 +52,6 @@
         android:text="@string/elfelejtette_jelszavat"
         android:textColor="#CDF8E9"
         android:textSize="17sp"
-        android:visibility="invisible"
         app:layout_constraintTop_toTopOf="@id/horizontal4"
         app:layout_constraintBottom_toBottomOf="@id/horizontal5"
         app:layout_constraintStart_toStartOf="@id/vertical0"

@@ -11,7 +11,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -30,6 +29,34 @@ public class SignIn extends Activity {
         email = findViewById(R.id.emailParent);
         password = findViewById(R.id.password);
         forgotPassword = findViewById(R.id.forgotPassword);
+        forgotPassword.setPaintFlags(forgotPassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+
+        forgotPassword.setOnClickListener(view -> {
+            final AlertDialog.Builder alert = new AlertDialog.Builder(SignIn.this);
+            final EditText input = new EditText(SignIn.this);
+            input.setSingleLine();
+            alert.setTitle("Adja meg a regisztrációhoz használt e-mail címét!");
+            alert.setView(input);
+            alert.setPositiveButton("Ok", (dialog, whichButton) -> {
+                String email = input.getText().toString().trim();
+                FirebaseAuth auth = FirebaseAuth.getInstance();
+                auth.sendPasswordResetEmail(email)
+                        .addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(SignIn.this,
+                                        "A jelszó visszaállításhoz szükséges e-mailt elküldtük."
+                                        , Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(SignIn.this,
+                                        "Ezzel az e-mail címmel nem találtunk regisztrációt."
+                                        , Toast.LENGTH_LONG).show();
+                            }
+                        });
+            }).setNegativeButton("Mégse", (dialog, whichButton) -> dialog.cancel());
+            alert.show();
+        });
+
     }
 
     public void signInClick(View v) {
@@ -55,37 +82,12 @@ public class SignIn extends Activity {
                         } else {
                             Toast.makeText(SignIn.this, "Hibás e-mail vagy jelszó.",
                                     Toast.LENGTH_LONG).show();
-                            forgotPassword.setVisibility(View.VISIBLE);
-                            forgotPassword.setPaintFlags(forgotPassword.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
                         }
                     });
         }
 
-        forgotPassword.setOnClickListener(view -> {
-            final AlertDialog.Builder alert = new AlertDialog.Builder(SignIn.this);
-            final EditText input = new EditText(SignIn.this);
-            input.setSingleLine();
-            alert.setTitle("Regisztrált e-mail cím:");
-            alert.setView(input);
-            alert.setPositiveButton("Ok", (dialog, whichButton) -> {
-                String email = input.getText().toString().trim();
-                FirebaseAuth auth = FirebaseAuth.getInstance();
-                auth.sendPasswordResetEmail(email)
-                        .addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(SignIn.this,
-                                        "A jelszó visszaállításhoz szükséges e-mailt elküldtük."
-                                        , Toast.LENGTH_LONG).show();
-                            } else {
-                                Toast.makeText(SignIn.this,
-                                        "Ezzel az e-mail címmel nem találtunk regisztrációt."
-                                        , Toast.LENGTH_LONG).show();
-                            }
-                        });
-            }).setNegativeButton("Mégse", (dialog, whichButton) -> dialog.cancel());
-            alert.show();
-        });
     }
+
 
     public void go() {
         Intent i = new Intent();
