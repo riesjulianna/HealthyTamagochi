@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -81,7 +83,7 @@ public class Questions1 extends Activity {
 
         String uri = "@drawable/" + selectedPic;
         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
-        Drawable res = getResources().getDrawable(imageRes);
+        Drawable res = ContextCompat.getDrawable(getApplicationContext(),imageRes);
         avatar.setImageDrawable(res);
 
         Timer T = new Timer();
@@ -301,35 +303,6 @@ public class Questions1 extends Activity {
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
         String timestamp = formatter.format(date);
         ref.update(timestamp + "," +"qID:"+QuestionID, point);
-//        db.collection("results")
-//                .whereEqualTo("parentID", parentID)
-//                .whereEqualTo("kidName", selectedKid)
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                resultDocID = document.getId();
-//                                Log.d("------------", resultDocID);
-//                            }
-//                            DocumentReference resultsRef = db.collection("results").document(resultDocID);
-//                            resultsRef.update("Qid+hanyadik", point)
-//                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
-//
-//                                        @Override
-//                                        public void onSuccess(Void unused) {
-//
-//                                        }
-//                                    })
-//                                    .addOnFailureListener(new OnFailureListener() {
-//                                        @Override
-//                                        public void onFailure(@NonNull Exception e) {
-//
-//                                        }
-//                                    });
-//                        }
-//                    }
-//                });
+
     }
 }

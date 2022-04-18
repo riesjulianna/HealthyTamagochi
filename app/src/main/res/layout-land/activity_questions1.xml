@@ -154,7 +154,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal13"
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@+id/vertical5"
-        app:layout_constraintTop_toTopOf="@id/horizontal12" />
+        app:layout_constraintTop_toTopOf="@id/horizontal12"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <androidx.constraintlayout.widget.Guideline

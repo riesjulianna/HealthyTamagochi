@@ -36,16 +36,17 @@
         app:layout_constraintTop_toTopOf="@id/horizontal0" />
 
 
-        <EditText
-            android:id="@+id/name"
-            style="@style/editText"
-            android:autofillHints="@string/nev"
-            android:hint="@string/nev"
-            android:inputType="text"
-            app:layout_constraintStart_toStartOf="@id/vertical0"
-            app:layout_constraintEnd_toEndOf="@id/vertical1"
-            app:layout_constraintTop_toTopOf="@id/horizontal2"
-            app:layout_constraintBottom_toBottomOf="@id/horizontal3"/>
+    <EditText
+        android:id="@+id/name"
+        style="@style/editText"
+        android:autofillHints="@string/nev"
+        android:hint="@string/nev"
+        android:inputType="text"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal2"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
         <RelativeLayout
@@ -95,17 +96,17 @@
             app:layout_constraintBottom_toBottomOf="@id/horizontal5"/>
 
 
-
-            <EditText
-                android:id="@+id/weight"
-                style="@style/editText"
-                android:autofillHints="@string/testtomeg"
-                android:hint="@string/testtomeg"
-                android:inputType="number"
-                app:layout_constraintStart_toStartOf="@id/vertical0"
-                app:layout_constraintEnd_toEndOf="@id/vertical8"
-                app:layout_constraintTop_toTopOf="@id/horizontal8"
-                app:layout_constraintBottom_toBottomOf="@id/horizontal9" />
+    <EditText
+        android:id="@+id/weight"
+        style="@style/editText"
+        android:autofillHints="@string/testtomeg"
+        android:hint="@string/testtomeg"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal9"
+        app:layout_constraintEnd_toEndOf="@id/vertical8"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal8"
+        tools:ignore="TouchTargetSizeCheck" />
 
                     <TextView
                     style="@style/textView"
@@ -117,17 +118,17 @@
                     app:layout_constraintBottom_toBottomOf="@id/horizontal9" />
 
 
-
-            <EditText
-                android:id="@+id/height"
-                style="@style/editText"
-                android:autofillHints="@string/magassag"
-                android:hint="@string/magassag"
-                android:inputType="number"
-                app:layout_constraintStart_toStartOf="@id/vertical9"
-                app:layout_constraintEnd_toEndOf="@id/vertical1"
-                app:layout_constraintTop_toTopOf="@id/horizontal8"
-                app:layout_constraintBottom_toBottomOf="@id/horizontal9" />
+    <EditText
+        android:id="@+id/height"
+        style="@style/editText"
+        android:autofillHints="@string/magassag"
+        android:hint="@string/magassag"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal9"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical9"
+        app:layout_constraintTop_toTopOf="@id/horizontal8"
+        tools:ignore="TouchTargetSizeCheck" />
     <TextView
         style="@style/textView"
         android:id="@+id/tv_height"
@@ -189,20 +190,20 @@
     </LinearLayout>
 
 
-
-        <Button
-            android:id="@+id/add"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:onClick="Add"
-            android:text="@string/hozzaad"
-            android:textColor="#0f4d66"
-            android:textSize="17sp"
-            android:background="@drawable/green_round_bground"
-            app:layout_constraintStart_toStartOf="@id/vertical2"
-            app:layout_constraintEnd_toEndOf="@id/vertical7"
-            app:layout_constraintTop_toTopOf="@id/horizontal14"
-            app:layout_constraintBottom_toBottomOf="@id/horizontal15"/>
+    <Button
+        android:id="@+id/add"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/green_round_bground"
+        android:onClick="Add"
+        android:text="@string/hozzaad"
+        android:textColor="#0f4d66"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal15"
+        app:layout_constraintEnd_toEndOf="@id/vertical7"
+        app:layout_constraintStart_toStartOf="@id/vertical2"
+        app:layout_constraintTop_toTopOf="@id/horizontal14"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 

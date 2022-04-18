@@ -14,6 +14,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Random;
@@ -71,7 +73,8 @@ public class Evaluate extends Activity {
 
             String uri = "@drawable/" + selectedPic;
             int imageRes = getResources().getIdentifier(uri, null, getPackageName());
-            @SuppressLint("UseCompatLoadingForDrawables") Drawable res = getResources().getDrawable(imageRes);
+            //Drawable res = getResources().getDrawable(imageRes);
+            Drawable res = ContextCompat.getDrawable(getApplicationContext(),imageRes);
             avatar.setImageDrawable(res);
 
             if(prevActivityID==1 )

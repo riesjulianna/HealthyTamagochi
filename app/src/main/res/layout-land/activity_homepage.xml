@@ -9,27 +9,27 @@
 
     <ImageView
         android:id="@+id/pearplus_kep"
-        android:src="@drawable/pearplus_felirat2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:onClick="signOutClick"
+        android:src="@drawable/pearplus_felirat2"
         app:layout_constraintBottom_toBottomOf="@id/horizontal0"
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal8"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <ImageView
         android:id="@+id/exit_kep"
-        android:src="@drawable/exit"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:onClick="signOutClick"
+        android:src="@drawable/exit"
         app:layout_constraintBottom_toBottomOf="@id/horizontal9"
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal8"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/signOut_btn"
@@ -41,7 +41,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal9"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical4"
-        app:layout_constraintTop_toTopOf="@id/horizontal8" />
+        app:layout_constraintTop_toTopOf="@id/horizontal8"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/addKid_btn"
@@ -49,10 +50,11 @@
         android:gravity="center"
         android:onClick="addKid_onClick"
         android:text="@string/hozaadas"
-        app:layout_constraintTop_toTopOf="@id/horizontal0"
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintEnd_toEndOf="@id/vertical1"/>
+        app:layout_constraintTop_toTopOf="@id/horizontal0"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/pontok"
@@ -127,10 +129,11 @@
         style="@style/green_button"
         android:onClick="play_onClick"
         android:text="@string/kezdes"
-        app:layout_constraintTop_toTopOf="@id/horizontal6"
         app:layout_constraintBottom_toBottomOf="@id/horizontal7"
+        app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"/>
+        app:layout_constraintTop_toTopOf="@id/horizontal6"
+        tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical0"

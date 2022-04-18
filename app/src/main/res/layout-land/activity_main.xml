@@ -11,12 +11,12 @@
         android:id="@+id/tanulj_felirat"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintStart_toStartOf="@id/vertical4"
-        app:layout_constraintEnd_toEndOf="@id/vertical5"
-        app:layout_constraintTop_toTopOf="@id/horizontal4"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
         android:src="@drawable/tanulj_felirat"
-        tools:ignore="ContentDescription" />
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
+        app:layout_constraintEnd_toEndOf="@id/vertical5"
+        app:layout_constraintStart_toStartOf="@id/vertical4"
+        app:layout_constraintTop_toTopOf="@id/horizontal4"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <ImageView
         android:id="@+id/pluszjel_kep"
@@ -27,28 +27,29 @@
         app:layout_constraintEnd_toEndOf="@id/vertical6"
         app:layout_constraintStart_toStartOf="@id/vertical3"
         app:layout_constraintTop_toTopOf="@id/horizontal3"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <Button
         android:id="@+id/signIn"
         style="@style/green_button"
         android:onClick="signInClick"
         android:text="@string/bejelentkezes"
-        app:layout_constraintStart_toStartOf="@id/vertical2"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
+        app:layout_constraintStart_toStartOf="@id/vertical2"
         app:layout_constraintTop_toTopOf="@id/horizontal0"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal1"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/signUp"
         style="@style/light_orange_button"
         android:onClick="signUpClick"
         android:text="@string/regisztracio"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical2"
         app:layout_constraintTop_toTopOf="@id/horizontal2"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
-        />
+        tools:ignore="TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal0"

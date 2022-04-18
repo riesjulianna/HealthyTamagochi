@@ -189,20 +189,20 @@
     </LinearLayout>
 
 
-
-        <Button
-            android:id="@+id/add"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:onClick="Add"
-            android:text="@string/hozzaad"
-            android:textColor="#0f4d66"
-            android:textSize="17sp"
-            android:background="@drawable/green_round_bground"
-            app:layout_constraintStart_toStartOf="@id/vertical0"
-            app:layout_constraintEnd_toEndOf="@id/vertical1"
-            app:layout_constraintTop_toTopOf="@id/horizontal14"
-            app:layout_constraintBottom_toBottomOf="@id/horizontal15"/>
+    <Button
+        android:id="@+id/add"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/green_round_bground"
+        android:onClick="Add"
+        android:text="@string/hozzaad"
+        android:textColor="#0f4d66"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal15"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal14"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 

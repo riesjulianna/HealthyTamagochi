@@ -15,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import androidx.core.content.ContextCompat;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -77,7 +79,7 @@ public class TeethBrushing extends Activity {
 
         String uri = "@drawable/" + selectedPic;
         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable res = getResources().getDrawable(imageRes);
+        Drawable res = ContextCompat.getDrawable(getApplicationContext(),imageRes);
         avatar.setImageDrawable(res);
         name.setText(selectedKid);
         if(!firstGame)

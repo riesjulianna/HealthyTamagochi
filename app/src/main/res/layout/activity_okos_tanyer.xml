@@ -126,32 +126,34 @@
         app:layout_constraintStart_toStartOf="@id/vertical6"
         app:layout_constraintTop_toTopOf="@id/horizontal7"
         tools:ignore="ContentDescription" />
+
     <ImageView
         android:id="@+id/lenyil"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/nyille"
         android:scaleType="centerCrop"
+        android:src="@drawable/lenyil"
         app:layout_constraintBottom_toBottomOf="@id/horizontal4"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/vertical6"
         app:layout_constraintStart_toStartOf="@id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal3"
-        tools:ignore="ContentDescription"
-        android:src="@drawable/lenyil"/>
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
     <ImageView
         android:id="@+id/nyilfel"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/nyilfel"
         android:scaleType="centerCrop"
+        android:src="@drawable/felnyil"
         app:layout_constraintBottom_toBottomOf="@id/horizontal12"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintEnd_toEndOf="@id/vertical6"
         app:layout_constraintStart_toStartOf="@id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal7"
-        tools:ignore="ContentDescription"
-        android:src="@drawable/felnyil"/>
+        tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <Button
         android:id="@+id/Done_btn"

@@ -175,25 +175,26 @@
         android:id="@+id/acceptRules"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:buttonTint="#00fbfb"
         android:text="@string/adatvedelmitajekoztato"
         android:textColor="#B2DEFF"
         android:textSize="16sp"
-        android:buttonTint="#00fbfb"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal17"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal16"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal17"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/SignUpButton"
+        style="@style/green_button"
         android:onClick="registrationClick"
         android:text="@string/regisztracio"
-        tools:ignore="DuplicateSpeakableTextCheck"
-        app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintEnd_toEndOf="@id/vertical3"
-        app:layout_constraintTop_toTopOf="@id/horizontal18"
         app:layout_constraintBottom_toBottomOf="@id/horizontal19"
-        style="@style/green_button" />
+        app:layout_constraintEnd_toEndOf="@id/vertical3"
+        app:layout_constraintStart_toStartOf="@id/vertical2"
+        app:layout_constraintTop_toTopOf="@id/horizontal18"
+        tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal0"

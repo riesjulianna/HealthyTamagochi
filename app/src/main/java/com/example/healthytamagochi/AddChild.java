@@ -14,17 +14,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -84,17 +77,14 @@ public class AddChild extends Activity {
                     resID = getResources().getIdentifier(girl_avatars_List.get(1), "drawable", getPackageName());
                     pic2.setImageResource(resID);
                     resID = getResources().getIdentifier(girl_avatars_List.get(2), "drawable", getPackageName());
-                    pic3.setImageResource(resID);
-
                 } else {
                     resID = getResources().getIdentifier(boy_avatars_List.get(0), "drawable", getPackageName());
                     pic1.setImageResource(resID);
                     resID = getResources().getIdentifier(boy_avatars_List.get(1), "drawable", getPackageName());
                     pic2.setImageResource(resID);
                     resID = getResources().getIdentifier(boy_avatars_List.get(2), "drawable", getPackageName());
-                    pic3.setImageResource(resID);
-
                 }
+                pic3.setImageResource(resID);
                 sex = spinner_sex.getSelectedItem().toString().trim();
             }
 
@@ -175,20 +165,17 @@ public class AddChild extends Activity {
         db.collection("kids")
                 .whereEqualTo("parentID", parentID)
                 .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                kids.add(document.getString("name").toLowerCase().trim());
-                            }
-                            if (kids.contains(name.getText().toString().toLowerCase().trim())) {
-                                Toast.makeText(getApplicationContext(), "Ilyen nevű gyerek már van.", Toast.LENGTH_LONG).show();
-                                return;
-                            }
-                            if (kids.isEmpty() || !kids.contains(name.getText().toString().toLowerCase().trim())) {
-                                add();
-                            }
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : task.getResult()) {
+                            kids.add(document.getString("name").toLowerCase().trim());
+                        }
+                        if (kids.contains(name.getText().toString().toLowerCase().trim())) {
+                            Toast.makeText(getApplicationContext(), "Ilyen nevű gyerek már van.", Toast.LENGTH_LONG).show();
+                            return;
+                        }
+                        if (kids.isEmpty() || !kids.contains(name.getText().toString().toLowerCase().trim())) {
+                            add();
                         }
                     }
                 });
@@ -207,15 +194,8 @@ public class AddChild extends Activity {
 
         db.collection("kids")
                 .add(kid)
-                .addOnSuccessListener(documentReference -> {
-                    Toast.makeText(getApplicationContext(), "Sikeres hozzáadás.", Toast.LENGTH_LONG).show();
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getApplicationContext(), "Hiba!", Toast.LENGTH_LONG).show();
-                    }
-                });
+                .addOnSuccessListener(documentReference -> Toast.makeText(getApplicationContext(), "Sikeres hozzáadás.", Toast.LENGTH_LONG).show())
+                .addOnFailureListener(e -> Toast.makeText(getApplicationContext(), "Hiba!", Toast.LENGTH_LONG).show());
 
         Map<String, Object> data = new HashMap<>();
         data.put("registered", Timestamp.now());
@@ -224,17 +204,11 @@ public class AddChild extends Activity {
                 .collection("kids")
                 .document(name.getText().toString())
                 .set(data)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
+                .addOnSuccessListener(aVoid -> {
 
-                    }
                 })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
+                .addOnFailureListener(e -> {
 
-                    }
                 });
 
     }

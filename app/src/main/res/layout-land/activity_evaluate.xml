@@ -84,7 +84,6 @@
             app:layout_constraintStart_toStartOf="@id/vertical5"/>
 
 
-
     <Button
         style="@style/dark_blue_button"
         android:onClick="evaluate_DoneClick"
@@ -92,7 +91,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal5"
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@+id/vertical7"
-        app:layout_constraintTop_toTopOf="@id/horizontal4" />
+        app:layout_constraintTop_toTopOf="@id/horizontal4"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <androidx.constraintlayout.widget.Guideline

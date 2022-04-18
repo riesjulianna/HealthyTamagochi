@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -148,7 +150,7 @@ public class OkosTanyer extends Activity {
 
         String uri = "@drawable/" + selectedPic;
         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
-        @SuppressLint("UseCompatLoadingForDrawables") Drawable res = getResources().getDrawable(imageRes);
+        Drawable res = ContextCompat.getDrawable(getApplicationContext(),imageRes);
         avatar.setImageDrawable(res);
 
         if (!firstGame) {

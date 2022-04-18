@@ -18,6 +18,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.core.content.ContextCompat;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -72,25 +74,22 @@ public class Homepage extends Activity {
 
 
         Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (orientation == Configuration.ORIENTATION_PORTRAIT)
-                {
-                    loading.setVisibility(View.INVISIBLE);
-                    exit_kep.setVisibility(View.VISIBLE);
-                    exit_tv.setVisibility(View.VISIBLE);
-                    addKid.setVisibility(View.VISIBLE);
-                    relativeLayout.setVisibility(View.VISIBLE);
-                    selectedKid.setVisibility(View.VISIBLE);
-                    downArrow.setVisibility(View.VISIBLE);
-                    avatar_img.setVisibility(View.VISIBLE);
-                    play.setVisibility(View.VISIBLE);
-                    point.setVisibility(View.INVISIBLE);
-                    eddigiPont.setVisibility(View.INVISIBLE);
-                }
-
+        handler.postDelayed(() -> {
+            if (orientation == Configuration.ORIENTATION_PORTRAIT)
+            {
+                loading.setVisibility(View.INVISIBLE);
+                exit_kep.setVisibility(View.VISIBLE);
+                exit_tv.setVisibility(View.VISIBLE);
+                addKid.setVisibility(View.VISIBLE);
+                relativeLayout.setVisibility(View.VISIBLE);
+                selectedKid.setVisibility(View.VISIBLE);
+                downArrow.setVisibility(View.VISIBLE);
+                avatar_img.setVisibility(View.VISIBLE);
+                play.setVisibility(View.VISIBLE);
+                point.setVisibility(View.INVISIBLE);
+                eddigiPont.setVisibility(View.INVISIBLE);
             }
+
         }, 2000);
 
         //GET KIDS FROM DB
@@ -124,12 +123,12 @@ public class Homepage extends Activity {
                                         avatar = document.getString("avatar");
                                         String uri = "@drawable/" + avatar;
                                         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
-                                        Drawable res = getResources().getDrawable(imageRes);
+                                        Drawable res = ContextCompat.getDrawable(getApplicationContext(),imageRes);
                                         avatar_img.setImageDrawable(res);
                                         avatar_img.setVisibility(View.VISIBLE);
                                     }
                                 } else {
-                                    //error handling?
+                                    Toast.makeText(getApplicationContext(), "Error showing avatar.", Toast.LENGTH_LONG).show();
                                 }
                             });
                 } else {

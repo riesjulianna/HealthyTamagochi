@@ -21,31 +21,32 @@
 
     <EditText
         android:id="@+id/emailParent"
+        style="@style/editText"
+        android:autofillHints=""
         android:background="@drawable/edittext_bg"
         android:hint="@string/e_mail_cim"
         android:inputType="textEmailAddress"
         android:paddingStart="15dp"
         android:text=""
-       style="@style/editText"
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal0"
-        android:autofillHints=""
-        tools:ignore="RtlSymmetry" />
+        tools:ignore="RtlSymmetry,TouchTargetSizeCheck" />
+
     <EditText
         android:id="@+id/password"
-        android:inputType="textPassword"
-        android:text=""
-        android:hint="@string/jelszo"
         style="@style/editText"
         android:fontFamily="sans-serif"
-        app:layout_constraintTop_toTopOf="@id/horizontal2"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        android:hint="@string/jelszo"
+        android:inputType="textPassword"
         android:paddingStart="15dp"
-        tools:ignore="Autofill,RtlSymmetry" />
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal2"
+        tools:ignore="Autofill,RtlSymmetry,TouchTargetSizeCheck" />
     <TextView
         android:id="@+id/forgotPassword"
         android:layout_width="0dp"
@@ -69,7 +70,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal7"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@id/vertical2"
-        app:layout_constraintTop_toTopOf="@id/horizontal6" />
+        app:layout_constraintTop_toTopOf="@id/horizontal6"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 

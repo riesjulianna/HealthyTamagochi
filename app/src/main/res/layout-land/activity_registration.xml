@@ -25,37 +25,39 @@
         android:autofillHints=""
         android:hint="@string/szuloemail"
         android:inputType="textEmailAddress"
-        app:layout_constraintTop_toTopOf="@id/horizontal0"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal1"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintEnd_toEndOf="@id/vertical1"
         android:paddingStart="15dp"
-        tools:ignore="RtlSymmetry" />
+        app:layout_constraintBottom_toBottomOf="@id/horizontal1"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal0"
+        tools:ignore="RtlSymmetry,TouchTargetSizeCheck" />
 
     <EditText
         android:id="@+id/password"
         style="@style/editText"
         android:autofillHints="@string/jelszo1"
+        android:fontFamily="sans-serif"
         android:hint="@string/jelszo1"
         android:inputType="textPassword"
-        android:fontFamily="sans-serif"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal2"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal3"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
 
     <EditText
         android:id="@+id/password2"
         style="@style/editText"
         android:autofillHints="@string/jelszo2"
+        android:fontFamily="sans-serif"
         android:hint="@string/jelszo2"
         android:inputType="textPassword"
-        android:fontFamily="sans-serif"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal4"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal5"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <TextView
         android:id="@+id/validPassword"
@@ -176,29 +178,30 @@
         android:id="@+id/acceptRules"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:buttonTint="#00fbfb"
         android:text="@string/adatvedelmitajekoztato"
         android:textColor="#B2DEFF"
         android:textSize="16sp"
-        android:buttonTint="#00fbfb"
-        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal17"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal16"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal17"/>
+        tools:ignore="TouchTargetSizeCheck" />
 
     <Button
         android:id="@+id/SignUpButton"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/green_round_bground"
         android:onClick="registrationClick"
         android:text="@string/regisztracio"
-        tools:ignore="DuplicateSpeakableTextCheck"
         android:textColor="#0f4d66"
         android:textSize="17sp"
-        android:background="@drawable/green_round_bground"
-        app:layout_constraintStart_toStartOf="@id/vertical2"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal19"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
+        app:layout_constraintStart_toStartOf="@id/vertical2"
         app:layout_constraintTop_toTopOf="@id/horizontal18"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal19"/>
+        tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal0"
