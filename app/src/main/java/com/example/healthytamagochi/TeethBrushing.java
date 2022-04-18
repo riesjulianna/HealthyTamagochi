@@ -246,7 +246,7 @@ public class TeethBrushing extends Activity {
         i.putExtra("hour",hour);
         i.putExtra("min",min);
         i.putExtra("sec",sec);
-        i.putExtra("pont",20);
+        i.putExtra("pont",3);
         i.putExtra("prevActivityID",prevActivityID);
         i.putExtra("firstGame",firstGame);
         startActivity(i);

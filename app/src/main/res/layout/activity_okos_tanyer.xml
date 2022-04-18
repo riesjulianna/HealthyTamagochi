@@ -19,7 +19,6 @@
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical1"
         app:layout_constraintTop_toTopOf="@id/horizontal0"
-        app:srcCompat="@drawable/cat_one"
         tools:ignore="ContentDescription,ImageContrastCheck" />
 
     <TextView
