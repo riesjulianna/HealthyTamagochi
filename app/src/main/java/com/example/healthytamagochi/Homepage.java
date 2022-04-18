@@ -32,7 +32,7 @@ import java.util.Random;
 
 public class Homepage extends Activity {
 
-    ImageView avatar_img, downArrow, loading,exit_kep;
+    ImageView avatar_img, downArrow, loading,exit_kep,pearplus;
     Random rnd;
     Spinner selectedKid;
     TextView point,eddigiPont,exit_tv;
@@ -63,12 +63,13 @@ public class Homepage extends Activity {
         play = findViewById(R.id.play_btn);
         loading = findViewById(R.id.loadingImg);
         eddigiPont=findViewById(R.id.pontok);
+        pearplus=findViewById(R.id.pearplus_kep);
 
         int orientation = getResources().getConfiguration().orientation;
 
         if (orientation == Configuration.ORIENTATION_PORTRAIT)
         {
-            loading.setBackgroundResource(R.drawable.loading_screen);
+            loading.setBackgroundResource(R.drawable.pearplus_felirat);
         }
 
 
@@ -78,6 +79,8 @@ public class Homepage extends Activity {
             if (orientation == Configuration.ORIENTATION_PORTRAIT)
             {
                 loading.setVisibility(View.INVISIBLE);
+                point.setVisibility(View.INVISIBLE);
+                eddigiPont.setVisibility(View.INVISIBLE);
                 exit_kep.setVisibility(View.VISIBLE);
                 exit_tv.setVisibility(View.VISIBLE);
                 addKid.setVisibility(View.VISIBLE);
@@ -86,8 +89,9 @@ public class Homepage extends Activity {
                 downArrow.setVisibility(View.VISIBLE);
                 avatar_img.setVisibility(View.VISIBLE);
                 play.setVisibility(View.VISIBLE);
-                point.setVisibility(View.INVISIBLE);
-                eddigiPont.setVisibility(View.INVISIBLE);
+                pearplus.setVisibility(View.VISIBLE);
+
+
             }
 
         }, 2000);
@@ -112,8 +116,8 @@ public class Homepage extends Activity {
         selectedKid.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                showPoints(selectedKid.getSelectedItem().toString());
                 if (!selectedKid.getSelectedItem().toString().contains("?")) {
+                    showPoints(selectedKid.getSelectedItem().toString());
                     db.collection("kids")
                             .whereEqualTo("name", selectedKid.getSelectedItem().toString())
                             .get()

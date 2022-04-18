@@ -16,7 +16,8 @@
         app:layout_constraintEnd_toEndOf="@id/vertical5"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal8"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        android:visibility="invisible"/>
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -151,13 +152,11 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:contentDescription="@string/loading"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal21"
-        app:layout_constraintEnd_toEndOf="@id/vertical21"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@id/vertical20"
-        app:layout_constraintTop_toTopOf="@id/horizontal20"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/loading_screen" />
+        app:layout_constraintBottom_toBottomOf="@id/horizontal5"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        app:layout_constraintTop_toTopOf="@id/horizontal1"
+        app:srcCompat="@drawable/pearplus_felirat2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/vertical0"
