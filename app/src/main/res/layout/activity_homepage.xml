@@ -15,7 +15,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal9"
         app:layout_constraintEnd_toEndOf="@id/vertical5"
         app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintTop_toTopOf="@id/horizontal8" />
+        app:layout_constraintTop_toTopOf="@id/horizontal8"
+        tools:ignore="ContentDescription" />
 
     <RelativeLayout
         android:layout_width="0dp"
@@ -32,7 +33,7 @@
             android:layout_height="30dp"
             android:onClick="signOutClick"
             android:visibility="invisible"
-            />
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/exit_tv"
@@ -63,7 +64,7 @@
         style="@style/textView"
         android:visibility="invisible"
         android:gravity="end|center_vertical"
-        android:text=" Eddig elért pontok:"
+        android:text="@string/eddig_el_rt_pontok"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
         app:layout_constraintEnd_toEndOf="@id/vertical6"

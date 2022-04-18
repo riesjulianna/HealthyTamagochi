@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal0"
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintTop_toTopOf="@id/horizontal16" />
+        app:layout_constraintTop_toTopOf="@id/horizontal16"
+        tools:ignore="ContentDescription,HardcodedText" />
 
 
     <TextView
@@ -149,7 +150,8 @@
             android:id="@+id/pic1"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="10dp" />
+            android:padding="10dp"
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <LinearLayout
@@ -166,7 +168,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
-           />
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
     <LinearLayout
@@ -183,7 +185,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="10dp"
-            />
+            tools:ignore="ContentDescription" />
     </LinearLayout>
 
 

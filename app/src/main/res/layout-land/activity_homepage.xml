@@ -17,7 +17,7 @@
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal8"
-        />
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/exit_kep"
@@ -29,7 +29,7 @@
         app:layout_constraintEnd_toEndOf="@id/vertical4"
         app:layout_constraintStart_toStartOf="@id/vertical5"
         app:layout_constraintTop_toTopOf="@id/horizontal8"
-        />
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/signOut_btn"
@@ -57,7 +57,7 @@
     <TextView
         android:id="@+id/pontok"
         style="@style/textView"
-        android:text=" Eddig elért pontok: "
+        android:text="@string/eddig_el_rt_pontok"
         android:textStyle="bold"
         android:gravity="end|center_vertical"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"

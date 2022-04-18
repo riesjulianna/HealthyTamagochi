@@ -16,7 +16,8 @@
         app:layout_constraintTop_toTopOf="@id/horizontal20"
         app:layout_constraintBottom_toBottomOf="@id/horizontal0"
         app:layout_constraintEnd_toEndOf="@id/vertical6"
-        app:layout_constraintStart_toStartOf="@id/vertical0" />
+        app:layout_constraintStart_toStartOf="@id/vertical0"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/emailParent"
@@ -28,7 +29,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal1"
         app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintEnd_toEndOf="@id/vertical1"
-        android:paddingStart="15dp"/>
+        android:paddingStart="15dp"
+        tools:ignore="RtlSymmetry" />
 
     <EditText
         android:id="@+id/password"

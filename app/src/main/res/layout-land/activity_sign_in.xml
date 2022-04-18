@@ -16,7 +16,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal0"
         app:layout_constraintEnd_toEndOf="@id/vertical2"
         app:layout_constraintStart_toStartOf="@id/vertical0"
-        app:layout_constraintTop_toTopOf="@id/horizontal8" />
+        app:layout_constraintTop_toTopOf="@id/horizontal8"
+        tools:ignore="ContentDescription" />
 
     <EditText
         android:id="@+id/emailParent"

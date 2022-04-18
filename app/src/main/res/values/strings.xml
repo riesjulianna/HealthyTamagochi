@@ -71,6 +71,7 @@
     <string name="loading">loading</string>
     <string name="nyilfel">nyilfel</string>
     <string name="nyille">nyille</string>
+    <string name="eddig_el_rt_pontok">Eddig elért pontok:</string>
 
 
 </resources>

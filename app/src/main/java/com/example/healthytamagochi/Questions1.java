@@ -1,6 +1,5 @@
 package com.example.healthytamagochi;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;

@@ -16,7 +16,7 @@
         app:layout_constraintTop_toTopOf="@id/horizontal4"
         app:layout_constraintBottom_toBottomOf="@id/horizontal5"
         android:src="@drawable/tanulj_felirat"
-        />
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/pluszjel_kep"
@@ -26,7 +26,8 @@
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
         app:layout_constraintEnd_toEndOf="@id/vertical6"
         app:layout_constraintStart_toStartOf="@id/vertical3"
-        app:layout_constraintTop_toTopOf="@id/horizontal3" />
+        app:layout_constraintTop_toTopOf="@id/horizontal3"
+        tools:ignore="ContentDescription" />
 
     <Button
         android:id="@+id/signIn"
