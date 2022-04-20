@@ -65,8 +65,6 @@ public class AddChild extends Activity {
                 R.array.sex, R.layout.spinner_text);
         adapter_sex.setDropDownViewResource(R.layout.simple_spinner_text);
         spinner_sex.setAdapter(adapter_sex);
-
-
         spinner_sex.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
@@ -141,9 +139,7 @@ public class AddChild extends Activity {
         dpd.show();
     }
 
-    public void Add(View v) {
-
-
+    public void AddOnClick(View v) {
         if (name.getText().toString().equals("") || weight.getText().toString().equals("")
                 || height.getText().toString().equals("")
                 || birthdate.getText().toString().equals("")
@@ -151,17 +147,12 @@ public class AddChild extends Activity {
             Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
         } else {
             addKidToDatabase();
-            Intent i = new Intent();
-            i.setClass(this, Homepage.class);
-            startActivity(i);
         }
     }
 
     public void addKidToDatabase() {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
         List<String> kids = new ArrayList<>();
         String parentID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
         db.collection("kids")
                 .whereEqualTo("parentID", parentID)
                 .get()
@@ -171,10 +162,12 @@ public class AddChild extends Activity {
                             kids.add(document.getString("name").toLowerCase().trim());
                         }
                         if (kids.contains(name.getText().toString().toLowerCase().trim())) {
-                            Toast.makeText(getApplicationContext(), "Ilyen nevű gyerek már van.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "Ilyen nevű gyerek már van.",
+                                    Toast.LENGTH_LONG).show();
                             return;
                         }
-                        if (kids.isEmpty() || !kids.contains(name.getText().toString().toLowerCase().trim())) {
+                        if (kids.isEmpty() || !kids.contains(name
+                                .getText().toString().toLowerCase().trim())) {
                             add();
                         }
                     }
@@ -194,21 +187,26 @@ public class AddChild extends Activity {
 
         db.collection("kids")
                 .add(kid)
-                .addOnSuccessListener(documentReference -> Toast.makeText(getApplicationContext(), "Sikeres hozzáadás.", Toast.LENGTH_LONG).show())
-                .addOnFailureListener(e -> Toast.makeText(getApplicationContext(), "Hiba!", Toast.LENGTH_LONG).show());
+                .addOnSuccessListener(documentReference -> {
+                        Toast.makeText(getApplicationContext(),
+                                "Sikeres hozzáadás.", Toast.LENGTH_LONG).show();
+                    Intent i = new Intent();
+                    i.setClass(this, Homepage.class);
+                    startActivity(i);
+                }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(),
+                "Hiba az adatbázishoz adás közben!", Toast.LENGTH_LONG).show());
 
         Map<String, Object> data = new HashMap<>();
         data.put("registered", Timestamp.now());
-        db.collection("results")
-                .document(parentID)
+        db.collection("results").document(parentID)
                 .collection("kids")
                 .document(name.getText().toString())
                 .set(data)
-                .addOnSuccessListener(aVoid -> {
-
+                .addOnSuccessListener(Void -> {
                 })
                 .addOnFailureListener(e -> {
-
+                    Toast.makeText(getApplicationContext(),
+                            "Hiba az adatbázishoz adás közben!", Toast.LENGTH_LONG).show();
                 });
 
     }

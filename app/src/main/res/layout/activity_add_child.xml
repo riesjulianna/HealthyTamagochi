@@ -194,7 +194,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/green_round_bground"
-        android:onClick="Add"
+        android:onClick="AddOnClick"
         android:text="@string/hozzaad"
         android:textColor="#0f4d66"
         android:textSize="17sp"

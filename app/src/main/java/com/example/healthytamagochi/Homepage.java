@@ -132,7 +132,8 @@ public class Homepage extends Activity {
                                         avatar_img.setVisibility(View.VISIBLE);
                                     }
                                 } else {
-                                    Toast.makeText(getApplicationContext(), "Error showing avatar.", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(getApplicationContext(), "Error showing avatar.",
+                                            Toast.LENGTH_LONG).show();
                                 }
                             });
                 } else {
