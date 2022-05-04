@@ -195,7 +195,7 @@ public class OkosTanyer extends Activity {
   option1.setOnTouchListener((view, event) -> {
       actualX=option1.getX();
       actualY=option1.getY();
-          // rá teszi az ujját a expire
+          // rá teszi az ujját
           if(event.getAction() == MotionEvent.ACTION_DOWN)
           {
               xDown=event.getX();
@@ -340,10 +340,6 @@ public class OkosTanyer extends Activity {
                   }
               }
           }
-
-
-
-
       return true;
   });
 

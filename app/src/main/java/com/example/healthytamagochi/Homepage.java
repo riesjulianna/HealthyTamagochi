@@ -8,11 +8,16 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -32,10 +37,10 @@ import java.util.Random;
 
 public class Homepage extends Activity {
 
-    ImageView avatar_img, downArrow, loading,exit_kep,pearplus;
+    ImageView avatar_img, downArrow, loading, exit_kep, pearplus, info;
     Random rnd;
     Spinner selectedKid;
-    TextView point,eddigiPont,exit_tv;
+    TextView point, eddigiPont, exit_tv;
     int nextActivityID, points;
     boolean firstGame = true;
     int numberOfQuestions;
@@ -62,22 +67,20 @@ public class Homepage extends Activity {
         avatar_img = findViewById(R.id.avatar_img);
         play = findViewById(R.id.play_btn);
         loading = findViewById(R.id.loadingImg);
-        eddigiPont=findViewById(R.id.pontok);
-        pearplus=findViewById(R.id.pearplus_kep);
+        eddigiPont = findViewById(R.id.pontok);
+        pearplus = findViewById(R.id.pearplus_kep);
+        info = findViewById(R.id.information_kep);
 
         int orientation = getResources().getConfiguration().orientation;
 
-        if (orientation == Configuration.ORIENTATION_PORTRAIT)
-        {
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
             loading.setBackgroundResource(R.drawable.pearplus_felirat);
         }
 
 
-
         Handler handler = new Handler();
         handler.postDelayed(() -> {
-            if (orientation == Configuration.ORIENTATION_PORTRAIT)
-            {
+            if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 loading.setVisibility(View.INVISIBLE);
                 point.setVisibility(View.INVISIBLE);
                 eddigiPont.setVisibility(View.INVISIBLE);
@@ -90,6 +93,7 @@ public class Homepage extends Activity {
                 avatar_img.setVisibility(View.VISIBLE);
                 play.setVisibility(View.VISIBLE);
                 pearplus.setVisibility(View.VISIBLE);
+                info.setVisibility(View.VISIBLE);
 
 
             }
@@ -127,7 +131,7 @@ public class Homepage extends Activity {
                                         avatar = document.getString("avatar");
                                         String uri = "@drawable/" + avatar;
                                         int imageRes = getResources().getIdentifier(uri, null, getPackageName());
-                                        Drawable res = ContextCompat.getDrawable(getApplicationContext(),imageRes);
+                                        Drawable res = ContextCompat.getDrawable(getApplicationContext(), imageRes);
                                         avatar_img.setImageDrawable(res);
                                         avatar_img.setVisibility(View.VISIBLE);
                                     }
@@ -220,8 +224,8 @@ public class Homepage extends Activity {
                         DocumentSnapshot document = task.getResult();
                         if (document.exists()) {
                             Map<String, Object> allPoints = document.getData();
-                            Log.d("db", String.valueOf(allPoints.size()-1));
-                            all = String.valueOf((allPoints.size()-1)*3);
+                            Log.d("db", String.valueOf(allPoints.size() - 1));
+                            all = String.valueOf((allPoints.size() - 1) * 3);
 
                             Map<String, Object> reachedPoints = document.getData();
                             if (reachedPoints != null) {
@@ -236,15 +240,38 @@ public class Homepage extends Activity {
                                 Log.d("pontok osszeadva", String.valueOf(points));
                             }
                         }
-                        point.setText(points+" / "+all);
+                        point.setText(points + " / " + all);
                     }
                 });
         eddigiPont.setVisibility(View.VISIBLE);
         point.setVisibility(View.VISIBLE);
         pointsList.clear();
-        all="";
-        points=0;
+        all = "";
+        points = 0;
     }
 
 
+    public void popupOnClick(View view) {
+
+        LayoutInflater inflater = (LayoutInflater)
+                getSystemService(LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.popup_window, null);
+
+        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int height = LinearLayout.LayoutParams.WRAP_CONTENT;
+        boolean focusable = true; // lets taps outside the popup also dismiss it
+        final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+    }
 }
+
+

@@ -8,6 +8,19 @@
     tools:context=".Homepage">
 
     <ImageView
+        android:id="@+id/information_kep"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/information"
+        app:layout_constraintBottom_toBottomOf="@id/horizontal22"
+        app:layout_constraintEnd_toEndOf="@id/vertical0"
+        app:layout_constraintStart_toStartOf="@id/vertical20"
+        app:layout_constraintTop_toTopOf="@id/horizontal8"
+        tools:ignore="ContentDescription"
+        android:visibility="invisible"
+        android:onClick="popupOnClick"/>
+
+    <ImageView
         android:id="@+id/pearplus_kep"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -216,8 +229,6 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.5" />
-
-
 
 
     <androidx.constraintlayout.widget.Guideline
