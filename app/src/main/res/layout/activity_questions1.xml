@@ -55,7 +55,7 @@
         android:gravity="center"
         android:text=""
         android:textColor="#A1F6EF"
-        android:textSize="19sp"
+        android:textSize="17sp"
         app:layout_constraintBottom_toBottomOf="@id/horizontal3"
         app:layout_constraintEnd_toEndOf="@id/vertical3"
         app:layout_constraintStart_toStartOf="@+id/vertical1"

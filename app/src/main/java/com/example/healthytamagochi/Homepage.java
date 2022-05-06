@@ -40,13 +40,14 @@ public class Homepage extends Activity {
     ImageView avatar_img, downArrow, loading, exit_kep, pearplus, info;
     Random rnd;
     Spinner selectedKid;
-    TextView point, eddigiPont, exit_tv;
+    TextView point, exit_tv;
     int nextActivityID, points;
     boolean firstGame = true;
     int numberOfQuestions;
     String avatar, all;
     Button addKid, play;
     RelativeLayout relativeLayout;
+
 
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -57,7 +58,7 @@ public class Homepage extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
-        point = findViewById(R.id.proba_tv);
+        point = findViewById(R.id.pontok);
         exit_kep = findViewById(R.id.exit_kep);
         exit_tv = findViewById(R.id.exit_tv);
         addKid = findViewById(R.id.addKid_btn);
@@ -67,7 +68,6 @@ public class Homepage extends Activity {
         avatar_img = findViewById(R.id.avatar_img);
         play = findViewById(R.id.play_btn);
         loading = findViewById(R.id.loadingImg);
-        eddigiPont = findViewById(R.id.pontok);
         pearplus = findViewById(R.id.pearplus_kep);
         info = findViewById(R.id.information_kep);
 
@@ -83,7 +83,6 @@ public class Homepage extends Activity {
             if (orientation == Configuration.ORIENTATION_PORTRAIT) {
                 loading.setVisibility(View.INVISIBLE);
                 point.setVisibility(View.INVISIBLE);
-                eddigiPont.setVisibility(View.INVISIBLE);
                 exit_kep.setVisibility(View.VISIBLE);
                 exit_tv.setVisibility(View.VISIBLE);
                 addKid.setVisibility(View.VISIBLE);
@@ -240,10 +239,9 @@ public class Homepage extends Activity {
                                 Log.d("pontok osszeadva", String.valueOf(points));
                             }
                         }
-                        point.setText(points + " / " + all);
+                        point.setText("Eddig elért pontok: "+points + " / " + all);
                     }
                 });
-        eddigiPont.setVisibility(View.VISIBLE);
         point.setVisibility(View.VISIBLE);
         pointsList.clear();
         all = "";

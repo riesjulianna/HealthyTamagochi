@@ -3,6 +3,7 @@ package com.example.healthytamagochi;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
@@ -72,11 +73,11 @@ public class Registration extends Activity {
                 String pass2 = password2.getText().toString();
                 if (pass.length() < 6) {
                     validPassword.setText(("Túl rövid jelszó."));
-                    validPassword.setTextColor(Color.RED);
+                    validPassword.setTextColor(ColorStateList.valueOf(Color.parseColor("#fc6d62")));
                 }
                 if (!(pass2.equals(pass))) {
                     validPassword.setText("A két jelszó nem egyezik meg!");
-                    validPassword.setTextColor(Color.RED);
+                    validPassword.setTextColor(ColorStateList.valueOf(Color.parseColor("#fc6d62")));
                 }
                 if (pass2.equals(pass) && pass.length() >= 6) {
                     validPassword.setVisibility(View.INVISIBLE);
@@ -147,8 +148,9 @@ public class Registration extends Activity {
 
 
     public void onBackPressed() {
-        //kilép az alkalmazásból, bejelentkezve marad
-        this.finishAffinity();
+            Intent i = new Intent();
+            i.setClass(this,MainActivity.class);
+            startActivity(i);
     }
 }
 

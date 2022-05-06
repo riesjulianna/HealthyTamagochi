@@ -96,7 +96,10 @@ public class SignIn extends Activity {
     }
     public void onBackPressed() {
         FirebaseAuth.getInstance().signOut();
-        this.finishAffinity();
+            Intent i = new Intent();
+            i.setClass(this,MainActivity.class);
+            startActivity(i);
+
     }
 
 }

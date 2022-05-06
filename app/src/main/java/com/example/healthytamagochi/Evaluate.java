@@ -82,7 +82,7 @@ public class Evaluate extends Activity {
                 rating.setText("3/" + pont + " pont\n\n" + response);
             }
             else if(prevActivityID==2 ) {
-                rating.setText("3/" + pont + " pont\n\n" + "A zöldség és gyümölcs fogyasztása nagyon fontos. Naponta legalább ötször fogyasszunk zöldséget és gyümölcsöt friss, fagyasztott, szárított vagy konzerv formájában.");
+                rating.setText("3/" + pont + " pont\n\n" + "Nagyon fontos, hogy naponta legalább ötször fogyasszunk zöldséget és gyümölcsöt friss, fagyasztott, szárított vagy konzerv formájában.");
             }
             else if (prevActivityID==3 )
             {

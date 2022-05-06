@@ -75,27 +75,16 @@
 
     <TextView
         android:id="@+id/pontok"
-        style="@style/textView"
+        style="@style/pont_textView"
         android:visibility="invisible"
-        android:gravity="end|center_vertical"
+        android:gravity="center"
         android:text="@string/eddig_el_rt_pontok"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@id/horizontal6"
-        app:layout_constraintEnd_toEndOf="@id/vertical6"
-        app:layout_constraintStart_toStartOf="@id/vertical20"
+        app:layout_constraintEnd_toEndOf="@id/vertical1"
+        app:layout_constraintStart_toStartOf="@id/vertical0"
         app:layout_constraintTop_toTopOf="@id/horizontal5" />
 
-
-    <TextView
-        android:id="@+id/proba_tv"
-        style="@style/textView"
-        android:visibility="invisible"
-        android:gravity="start|center_vertical"
-        android:layout_marginStart="0dp"
-        app:layout_constraintBottom_toBottomOf="@id/horizontal6"
-        app:layout_constraintEnd_toEndOf="@id/vertical21"
-        app:layout_constraintStart_toStartOf="@id/vertical6"
-        app:layout_constraintTop_toTopOf="@id/horizontal5" />
 
     <RelativeLayout
         android:id="@+id/relativeLayout3"
