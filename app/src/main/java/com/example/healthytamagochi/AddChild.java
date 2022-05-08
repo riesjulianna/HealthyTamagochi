@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,8 +15,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
@@ -33,6 +40,7 @@ public class AddChild extends Activity {
     ImageView pic1, pic2, pic3;
     String selectedPic = "";
     String sex;
+    String parentEmail;
     int resID;
     LinearLayout option1, option2, option3;
 
@@ -196,12 +204,27 @@ public class AddChild extends Activity {
                 }).addOnFailureListener(e -> Toast.makeText(getApplicationContext(),
                 "Hiba az adatbázishoz adás közben!", Toast.LENGTH_LONG).show());
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("registered", Timestamp.now());
+        Map<String, Object> added = new HashMap<>();
+        Map<String,Object> email = new HashMap<>();
+        DocumentReference ref =
+        db.collection("users").document(parentID);
+                ref.get().addOnCompleteListener(task -> {
+                    if(task.isSuccessful()){
+                        DocumentSnapshot doc = task.getResult();
+                         parentEmail = doc.getString("email");
+                        email.put("Felhasználó",parentEmail);
+                        db.collection("results").document(parentID).update("email",parentEmail);
+                    }
+                });
+
+        added.put("added", Timestamp.now());
+
+        db.collection("results").document(parentID).set(email);
+
         db.collection("results").document(parentID)
                 .collection("kids")
                 .document(name.getText().toString())
-                .set(data)
+                .set(added)
                 .addOnSuccessListener(Void -> {
                 })
                 .addOnFailureListener(e -> {

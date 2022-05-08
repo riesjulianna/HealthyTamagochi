@@ -69,7 +69,11 @@ public class SignIn extends Activity {
         if (email.getText().toString().equals("") || password.getText().toString().equals("")) {
             Toast.makeText(this, "Üres mező(k)!", Toast.LENGTH_LONG).show();
         }
-        else {
+        if(email.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
+            Intent admin = new Intent();
+            admin.setClass(this, Admin.class);
+            startActivity(admin);
+        }else{
             String mail = email.getText().toString().trim();
             String pw = password.getText().toString().trim();
             mAuth.signInWithEmailAndPassword(mail, pw)
@@ -77,7 +81,7 @@ public class SignIn extends Activity {
                         if (task.isSuccessful()) {
                             FirebaseUser user = mAuth.getCurrentUser();
                             if(user.isEmailVerified())
-                            go();
+                                go();
                             else Toast.makeText(SignIn.this,"Igazolja vissza e-mail címét.",Toast.LENGTH_LONG).show();
                         } else {
                             Toast.makeText(SignIn.this, "Hibás e-mail vagy jelszó.",

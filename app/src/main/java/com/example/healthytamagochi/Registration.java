@@ -143,7 +143,6 @@ public class Registration extends Activity {
         user.put("residence", res);
         user.put("id", FirebaseAuth.getInstance().getCurrentUser().getUid());
         db.collection("users").document(parentID).set(user);
-        //db.collection("users").add(user);
     }
 
 
@@ -154,24 +153,6 @@ public class Registration extends Activity {
     }
 }
 
-//        Map<String, Object> user = new HashMap<>();
-//        user.put("username", username.getText().toString());
-//        user.put("password", password.getText().toString());
-//        user.put("email", email.getText().toString());
-//        db.collection("users")
-//                .add(user)
-//                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-//                    @Override
-//                    public void onSuccess(DocumentReference documentReference) {
-//                        Log.d("TAG", "DocumentSnapshot added with ID: " + documentReference.getId());
-//                    }
-//                })
-//                .addOnFailureListener(new OnFailureListener() {
-//                    @Override
-//                    public void onFailure(@NonNull Exception e) {
-//                        Log.w("TAG", "Error adding document", e);
-//                    }
-//                });
 
 
 
